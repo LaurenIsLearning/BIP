@@ -1,0 +1,81 @@
+
+/* NavBar Styling ------------------------------------*/
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between  ;
+    align-items: center;
+    background-color: darkgreen;
+    margin-bottom: 3em;
+    padding: 1em;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+}
+
+/* List Styling ---------------------------------------*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+section h1 b {
+    color: darkgreen;
+}
+
+
+/* Hero (attempted) Styling ---------------------------*/
+.hero {
+    width: 80%;
+    justify-content: center;
+}
+
+
+/* Table Styling --------------------------------------*/
+.table-section {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 80%;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+}
+
+th, td {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+tr {
+  border-bottom: 2px solid darkslategrey;
+}
+
+tbody tr:hover {
+    background-color:darkseagreen;
+
+}
