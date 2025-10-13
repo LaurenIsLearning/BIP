@@ -29,8 +29,11 @@ ul {
     padding: 0;
     overflow: hidden;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+
+    list-style-type: '\1F3B1';
 }
+
 
 section h1 b {
     color: darkgreen;
