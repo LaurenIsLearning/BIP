@@ -1,9 +1,11 @@
+import logo from "../ball15.png"
+
 function NavBar() {
     return (
         <>
         <nav>
             <section className="nav-left">
-                <img src="" alt="BIP logo"/>
+                <img src={logo} alt="BIP logo"/>
                 <h2>BIP</h2>
             </section>
             <section className="nav-right">

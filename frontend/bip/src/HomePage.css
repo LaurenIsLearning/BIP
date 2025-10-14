@@ -3,17 +3,22 @@
 nav {
     width: 100%;
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
     align-items: center;
     background-color: darkgreen;
     margin-bottom: 3em;
     padding: 1em;
+    color:white;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
     gap: 0.5rem;  
+}
+
+.nav-left img {
+    width: 40px;
 }
 
 .nav-right {
@@ -46,6 +51,15 @@ section h1 b {
     justify-content: center;
 }
 
+
+/* Pre-table Styling ----------------------------------*/
+.horizontal-button-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 1em;
+}
 
 /* Table Styling --------------------------------------*/
 .table-section {
