@@ -1,3 +1,0 @@
-{
-    one off import script
-}
