@@ -1,0 +1,71 @@
+// Card Style
+.player_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 2px solid grey;
+  border-radius: 20px;
+
+  width: 200px;
+  min-height: 275px;
+
+  padding: 10px;
+}
+
+// Top Half
+.top_half {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > p {
+    font-size: 25pt;
+    font-weight: bold;
+  }
+}
+
+.player_image {
+  width: 100px;
+  height: 100px; // Could delete this to make it oblong
+  border-radius: 100%;
+  object-fit: cover;
+  border: 2px solid grey;
+}
+
+// Bottom Half
+.bottom_half {
+  display: flex;
+  flex-direction: column;
+
+  // Player's Name
+  & .player_name {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 5%;
+  }
+}
+
+// Headers for stats
+.stats_header {
+  display: flex;
+  justify-content: space-around;
+
+  & > p {
+    font-weight: bold;
+    margin: 0;
+    flex: 1;
+  }
+}
+
+// Data rows for stats
+.stats_display {
+  display: flex;
+  justify-content: space-around;
+
+  & > p {
+    margin: 2.5px;
+    flex: 1;
+  }
+}

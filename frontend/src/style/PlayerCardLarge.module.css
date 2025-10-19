@@ -1,0 +1,59 @@
+.player_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid grey;
+  border-radius: 20px;
+  width: 200px;
+  min-height: 275px;
+  padding: 10px;
+}
+
+.top_half {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.top_half > p {
+  font-size: 25pt;
+  font-weight: bold;
+}
+
+.player_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid grey;
+}
+
+.bottom_half {
+  display: flex;
+  flex-direction: column;
+}
+.bottom_half .player_name {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5%;
+}
+
+.stats_header {
+  display: flex;
+  justify-content: space-around;
+}
+.stats_header > p {
+  font-weight: bold;
+  margin: 0;
+  flex: 1;
+}
+
+.stats_display {
+  display: flex;
+  justify-content: space-around;
+}
+.stats_display > p {
+  margin: 2.5px;
+  flex: 1;
+}/*# sourceMappingURL=PlayerCardLarge.module.css.map */

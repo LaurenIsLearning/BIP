@@ -1,0 +1,34 @@
+.top_half {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top_half > .team_info {
+  display: flex;
+  width: 50vw;
+  flex-direction: column;
+}
+.top_half > .team_info > .team_name {
+  font-size: 50pt;
+  font-weight: bold;
+  margin: 0;
+}
+.top_half > .team_info > .team_extras_container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.top_half > .team_info > .team_extras_container > .team_extras {
+  display: flex;
+  flex-direction: column;
+  font-size: 16pt;
+}
+
+.bottom_half {
+  display: flex;
+  flex-direction: inline;
+  justify-content: space-around;
+}
+
+PlayerCardLarge {
+  cursor: pointer;
+}/*# sourceMappingURL=SingleTeamDisplay.module.css.map */
