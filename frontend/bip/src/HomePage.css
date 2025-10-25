@@ -36,6 +36,7 @@ ul {
     display: flex;
     justify-content: space-around;
 
+    /* pool ball emoji */
     list-style-type: '\1F3B1';
 }
 
@@ -47,10 +48,13 @@ section h1 b {
 
 /* Hero (attempted) Styling ---------------------------*/
 .hero {
-    width: 80%;
-    justify-content: center;
+    margin: 0 auto;
 }
 
+.hero h1 {
+    width: 100%;
+    text-align: center;
+}
 
 /* Pre-table Styling ----------------------------------*/
 .horizontal-button-section {
@@ -70,7 +74,7 @@ section h1 b {
 table {
     border-radius: 10px;
     border: 2px solid black;
-    width: 80%;
+    width: 60%;
     overflow: hidden;
     border-collapse: collapse;
 }
