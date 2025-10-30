@@ -6,8 +6,10 @@ function NavBar() {
         <>
         <nav>
             <section className="nav-left">
-                <img src={logo} alt="BIP logo"/>
-                <h2>BIP</h2>
+                <Link to={"/"}>
+                    <img src={logo} alt="BIP logo"/>
+                    <h2>BIP</h2>
+                </Link>  
             </section>
             <section className="nav-right">
                 <button>View Rankings</button>
