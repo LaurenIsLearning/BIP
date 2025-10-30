@@ -1,32 +1,4 @@
 
-/* NavBar Styling ------------------------------------*/
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: darkgreen;
-    margin-bottom: 3em;
-    padding: 1em;
-    color:white;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;  
-}
-
-.nav-left img {
-    width: 40px;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;  
-}
-
 /* List Styling ---------------------------------------*/
 ul {
     list-style-type: none;
