@@ -3,7 +3,6 @@ import { Player } from "./models/Player";
 import { Team } from "./models/Team";
 import ComparisonPage from "./pages/ComparisonPage";
 import { useState } from "react";
-import HomePage from "./pages/HomePage";
 
 function App() {
   const [teamOne, setTeamOne] = useState(

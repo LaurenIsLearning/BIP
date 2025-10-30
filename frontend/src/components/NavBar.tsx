@@ -1,4 +1,5 @@
 import logo from "../ball15.png"
+import { Link } from 'react-router-dom';
 
 function NavBar() {
     return (
@@ -10,7 +11,8 @@ function NavBar() {
             </section>
             <section className="nav-right">
                 <button>View Rankings</button>
-                <button>Compare Teams</button>
+                <button><Link to={"/Comparison"}>Compare Teams</Link></button>
+                <button>Look at Team </button>
                 <button>Login</button>
             </section>
         </nav>
