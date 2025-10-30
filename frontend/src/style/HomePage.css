@@ -3,17 +3,22 @@
 nav {
     width: 100%;
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
     align-items: center;
     background-color: darkgreen;
     margin-bottom: 3em;
     padding: 1em;
+    color:white;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
     gap: 0.5rem;  
+}
+
+.nav-left img {
+    width: 40px;
 }
 
 .nav-right {
@@ -29,8 +34,12 @@ ul {
     padding: 0;
     overflow: hidden;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+
+    /* pool ball emoji */
+    list-style-type: '\1F3B1';
 }
+
 
 section h1 b {
     color: darkgreen;
@@ -39,10 +48,22 @@ section h1 b {
 
 /* Hero (attempted) Styling ---------------------------*/
 .hero {
-    width: 80%;
-    justify-content: center;
+    margin: 0 auto;
 }
 
+.hero h1 {
+    width: 100%;
+    text-align: center;
+}
+
+/* Pre-table Styling ----------------------------------*/
+.horizontal-button-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 1em;
+}
 
 /* Table Styling --------------------------------------*/
 .table-section {
@@ -53,7 +74,7 @@ section h1 b {
 table {
     border-radius: 10px;
     border: 2px solid black;
-    width: 80%;
+    width: 60%;
     overflow: hidden;
     border-collapse: collapse;
 }
