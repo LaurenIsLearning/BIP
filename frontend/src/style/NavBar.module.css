@@ -1,0 +1,29 @@
+/* NavBar Styling ------------------------------------*/
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgreen;
+    margin-bottom: 3em;
+    padding: 1em;
+    color:white;
+}
+
+.nav_left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+}
+
+.nav_left_image {
+    width: 40px;
+    max-width: 40px;
+    height: 40px;
+}
+
+.nav_right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+}
