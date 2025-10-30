@@ -3,6 +3,7 @@ import { Player } from "./models/Player";
 import { Team } from "./models/Team";
 import ComparisonPage from "./pages/ComparisonPage";
 import { useState } from "react";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const [teamOne, setTeamOne] = useState(
@@ -15,9 +16,9 @@ function App() {
           new Player("Luke Schwieterman", 5, 0.8333, 0.55, 0.5714, 35),
           new Player("Ryan Bentz", 3, 0.7273, 0.51, 0.6471, 34),
           new Player("Jeff Mercer Jr", 6, 0.75, 0.58, 0.75, 28),
-          new Player("New Player", 4, 0.8, 0.6, 0.7, 30),
-          new Player("Another Player", 2, 0.7, 0.5, 0.6, 25),
-          new Player("Final Player", 3, 0.9, 0.7, 0.8, 20),
+          new Player("Hi", 4, 0.8333, 0.55, 0.5714, 35),
+          new Player("Hello", 2, 0.7273, 0.51, 0.6471, 34),
+          new Player("Waddup", 7, 0.75, 0.58, 0.75, 28),
         ],
         93
       )

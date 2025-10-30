@@ -2,13 +2,26 @@ import styles from "../style/SingleTeamDisplay.module.css";
 
 import type { Team } from "../models/Team";
 import PlayerCardLarge from "./PlayerCardLarge";
+import CombinationContainer from "./CombinationContainer";
+import useComCalc from "../hooks/useComCalc";
+import { useEffect } from "react";
 
 interface Props {
   team: Team;
-  possibleCombinations: number;
 }
 
-function SingleTeamDisplay({ team, possibleCombinations }: Props) {
+function SingleTeamDisplay({ team }: Props) {
+  const [values, calculation] = useComCalc({
+    allCombinations: [],
+    remainingCombinations: [],
+    count: 0,
+  });
+
+  useEffect(() => {
+    const skills = team.players.map((p) => p.skillLevel);
+    calculation("GET_COUNT", skills);
+  }, [team]);
+
   return (
     <>
       <div className={styles.top_half}>
@@ -25,7 +38,7 @@ function SingleTeamDisplay({ team, possibleCombinations }: Props) {
             </div>
             <div className={styles.team_extras}>
               <p>Possible Combinations</p>
-              <p>{possibleCombinations}</p>
+              <p>{values.count}</p>
             </div>
           </div>
         </div>
@@ -39,6 +52,7 @@ function SingleTeamDisplay({ team, possibleCombinations }: Props) {
           index >= 2 ? <PlayerCardLarge key={index} player={player} /> : null
         )}
       </div>
+      <CombinationContainer team={team} />
     </>
   );
 }

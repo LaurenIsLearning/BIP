@@ -1,1 +1,5 @@
-/*# sourceMappingURL=ComparisonPage.module.css.map */
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}/*# sourceMappingURL=ComparisonPage.module.css.map */

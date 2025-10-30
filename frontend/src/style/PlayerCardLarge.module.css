@@ -4,7 +4,8 @@
   justify-content: center;
   border: 2px solid grey;
   border-radius: 20px;
-  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
   min-height: 275px;
   padding: 10px;
 }
@@ -17,6 +18,24 @@
 .top_half > p {
   font-size: 25pt;
   font-weight: bold;
+}
+.top_half > p.color_2 {
+  color: #9458bf;
+}
+.top_half > p.color_3 {
+  color: #5870bf;
+}
+.top_half > p.color_4 {
+  color: #58bf5f;
+}
+.top_half > p.color_5 {
+  color: #e6d847;
+}
+.top_half > p.color_6 {
+  color: #db8925;
+}
+.top_half > p.color_7 {
+  color: #d14a45;
 }
 
 .player_image {

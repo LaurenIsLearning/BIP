@@ -1,3 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 50px;
+}
+
 .top_half {
   display: flex;
   justify-content: center;
@@ -29,8 +36,9 @@
 
 .bottom_half {
   display: flex;
-  flex-direction: inline;
+  flex-wrap: wrap;
   justify-content: space-around;
+  gap: 1rem;
 }
 
 PlayerCardLarge {

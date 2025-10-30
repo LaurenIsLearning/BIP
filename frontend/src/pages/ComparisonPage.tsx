@@ -1,41 +1,28 @@
-import Combination from "../components/Combination";
+import styles from "../style/ComparisonPage.module.css";
+
 import type { Team } from "../models/Team";
 import SingleTeamDisplay from "../components/SingleTeamDisplay";
-
 interface Props {
   teamOne: Team;
   teamTwo?: Team;
 }
 
 function ComparisonPage({ teamOne, teamTwo }: Props) {
-  const possibleCombinations = 0; // Placeholder for actual calculation
-
   if (!teamTwo) {
     //Display single team
     return (
-      <>
-        <SingleTeamDisplay
-          team={teamOne}
-          possibleCombinations={possibleCombinations}
-        />
-        <Combination ranks={[1, 2, 3, 4, 5]} />
-      </>
+      <div className={styles.root}>
+        <SingleTeamDisplay team={teamOne} />
+      </div>
     );
   }
 
   return (
     // Display both teams
-    <>
-      <SingleTeamDisplay
-        team={teamOne}
-        possibleCombinations={possibleCombinations}
-      />
-      <SingleTeamDisplay
-        team={teamTwo}
-        possibleCombinations={possibleCombinations}
-      />
-      <Combination ranks={[1, 2, 3, 4, 5]} />
-    </>
+    <div className={styles.root}>
+      <SingleTeamDisplay team={teamOne} />
+      <SingleTeamDisplay team={teamTwo} />
+    </div>
   );
 }
 

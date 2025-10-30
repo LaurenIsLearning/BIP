@@ -5,6 +5,7 @@ export class Player {
   sessionPA: number; // Player's current session points achieved percentage
   overallWR: number; // Player's overall winrate
   overallMP: number; // Player's overall matches played
+  played: boolean = false; // Whether the player has played or not
 
   constructor(
     playerName: string,
@@ -12,7 +13,8 @@ export class Player {
     sessionWR: number,
     sessionPA: number,
     overallWR: number,
-    overallMP: number
+    overallMP: number,
+    played: boolean = false
   ) {
     this.playerName = playerName;
     this.skillLevel = skillLevel;
@@ -20,5 +22,6 @@ export class Player {
     this.sessionPA = sessionPA;
     this.overallWR = overallWR;
     this.overallMP = overallMP;
+    this.played = played;
   }
 }

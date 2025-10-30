@@ -20,7 +20,13 @@ function PlayerCardLarge({ player }: Props) {
           alt={player.playerName}
           className={styles.player_image}
         ></img>
-        <p className={styles.skill_level}>SL: {player.skillLevel}</p>
+        <p
+          className={`${styles.skill_level} ${
+            styles[`color_${player.skillLevel}`]
+          }`}
+        >
+          SL: {player.skillLevel}
+        </p>
       </div>
       <div className={styles.bottom_half}>
         <p className={styles.player_name}>{player.playerName}</p>
