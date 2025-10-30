@@ -10,6 +10,11 @@ nav {
     color:white;
 }
 
+nav .link {
+    text-decoration: none;
+    color: white;
+}
+
 .nav_left {
     display: flex;
     align-items: center;

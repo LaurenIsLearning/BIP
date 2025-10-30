@@ -7,7 +7,7 @@ function NavBar() {
         <>
         <nav>
             <section className={styles.nav_left}>
-                <Link to={"/"}>
+                <Link to={"/"} className={styles.link}>
                     <img src={logo} className={styles.nav_left_image} alt="BIP logo"/>
                     <h2>BIP</h2>
                 </Link>  
