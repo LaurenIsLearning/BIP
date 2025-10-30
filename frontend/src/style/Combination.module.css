@@ -1,0 +1,57 @@
+.combination_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  width: 300px;
+  border: 2px solid grey;
+  border-radius: 20px;
+  color: black;
+}
+.combination_container > .rank_circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+}
+.combination_container > .rank_circle.color_2 {
+  background-color: #9458bf;
+}
+.combination_container > .rank_circle.color_3 {
+  background-color: #5870bf;
+}
+.combination_container > .rank_circle.color_4 {
+  background-color: #58bf5f;
+}
+.combination_container > .rank_circle.color_5 {
+  background-color: #e6d847;
+}
+.combination_container > .rank_circle.color_6 {
+  background-color: #db8925;
+}
+.combination_container > .rank_circle.color_7 {
+  background-color: #d14a45;
+}
+.combination_container > .highlighted {
+  border: 3px solid grey;
+  background-color: lightgray;
+  color: grey;
+  animation: small-float 2.5s ease-in-out infinite;
+}
+
+@keyframes small-float {
+  0% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(6px); /* move up */
+  }
+  100% {
+    transform: translateY(-6px); /* back to start */
+  }
+}/*# sourceMappingURL=Combination.module.css.map */

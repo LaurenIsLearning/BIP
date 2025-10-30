@@ -1,0 +1,30 @@
+@mixin rank-colors($item-to-change: background-color) {
+  $colors: (
+    2: #9458bf,
+    3: #5870bf,
+    4: #58bf5f,
+    5: #e6d847,
+    6: #db8925,
+    7: #d14a45,
+  );
+
+  @each $rank, $color in $colors {
+    &.color_#{$rank} {
+      #{$item-to-change}: $color;
+    }
+  }
+}
+
+@mixin small-float() {
+  @keyframes small-float {
+    0% {
+      transform: translateY(-6px);
+    }
+    50% {
+      transform: translateY(6px); /* move up */
+    }
+    100% {
+      transform: translateY(-6px); /* back to start */
+    }
+  }
+}

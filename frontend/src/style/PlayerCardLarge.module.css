@@ -1,0 +1,78 @@
+.player_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid grey;
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 275px;
+  padding: 10px;
+}
+
+.top_half {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.top_half > p {
+  font-size: 25pt;
+  font-weight: bold;
+}
+.top_half > p.color_2 {
+  color: #9458bf;
+}
+.top_half > p.color_3 {
+  color: #5870bf;
+}
+.top_half > p.color_4 {
+  color: #58bf5f;
+}
+.top_half > p.color_5 {
+  color: #e6d847;
+}
+.top_half > p.color_6 {
+  color: #db8925;
+}
+.top_half > p.color_7 {
+  color: #d14a45;
+}
+
+.player_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid grey;
+}
+
+.bottom_half {
+  display: flex;
+  flex-direction: column;
+}
+.bottom_half .player_name {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5%;
+}
+
+.stats_header {
+  display: flex;
+  justify-content: space-around;
+}
+.stats_header > p {
+  font-weight: bold;
+  margin: 0;
+  flex: 1;
+}
+
+.stats_display {
+  display: flex;
+  justify-content: space-around;
+}
+.stats_display > p {
+  margin: 2.5px;
+  flex: 1;
+}/*# sourceMappingURL=PlayerCardLarge.module.css.map */
