@@ -13,10 +13,8 @@ function NavBar() {
                 </Link>  
             </section>
             <section className={styles.nav_right}>
-                <button>View Rankings</button>
-                <button><Link to={"/Comparison"}>Compare Teams</Link></button>
-                <button>Look at Team </button>
-                <button>Login</button>
+                <button className="button_light"><Link to={"/Comparison"}>Compare Teams</Link></button>
+                <button className="button_light">Login</button>
             </section>
         </nav>
         </> 

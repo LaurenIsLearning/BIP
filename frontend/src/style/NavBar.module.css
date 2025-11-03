@@ -12,12 +12,18 @@ nav {
 nav .link {
   text-decoration: none;
   color: white;
+  display: inline;
 }
 
 .nav_left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav_left h2 {
+  display: inline;
 }
 
 .nav_left_image {
