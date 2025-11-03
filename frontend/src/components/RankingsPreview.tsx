@@ -5,12 +5,12 @@ function RankingsPreview() {
 
     return (
         <>
-            <h2 id="team-rankings-header">Team Rankings (Top 3)</h2>
-            <section className="horizontal-button-section">
+            <h2 id="team-rankings-header">Team Rankings</h2>
+            {/* <section className="horizontal-button-section">
                 <button className="button_dark">3 Teams</button>
                 <button className="button_dark">5 Teams</button>
                 <button className="button_dark">All Teams</button>
-            </section>
+            </section> */}
             <section className="table-section">
                 <RankingsTable />
             </section>

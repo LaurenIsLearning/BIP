@@ -49,6 +49,7 @@ table {
     width: 60%;
     overflow: hidden;
     border-collapse: collapse;
+    box-shadow: 5px 5px 10px #888;
 }
 
 thead th {
@@ -102,4 +103,14 @@ button {
 
 .button_light:hover {
     background-color: rgb(145, 202, 145); /* Darker green on hover */
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkgreen;
+  margin-top: 3em;
+  padding: 1%;
+  color: white;
 }
