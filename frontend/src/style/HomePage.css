@@ -49,6 +49,7 @@ table {
     width: 60%;
     overflow: hidden;
     border-collapse: collapse;
+    box-shadow: 5px 5px 10px #888;
 }
 
 thead th {
@@ -71,4 +72,45 @@ tr {
 tbody tr:hover {
     background-color:darkseagreen;
 
+}
+
+/* Button Styling */
+button {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button_dark {
+    background-color: darkseagreen;
+    color: black;
+}
+
+.button_dark:hover {
+    background-color: darkgreen; /* Darker green on hover */
+    color: white;
+}
+
+.button_light {
+    background-color: rgb(197, 240, 197);
+    color: black;
+}
+
+.button_light:hover {
+    background-color: rgb(145, 202, 145); /* Darker green on hover */
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkgreen;
+  margin-top: 3em;
+  padding: 1%;
+  color: white;
 }

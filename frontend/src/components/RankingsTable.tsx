@@ -1,38 +1,56 @@
+import { useState, useEffect } from "react";
+import data from '../data/teams.json'; 
+
+
+// Set up interface for teams (probably will not need this later)
+interface Team {
+      name: string;
+      points: number;
+      players: [
+        {
+            skill: number,
+            name: string,
+            sessWR: number,
+            sessPA: number,
+            overallWR: number,
+            overallMP: number
+        }
+      ]
+    }
+
 function RankingsTable() {
+    const [teams, setTeams] = useState<Team[]>([]);
+
+    // Get info from teams data
+    useEffect(() => {
+            setTeams(data as Team[]); // Type assertion for safety
+          }, []);
+
+    // Sort the list of teams in descending order
+    const sortedTeams = [...teams].sort((a, b) => b.points - a.points);
+
+
     return (
         <>
         <table>
             <thead>
                 <tr>
+                    <th>Rank</th>
                     <th>Team Name</th>
-                    <th>Team Wins</th>
-                    <th>Team Losses</th>
                     <th>Team Points</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>Rubber Duckies</th>
-                    <th>1000000</th>
-                    <th>0</th>
-                    <th>All of them</th>
-                </tr>
-                <tr>
-                    <th>Another Team</th>
-                    <th>7</th>
-                    <th>3</th>
-                    <th>54</th>
-                </tr>
-                <tr>
-                    <th>Another Another Team</th>
-                    <th>3</th>
-                    <th>7</th>
-                    <th>24</th>
-                </tr>
+                {sortedTeams.map((team, index) => (
+                    <tr>
+                        <th>{index + 1}</th>
+                        <th>{team.name}</th>
+                        <th>{team.points}</th>
+                    </tr>
+                ))}
             </tbody>
         </table>
-        </>
-        
+        </>    
     )
 }
 
