@@ -3,7 +3,6 @@ import HomeHero from "../components/HomeHero";
 import RankingsPreview from "../components/RankingsPreview";
 import "../style/HomePage.css"
 import Footer from "../components/Footer";
-import TeamSearchBar from "../components/TeamSearchBar";
 
 function HomePage() {
     return (
@@ -11,7 +10,6 @@ function HomePage() {
             <NavBar />
             <HomeHero />
             <RankingsPreview />
-            <TeamSearchBar />
             <Footer />
         </>
     )
