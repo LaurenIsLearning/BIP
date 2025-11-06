@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import data from '../data/teams.json'; 
 
-
 // Set up interface for teams (probably will not need this later)
 interface Team {
       name: string;

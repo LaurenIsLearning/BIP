@@ -1,4 +1,4 @@
-import styles from "../style/NavBar.module.css";
+
 
 function Footer() {
     // Create a way to scroll to the top of the screen

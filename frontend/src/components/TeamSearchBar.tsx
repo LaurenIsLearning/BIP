@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import data from '../data/teams.json'; 
-import styles from "../style/TeamSearchBar.module.css"
+import styles from "../style/TeamSearchBar.module.css";
 
 
 // Set up interface for teams (probably will not need this later)
@@ -36,7 +36,7 @@ function TeamSearchBar () {
     return (
         <>
             <section className={styles.search_section}>
-                <label>Search Teams: </label>
+                <label>Select Team: </label>
                 <input list="teams_list" id="teams" name="Choose_Team" value={selectedTeam} onChange={(e) => setSelectedTeam(e.target.value)} />
 
                 <datalist id="teams_list" className={styles.search_bar} >
