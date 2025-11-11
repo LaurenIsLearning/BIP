@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import data from '../data/teams.json'; 
 
-
 // Set up interface for teams (probably will not need this later)
 interface Team {
       name: string;
@@ -16,15 +15,15 @@ interface Team {
             overallMP: number
         }
       ]
-    }
+}
 
 function RankingsTable() {
     const [teams, setTeams] = useState<Team[]>([]);
 
     // Get info from teams data
     useEffect(() => {
-            setTeams(data as Team[]); // Type assertion for safety
-          }, []);
+        setTeams(data as Team[]); // Type assertion for safety
+    }, []);
 
     // Sort the list of teams in descending order
     const sortedTeams = [...teams].sort((a, b) => b.points - a.points);

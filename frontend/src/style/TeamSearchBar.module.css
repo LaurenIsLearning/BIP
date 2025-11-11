@@ -1,0 +1,24 @@
+.search_section {
+    background-color: darkseagreen;
+    border-radius: 2em;
+    width: 30em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.search_bar {
+    border-radius: 1em;
+    height: 2em;
+}
+
+.search_button {
+    height: 2em;
+    text-align: center;
+}
+
+.search_button:hover {
+    background-color: darkgreen;
+    color: white;
+}
