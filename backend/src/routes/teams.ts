@@ -1,4 +1,4 @@
-// each route is an endpoint
+// team + players
 import express from "express";
 import { pool } from "../db.js"
 
