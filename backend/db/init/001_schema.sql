@@ -1,58 +1,68 @@
---Tables
-CREATE TABLE IF NOT EXISTS TEAMS (
-  ID            BIGSERIAL PRIMARY KEY, --auto increments up to large integers (bigint + sequence + nextval())
-  NAME          TEXT NOT NULL UNIQUE --unique team name
+-- Tables
+CREATE TABLE IF NOT EXISTS teams (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  points INT DEFAULT 0 CHECK (points >= 0)
 );
 
-CREATE TABLE IF NOT EXISTS MATCHES (
-  ID            BIGSERIAL PRIMARY KEY, 
-  MATCH_DATE    DATE NOT NULL,
-  TEAM1_ID      BIGINT NOT NULL REFERENCES TEAMS(ID) ON DELETE RESTRICT, --FK1 pointing to teams(id)/wont allow team to be deleated if referenced in a match
-  TEAM2_ID      BIGINT NOT NULL REFERENCES TEAMS(ID) ON DELETE RESTRICT, --FK2 pointing to teams(id)
-  TEAM1_POINTS  INT NOT NULL DEFAULT 0 CHECK (TEAM1_POINTS >= 0), --check = not negative
-  TEAM2_POINTS  INT NOT NULL DEFAULT 0 CHECK (TEAM2_POINTS >= 0),
-  CONSTRAINT MATCHES_DISTINCT_TEAMS CHECK (TEAM1_ID <> TEAM2_ID) --distinct so dont play self
+CREATE TABLE IF NOT EXISTS players (
+  id BIGSERIAL PRIMARY KEY,
+  team_id BIGINT NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  skill INT CHECK (skill BETWEEN 2 AND 7),
+  sessWR FLOAT CHECK (sessWR >= 0),
+  sessPA FLOAT CHECK (sessPA >= 0),
+  overallWR FLOAT CHECK (overallWR >= 0),
+  overallMP FLOAT CHECK (overallMP >= 0)
 );
 
---Indexes (speed up queries by date & team IDs)
-CREATE INDEX IF NOT EXISTS IDX_MATCHES_DATE ON MATCHES (MATCH_DATE);
-CREATE INDEX IF NOT EXISTS IDX_MATCHES_TEAMS ON MATCHES (TEAM1_ID, TEAM2_ID);
+CREATE TABLE IF NOT EXISTS matches (
+  id BIGSERIAL PRIMARY KEY,
+  match_date DATE NOT NULL,
+  team1_id BIGINT NOT NULL REFERENCES teams(id) ON DELETE RESTRICT,
+  team2_id BIGINT NOT NULL REFERENCES teams(id) ON DELETE RESTRICT,
+  team1_points INT NOT NULL DEFAULT 0 CHECK (team1_points >= 0),
+  team2_points INT NOT NULL DEFAULT 0 CHECK (team2_points >= 0),
+  CONSTRAINT matches_distinct_teams CHECK (team1_id <> team2_id)
+);
 
---Views (computed rankings)
-CREATE OR REPLACE VIEW V_TEAM_RANKINGS AS
+
+--  Indexes
+CREATE INDEX IF NOT EXISTS idx_matches_date ON matches (match_date);
+CREATE INDEX IF NOT EXISTS idx_matches_teams ON matches (team1_id, team2_id);
+CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
+
+--  Computed Views
+CREATE OR REPLACE VIEW v_team_rankings AS
 SELECT
-  T.ID,
-  T.NAME,
-  --sum of points for team across all matches
-  COALESCE(SUM( --coalesce converts null into 0
+  t.id,
+  t.name,
+  COALESCE(SUM(
     CASE
-      WHEN M.TEAM1_ID = T.ID THEN M.TEAM1_POINTS
-      WHEN M.TEAM2_ID = T.ID THEN M.TEAM2_POINTS
+      WHEN m.team1_id = t.id THEN m.team1_points
+      WHEN m.team2_id = t.id THEN m.team2_points
       ELSE 0
     END
-  ), 0) AS TOTAL_POINTS,
-  --number of wins for team
+  ), 0) AS total_points,
   COALESCE(SUM(
     CASE
-      WHEN (M.TEAM1_ID = T.ID AND M.TEAM1_POINTS > M.TEAM2_POINTS) OR
-           (M.TEAM2_ID = T.ID AND M.TEAM2_POINTS > M.TEAM1_POINTS)
+      WHEN (m.team1_id = t.id AND m.team1_points > m.team2_points) OR
+           (m.team2_id = t.id AND m.team2_points > m.team1_points)
       THEN 1 ELSE 0
     END
-  ), 0) AS WINS,
-  --number of losses for team
+  ), 0) AS wins,
   COALESCE(SUM(
     CASE
-      WHEN (M.TEAM1_ID = T.ID AND M.TEAM1_POINTS < M.TEAM2_POINTS) OR
-           (M.TEAM2_ID = T.ID AND M.TEAM2_POINTS < M.TEAM1_POINTS)
+      WHEN (m.team1_id = t.id AND m.team1_points < m.team2_points) OR
+           (m.team2_id = t.id AND m.team2_points < m.team1_points)
       THEN 1 ELSE 0
     END
-  ), 0) AS LOSSES
+  ), 0) AS losses
+FROM teams t
+LEFT JOIN matches m
+  ON t.id IN (m.team1_id, m.team2_id)
+GROUP BY t.id, t.name;
 
-FROM TEAMS T
-LEFT JOIN MATCHES M --include teams with 0 matches
-  ON T.ID IN (M.TEAM1_ID, M.TEAM2_ID)
-GROUP BY T.ID, T.NAME;
-
---example of querying the view for rankings
---SELECT * FROM V_TEAM_RANKINGS
---ORDER BY TOTAL_POINTS DESC, WINS DESC, NAME ASC;
+---- Example Query
+-- SELECT * FROM v_team_rankings
+-- ORDER BY total_points DESC, wins DESC, name ASC;

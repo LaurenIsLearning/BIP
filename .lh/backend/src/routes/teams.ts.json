@@ -1,0 +1,90 @@
+{
+    "sourceFile": "backend/src/routes/teams.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 18,
+            "patches": [
+                {
+                    "date": 1762459080467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762459089108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n import express from \"express\";\r\n+import { pool}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762459094283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n import express from \"express\";\r\n-import { pool}\n\\ No newline at end of file\n+import { pool } from \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460056985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,4 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460068016,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,6 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460075487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,6 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams to get list of teams\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460082983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,17 +2,6 @@\n import { pool } from \"../db.js\"\r\n \r\n const router = express.Router();\r\n \r\n-//GET /api/teams to get list of teams\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.\n-import express from \"express\";\r\n-import { pool } from \n\\ No newline at end of file\n+//GET /api/teams ::to get list of teams\\\r\n+router.get\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460088342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\\\r\n+router.get(\"\\\",)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460094915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\\\r\n+router.get(\"\\\", async (_req,res))\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460101644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\\\r\n+router.get(\"\\\", async (_req,res) => {\r\n+    }\r\n+    )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460107033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\\\r\n+router.get(\"\\\", async (_req,res) => {\r\n+    })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460113293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+import express from \"express\";\r\n+import { pool } from \"../db.js\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\\\r\n+router.get(\"\\\", async (_req,res) => {\r\n+    try {\r\n+        \r\n+    }\r\n+    })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460137192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,45 +5,7 @@\n \r\n //GET /api/teams ::to get list of teams\\\r\n router.get(\"\\\", async (_req,res) => {\r\n     try {\r\n-        \r\n+        const result = await pool.query\r\n     }\r\n-    })\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\\\r\n-router.get(\"\\\", async (_req,res) => {\r\n-    })\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\\\r\n-router.get(\"\\\", async (_req,res) => {\r\n-    }\r\n-    )\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\\\r\n-router.get(\"\\\", async (_req,res))\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\\\r\n-router.get(\"\\\",)\n-import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\\\r\n\\ No newline at end of file\n-router.get\n+    })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762460146147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n \r\n //GET /api/teams ::to get list of teams\\\r\n router.get(\"\\\", async (_req,res) => {\r\n     try {\r\n-        const result = await pool.query\r\n+        const result = await pool.query(\"SELECT * FROM\")\r\n     }\r\n     })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762463086491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,36 @@\n+// each route is an endpoint\r\n import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n+import { pool } from \"../db.ts\"\r\n \r\n const router = express.Router();\r\n \r\n-//GET /api/teams ::to get list of teams\\\r\n-router.get(\"\\\", async (_req,res) => {\r\n-    try {\r\n-        const result = await pool.query(\"SELECT * FROM\")\r\n\\ No newline at end of file\n-    }\r\n-    })\n+//GET /api/teams ::to get list of teams\r\n+router.get(\"/\", async (_req, res) => {\r\n+  try {\r\n+    const result = await pool.query(\"SELECT * FROM teams ORDER BY id\");\r\n+    res.json(result.rows);\r\n+  } catch (err) {\r\n+    console.error(err);\r\n+    res.status(500).send(\"Error fetching teams\");\r\n+  }\r\n+});\r\n+\r\n+//GET /api/teams/:id ::get one team and its players\r\n+router.get(\"/:id\", async (req, res) => {\r\n+  try {\r\n+    const query = `\r\n+      SELECT t.*, json_agg(p.*) AS players\r\n+      FROM teams t\r\n+      JOIN players p ON t.id = p.team_id\r\n+      WHERE t.id = $1\r\n+      GROUP BY t.id;\r\n+    `;\r\n+    const result = await pool.query(query, [req.params.id]);\r\n+    res.json(result.rows[0]);\r\n+  } catch (err) {\r\n+    console.error(err);\r\n+    res.status(500).send(\"Error fetching team\");\r\n+  }\r\n+});\r\n+\r\n+export default router;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762463153130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,36 @@\n+// each route is an endpoint\r\n+import express from \"express\";\r\n+import { pool } from \"../db\"\r\n+\r\n+const router = express.Router();\r\n+\r\n+//GET /api/teams ::to get list of teams\r\n+router.get(\"/\", async (_req, res) => {\r\n+  try {\r\n+    const result = await pool.query(\"SELECT * FROM teams ORDER BY id\");\r\n+    res.json(result.rows);\r\n+  } catch (err) {\r\n+    console.error(err);\r\n+    res.status(500).send(\"Error fetching teams\");\r\n+  }\r\n+});\r\n+\r\n+//GET /api/teams/:id ::get one team and its players\r\n+router.get(\"/:id\", async (req, res) => {\r\n+  try {\r\n+    const query = `\r\n+      SELECT t.*, json_agg(p.*) AS players\r\n+      FROM teams t\r\n+      JOIN players p ON t.id = p.team_id\r\n+      WHERE t.id = $1\r\n+      GROUP BY t.id;\r\n+    `;\r\n+    const result = await pool.query(query, [req.params.id]);\r\n+    res.json(result.rows[0]);\r\n+  } catch (err) {\r\n+    console.error(err);\r\n+    res.status(500).send(\"Error fetching team\");\r\n+  }\r\n+});\r\n+\r\n+export default router;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762463186349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // each route is an endpoint\r\n import express from \"express\";\r\n-import { pool } from \"../db\"\r\n+import { pool } from \"../db.js\"\r\n \r\n const router = express.Router();\r\n \r\n //GET /api/teams ::to get list of teams\r\n@@ -32,41 +32,5 @@\n     res.status(500).send(\"Error fetching team\");\r\n   }\r\n });\r\n \r\n-export default router;\n-// each route is an endpoint\r\n-import express from \"express\";\r\n-import { pool } from \"../db.ts\"\r\n-\r\n-const router = express.Router();\r\n-\r\n-//GET /api/teams ::to get list of teams\r\n-router.get(\"/\", async (_req, res) => {\r\n-  try {\r\n-    const result = await pool.query(\"SELECT * FROM teams ORDER BY id\");\r\n-    res.json(result.rows);\r\n-  } catch (err) {\r\n-    console.error(err);\r\n-    res.status(500).send(\"Error fetching teams\");\r\n-  }\r\n-});\r\n-\r\n-//GET /api/teams/:id ::get one team and its players\r\n-router.get(\"/:id\", async (req, res) => {\r\n-  try {\r\n-    const query = `\r\n-      SELECT t.*, json_agg(p.*) AS players\r\n-      FROM teams t\r\n-      JOIN players p ON t.id = p.team_id\r\n-      WHERE t.id = $1\r\n-      GROUP BY t.id;\r\n-    `;\r\n-    const result = await pool.query(query, [req.params.id]);\r\n-    res.json(result.rows[0]);\r\n-  } catch (err) {\r\n-    console.error(err);\r\n-    res.status(500).send(\"Error fetching team\");\r\n-  }\r\n-});\r\n-\r\n export default router;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762463204771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // each route is an endpoint\r\n import express from \"express\";\r\n-import { pool } from \"../db.js\"\r\n+import { pool } from \"../db\"\r\n \r\n const router = express.Router();\r\n \r\n //GET /api/teams ::to get list of teams\r\n"
+                },
+                {
+                    "date": 1762463990053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // each route is an endpoint\r\n import express from \"express\";\r\n-import { pool } from \"../db\"\r\n+import { pool } from \"../db.js\"\r\n \r\n const router = express.Router();\r\n \r\n //GET /api/teams ::to get list of teams\r\n"
+                }
+            ],
+            "date": 1762459080467,
+            "name": "Commit-0",
+            "content": "import express from \"express\";\r\n"
+        }
+    ]
+}

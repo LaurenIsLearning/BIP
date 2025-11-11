@@ -1,0 +1,30 @@
+{
+    "sourceFile": "backend/package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1762464149553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762464160805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,24 @@\n-    \"module\": \"ESNext\",\n\\ No newline at end of file\n+{\r\n+  \"name\": \"bip-backend\",\r\n+  \"version\": \"1.0.0\",\r\n+  \"type\": \"module\",\r\n+  \"main\": \"backend.ts\",\r\n+  \"scripts\": {\r\n+    \"start\": \"ts-node src/backend.ts\",\r\n+    \"dev\": \"nodemon src/backend.ts\"\r\n+  },\r\n+  \"dependencies\": {\r\n+    \"cors\": \"^2.8.5\",\r\n+    \"dotenv\": \"^16.4.5\",\r\n+    \"express\": \"^4.21.2\",\r\n+    \"pg\": \"^8.16.3\"\r\n+  },\r\n+  \"devDependencies\": {\r\n+    \"@types/cors\": \"^2.8.19\",\r\n+    \"@types/express\": \"^5.0.5\",\r\n+    \"@types/pg\": \"^8.15.6\",\r\n+    \"nodemon\": \"^3.0.1\",\r\n+    \"ts-node\": \"^10.9.2\",\r\n+    \"typescript\": \"^5.3.3\"\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1762464191294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n {\r\n   \"name\": \"bip-backend\",\r\n   \"version\": \"1.0.0\",\r\n   \"type\": \"module\",\r\n-  \"main\": \"backend.ts\",\r\n   \"scripts\": {\r\n-    \"start\": \"ts-node src/backend.ts\",\r\n-    \"dev\": \"nodemon src/backend.ts\"\r\n+    \"dev\": \"nodemon --exec ts-node src/backend.ts\",\r\n+    \"build\": \"tsc\",\r\n+    \"start\": \"node dist/backend.js\"\r\n   },\r\n   \"dependencies\": {\r\n     \"cors\": \"^2.8.5\",\r\n     \"dotenv\": \"^16.4.5\",\r\n"
+                },
+                {
+                    "date": 1762464230839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,5 +20,5 @@\n     \"nodemon\": \"^3.0.1\",\r\n     \"ts-node\": \"^10.9.2\",\r\n     \"typescript\": \"^5.3.3\"\r\n   }\r\n-}\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1762464149553,
+            "name": "Commit-0",
+            "content": "    \"module\": \"ESNext\","
+        }
+    ]
+}

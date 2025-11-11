@@ -1,0 +1,22 @@
+{
+    "sourceFile": "backend/tsconfig.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1762464070958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762464098153,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {\r\n   \"compilerOptions\": {\r\n     \"target\": \"ES2022\",\r\n-    \"module\": \"ESNext\",\r\n+    \"module\": \"nod\",\r\n     \"moduleResolution\": \"node16\",\r\n     \"esModuleInterop\": true,\r\n     \"outDir\": \"dist\",\r\n     \"rootDir\": \"src\",\r\n"
+                }
+            ],
+            "date": 1762464070958,
+            "name": "Commit-0",
+            "content": "{\r\n  \"compilerOptions\": {\r\n    \"target\": \"ES2022\",\r\n    \"module\": \"ESNext\",\r\n    \"moduleResolution\": \"node16\",\r\n    \"esModuleInterop\": true,\r\n    \"outDir\": \"dist\",\r\n    \"rootDir\": \"src\",\r\n    \"strict\": true,\r\n    \"skipLibCheck\": true\r\n  },\r\n  \"include\": [\"src\"]\r\n}\r\n"
+        }
+    ]
+}
