@@ -1,3 +1,4 @@
+# Runs database, backend, and frontend services together
 services:
   db:
     image: postgres:16
@@ -9,7 +10,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      # persistent storage
       - pgdata:/var/lib/postgresql/data
+      # automatically run everything in backend/db/init/ (schema + seed SQL)
       - ./backend/db/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U bip -d bip"]
@@ -17,23 +20,35 @@ services:
       timeout: 3s
       retries: 10
 
-  api:
+  backend:
     build: ./backend
-    container_name: bip_api
+    container_name: bip_backend
     env_file: ./backend/.env
     depends_on:
       db:
         condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_USER=bip
+      - DB_PASS=bip
+      - DB_NAME=bip
+      - DB_PORT=5432
+      - PORT=3000
     ports:
-      - "3001:3001"
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    command: npm run dev
 
   web:
     build: ./frontend
     container_name: bip_web
     depends_on:
-      - api
+      - backend
     ports:
       - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3000
 
 volumes:
   pgdata:
