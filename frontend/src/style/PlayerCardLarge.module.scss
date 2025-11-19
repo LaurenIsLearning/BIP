@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
 
+  @include mixins.rank-colors(background-color);
   border: 2px solid grey;
   border-radius: 20px;
 
@@ -25,7 +26,6 @@
   & > p {
     font-size: 25pt;
     font-weight: bold;
-    @include mixins.rank-colors(color);
   }
 }
 
@@ -48,6 +48,7 @@
     font-weight: bold;
     margin: 0;
     margin-bottom: 5%;
+    cursor: pointer;
   }
 }
 
@@ -73,3 +74,10 @@
     flex: 1;
   }
 }
+
+.played {
+  border: 2px solid red;
+  animation: 2s small-float infinite;
+}
+
+@include mixins.small-float();

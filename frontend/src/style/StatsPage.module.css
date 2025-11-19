@@ -35,8 +35,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 1rem;
+  margin-top: 20px;
 }
 
 PlayerCardLarge {
   cursor: pointer;
-}/*# sourceMappingURL=SingleTeamDisplay.module.css.map */
+}/*# sourceMappingURL=StatsPage.module.css.map */

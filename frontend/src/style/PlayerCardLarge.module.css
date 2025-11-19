@@ -9,6 +9,24 @@
   min-height: 275px;
   padding: 10px;
 }
+.player_card.color_2 {
+  background-color: #9458bf;
+}
+.player_card.color_3 {
+  background-color: #5870bf;
+}
+.player_card.color_4 {
+  background-color: #58bf5f;
+}
+.player_card.color_5 {
+  background-color: #e6d847;
+}
+.player_card.color_6 {
+  background-color: #db8925;
+}
+.player_card.color_7 {
+  background-color: #d14a45;
+}
 
 .top_half {
   display: flex;
@@ -18,24 +36,6 @@
 .top_half > p {
   font-size: 25pt;
   font-weight: bold;
-}
-.top_half > p.color_2 {
-  color: #9458bf;
-}
-.top_half > p.color_3 {
-  color: #5870bf;
-}
-.top_half > p.color_4 {
-  color: #58bf5f;
-}
-.top_half > p.color_5 {
-  color: #e6d847;
-}
-.top_half > p.color_6 {
-  color: #db8925;
-}
-.top_half > p.color_7 {
-  color: #d14a45;
 }
 
 .player_image {
@@ -56,6 +56,7 @@
   font-weight: bold;
   margin: 0;
   margin-bottom: 5%;
+  cursor: pointer;
 }
 
 .stats_header {
@@ -75,4 +76,21 @@
 .stats_display > p {
   margin: 2.5px;
   flex: 1;
+}
+
+.played {
+  border: 2px solid red;
+  animation: 2s small-float infinite;
+}
+
+@keyframes small-float {
+  0% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px); /* move up */
+  }
+  100% {
+    transform: translateX(-6px); /* back to start */
+  }
 }/*# sourceMappingURL=PlayerCardLarge.module.css.map */

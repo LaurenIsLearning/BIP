@@ -1,30 +1,22 @@
 import styles from "../style/ComparisonPage.module.css";
 
 import type { Team } from "../models/Team";
-import SingleTeamDisplay from "../components/SingleTeamDisplay";
+import TeamCompare from "../components/TeamCompare";
 import NavBar from "../components/NavBar";
 interface Props {
   teamOne: Team;
-  teamTwo?: Team;
+  teamTwo: Team;
 }
 
 function ComparisonPage({ teamOne, teamTwo }: Props) {
-  if (!teamTwo) {
-    //Display single team
-    return (
-      <div className={styles.root}>
-        <NavBar />
-        <SingleTeamDisplay team={teamOne} />
-      </div>
-    );
-  }
-
   return (
     // Display both teams
     <div className={styles.root}>
       <NavBar />
-      <SingleTeamDisplay team={teamOne} />
-      <SingleTeamDisplay team={teamTwo} />
+      <div className={styles.content_container}>
+        <TeamCompare team={teamOne} />
+        <TeamCompare team={teamTwo} />
+      </div>
     </div>
   );
 }
