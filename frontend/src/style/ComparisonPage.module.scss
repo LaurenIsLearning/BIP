@@ -1,5 +1,9 @@
 .root {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+}
+.content_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 2px;
 }
