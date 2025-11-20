@@ -16,20 +16,7 @@ CREATE TABLE IF NOT EXISTS players (
   overallMP FLOAT CHECK (overallMP >= 0)
 );
 
-CREATE TABLE IF NOT EXISTS matches (
-  id BIGSERIAL PRIMARY KEY,
-  match_date DATE NOT NULL,
-  team1_id BIGINT NOT NULL REFERENCES teams(id) ON DELETE RESTRICT,
-  team2_id BIGINT NOT NULL REFERENCES teams(id) ON DELETE RESTRICT,
-  team1_points INT NOT NULL DEFAULT 0 CHECK (team1_points >= 0),
-  team2_points INT NOT NULL DEFAULT 0 CHECK (team2_points >= 0),
-  CONSTRAINT matches_distinct_teams CHECK (team1_id <> team2_id)
-);
-
-
 --  Indexes
-CREATE INDEX IF NOT EXISTS idx_matches_date ON matches (match_date);
-CREATE INDEX IF NOT EXISTS idx_matches_teams ON matches (team1_id, team2_id);
 CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
 
 --  Computed Views
