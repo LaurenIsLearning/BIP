@@ -1,7 +1,7 @@
 import styles from "../style/StatsPage.module.css";
 
-import type { Team } from "../models/Team";
-import type { Player } from "../models/Player";
+import { Team } from "../models/Team";
+import { Player } from "../models/Player";
 import PlayerCardLarge from "../components/PlayerCardLarge";
 import CombinationContainer from "../components/CombinationContainer";
 import useComCalc from "../hooks/useComCalc";
@@ -11,26 +11,37 @@ import NavBar from "../components/NavBar";
 
 function StatsPage() {
   const [team, setTeam] = useState<Team>();
+  const teamNumber = 3; // Placeholder for team number
 
   useEffect(() => {
+    // Rank Placeholder
+    let index = 1;
+
     // Fetch team data from the backend
-    fetch("http://localhost:8080/api/team/1")
+    fetch(`http://localhost:3000/api/team/${teamNumber}`)
       .then((response) => response.json())
       .then((data) => {
         const fetchedTeam = new Team(
           data.teamName,
           data.players.map(
-            (p: any) =>
+            (p: Player) =>
               new Player(
                 p.playerName,
                 p.skillLevel,
-                p.played || false // Default to false if not provided
+                p.sessionWR,
+                p.sessionPA,
+                p.overallWR,
+                p.overallMP,
+                false
               )
           ),
-          data.ranking
+          data.sessionPoints,
+          data.ranking || index++
         );
         setTeam(fetchedTeam);
-      }
+        setPlayers(fetchedTeam.players);
+      });
+  }, []);
 
   const [players, setPlayers] = useState<Player[]>([]);
   const [comboTotal, setComboTotal] = useState(0);
@@ -71,6 +82,8 @@ function StatsPage() {
       .map((p) => (p.played ? p.skillLevel : null))
       .filter((s) => s !== null) as number[]
   );
+
+  if (!team) return <div>Loading...</div>;
 
   return (
     <>
