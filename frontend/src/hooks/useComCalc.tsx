@@ -1,30 +1,22 @@
-import { useReducer } from "react";
+import { useMemo } from "react";
 
 function getCombinations(skills: number[]): number[][] {
   const results: number[][] = [];
   const n = skills.length;
-
-  // Generate all combinations using binary masks
   const totalCombos = 1 << n;
-  const seen = new Set<string>(); // prevent duplicates (different orders)
+  const seen = new Set<string>();
 
   for (let mask = 0; mask < totalCombos; mask++) {
-    const combination: number[] = [];
-
-    // Build combination
+    const combo: number[] = [];
     for (let i = 0; i < n; i++) {
-      if (mask & (1 << i)) {
-        combination.push(skills[i]);
-      }
+      if (mask & (1 << i)) combo.push(skills[i]);
     }
 
-    if (combination.length === 5) {
-      const sum = combination.reduce((a, b) => a + b, 0);
-
+    if (combo.length === 5) {
+      const sum = combo.reduce((a, b) => a + b, 0);
       if (sum <= 23) {
-        const sorted = [...combination].sort((a, b) => a - b);
+        const sorted = [...combo].sort((a, b) => a - b);
         const key = sorted.join("-");
-
         if (!seen.has(key)) {
           seen.add(key);
           results.push(sorted);
@@ -33,85 +25,63 @@ function getCombinations(skills: number[]): number[][] {
     }
   }
 
-  return results;
+  return results.sort(
+    (a, b) => b.reduce((x, y) => x + y, 0) - a.reduce((x, y) => x + y, 0)
+  );
 }
 
-function filterPossibleCombinations(
+function getCombinationsBasedOnPlayed(
   skills: number[],
-  selectedSkills: number[]
+  playedSkills: number[]
 ) {
-  const remainingSkills = skills.filter((s) => !selectedSkills.includes(s));
+  if (playedSkills.length === 0) return getCombinations(skills);
 
-  const allCombos = getCombinations(remainingSkills);
-  const possibleCombinations = allCombos
-    .map((combo) => [...combo, ...selectedSkills])
-    .filter((combo) => combo.reduce((a, b) => a + b, 0) <= 23);
+  const remainingSkills = [...skills];
+  for (const s of playedSkills) {
+    const index = remainingSkills.indexOf(s);
+    if (index !== -1) remainingSkills.splice(index, 1);
+  }
 
-  return possibleCombinations;
+  const needed = 5 - playedSkills.length;
+  if (needed <= 0) return [playedSkills];
+
+  const results: number[][] = [];
+  const n = remainingSkills.length;
+  const totalCombos = 1 << n;
+  const seen = new Set<string>();
+
+  for (let mask = 0; mask < totalCombos; mask++) {
+    const combo: number[] = [];
+    for (let i = 0; i < n; i++) {
+      if (mask & (1 << i)) combo.push(remainingSkills[i]);
+    }
+
+    if (combo.length === needed) {
+      const fullCombo = [...playedSkills, ...combo];
+      const sum = fullCombo.reduce((a, b) => a + b, 0);
+      if (sum <= 23) {
+        const sorted = [...fullCombo].sort((a, b) => a - b);
+        const key = sorted.join("-");
+        if (!seen.has(key)) {
+          seen.add(key);
+          results.push(sorted);
+        }
+      }
+    }
+  }
+
+  return results.sort(
+    (a, b) => b.reduce((x, y) => x + y, 0) - a.reduce((x, y) => x + y, 0)
+  );
 }
 
-type CombinationsState = {
-  allCombinations: number[][];
-  remainingCombinations: number[][];
-  count?: number;
-};
+const useComCalc = (skills: number[], playedSkills: number[]) => {
+  const combinations = useMemo(() => {
+    return getCombinationsBasedOnPlayed(skills, playedSkills);
+  }, [skills.join(","), playedSkills.join(",")]);
 
-type GetAllAction = {
-  type: "GET_ALL";
-  payload: number[];
-};
-
-type GetFilteredAction = {
-  type: "GET_FILTERED";
-  payload: {
-    skills: number[];
-    selectedSkills: number[];
-  };
-};
-
-type GetCountAction = {
-  type: "GET_COUNT";
-  payload: number[];
-};
-
-type Action = GetAllAction | GetFilteredAction | GetCountAction;
-
-const useComCalc = (init: CombinationsState) => {
-  const reducer = (state: CombinationsState, action: Action) => {
-    switch (action.type) {
-      case "GET_ALL":
-        const allCombinations = getCombinations(action.payload);
-        return {
-          ...state,
-          allCombinations,
-        };
-      case "GET_FILTERED":
-        const remainingCombinations = filterPossibleCombinations(
-          action.payload.skills,
-          action.payload.selectedSkills
-        );
-        return {
-          ...state,
-          remainingCombinations,
-        };
-      case "GET_COUNT":
-        const count = getCombinations(action.payload).length;
-        return {
-          ...state,
-          count,
-        };
-      default:
-        return state;
-    }
-  };
-
-  const [values, dispatch] = useReducer(reducer, init);
-
-  const calculation = (operation: Action["type"], value: Action["payload"]) => {
-    dispatch({ type: operation, payload: value } as Action);
-  };
-
-  return [values, calculation] as const;
+  const count = combinations.length;
+  return { combinations, count };
 };
 
 export default useComCalc;

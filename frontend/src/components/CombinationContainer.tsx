@@ -1,52 +1,30 @@
 import styles from "../style/CombinationContainer.module.css";
 import Combination from "./Combination";
 
-import { Team } from "../models/Team";
+import { Player } from "../models/Player";
 import useComCalc from "../hooks/useComCalc";
-import { useEffect } from "react";
 
 interface Props {
-  team: Team;
+  players: Player[];
 }
 
-function CombinationContainer({ team }: Props) {
-  const [values, calculation] = useComCalc({
-    allCombinations: [],
-    remainingCombinations: [],
-  });
-
-  const skills = team.players.map((player) => player.skillLevel);
-  const selectedSkills = team.players
+function CombinationContainer({ players }: Props) {
+  const skills = players.map((player) => player.skillLevel);
+  const selectedSkills = players
     .filter((player) => player.played)
     .map((player) => player.skillLevel);
 
-  // Recalculate when team or played flags are changed
-  useEffect(() => {
-    calculation("GET_ALL", skills);
-    calculation("GET_FILTERED", { skills, selectedSkills });
-  }, [team]);
+  const { combinations } = useComCalc(skills, selectedSkills);
 
-  // Create a set of possible combinations for quick lookup
-  const possibleSet = new Set(
-    values.remainingCombinations.map((combo) => combo.join("-"))
-  );
-
-  // Check if a combination is possible
-  const isPossibleCombo = (combo: number[]) => {
-    const key = combo.join("-");
-    return possibleSet.has(key);
-  };
+  if (!players || players.length === 0)
+    return <div>Loading combinations...</div>;
 
   return (
     <div className={styles.root}>
-      <h1>Possible Combinations</h1>
+      <h3>Possible Combinations</h3>
       <section className={styles.combination_container}>
-        {values.allCombinations.map((combo, index) => (
-          <Combination
-            key={index}
-            ranks={combo}
-            possible={isPossibleCombo(combo)}
-          />
+        {combinations.map((combo, index) => (
+          <Combination key={index} ranks={combo} />
         ))}
       </section>
     </div>

@@ -18,13 +18,13 @@
 @mixin small-float() {
   @keyframes small-float {
     0% {
-      transform: translateY(-6px);
+      transform: translateX(-6px);
     }
     50% {
-      transform: translateY(6px); /* move up */
+      transform: translateX(6px); /* move up */
     }
     100% {
-      transform: translateY(-6px); /* back to start */
+      transform: translateX(-6px); /* back to start */
     }
   }
 }

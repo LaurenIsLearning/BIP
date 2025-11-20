@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 20px;
-  padding: 15px;
-  width: 300px;
+  gap: 5px;
+  padding: 10px;
+  width: 250px;
   border: 2px solid grey;
   border-radius: 20px;
   color: black;
@@ -46,12 +46,12 @@
 
 @keyframes small-float {
   0% {
-    transform: translateY(-6px);
+    transform: translateX(-6px);
   }
   50% {
-    transform: translateY(6px); /* move up */
+    transform: translateX(6px); /* move up */
   }
   100% {
-    transform: translateY(-6px); /* back to start */
+    transform: translateX(-6px); /* back to start */
   }
 }/*# sourceMappingURL=Combination.module.css.map */
