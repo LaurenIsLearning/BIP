@@ -1,20 +1,10 @@
 import { useState, useEffect } from "react";
-import data from '../data/teams.json'; 
 
-// Set up interface for teams (probably will not need this later)
+// Set up interface for teams
 interface Team {
-      name: string;
-      points: number;
-      players: [
-        {
-            skill: number,
-            name: string,
-            sessWR: number,
-            sessPA: number,
-            overallWR: number,
-            overallMP: number
-        }
-      ]
+    id: number;
+    name: string;
+    points: number;
 }
 
 function RankingsTable() {
@@ -22,12 +12,24 @@ function RankingsTable() {
 
     // Get info from teams data
     useEffect(() => {
-        setTeams(data as Team[]); // Type assertion for safety
+
+        // Get the team data from the database
+        const fetchTeams = async () => {
+            const response = await fetch('http://localhost:3000/api/teams');
+            const json = await response.json();
+
+            if(response.ok) {
+                setTeams(json as Team[]);
+            }
+
+            console.log(response)
+        }
+
+        fetchTeams();
     }, []);
 
     // Sort the list of teams in descending order
     const sortedTeams = [...teams].sort((a, b) => b.points - a.points);
-
 
     return (
         <>
@@ -41,7 +43,7 @@ function RankingsTable() {
             </thead>
             <tbody>
                 {sortedTeams.map((team, index) => (
-                    <tr>
+                    <tr key={index}>
                         <th>{index + 1}</th>
                         <th>{team.name}</th>
                         <th>{team.points}</th>
