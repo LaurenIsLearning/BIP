@@ -1,68 +1,66 @@
-
 /* List Styling ---------------------------------------*/
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
 
-    /* pool ball emoji */
-    list-style-type: '\1F3B1';
+  /* pool ball emoji */
+  list-style-type: "\1F3B1";
 }
-
 
 section h1 b {
-    color: darkgreen;
+  color: darkgreen;
 }
-
 
 /* Hero (attempted) Styling ---------------------------*/
 .hero {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .hero h1 {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 /* Pre-table Styling ----------------------------------*/
 .horizontal-button-section {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 1em;
-    padding: 1em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 1em;
 }
 
 /* Table Styling --------------------------------------*/
 .table-section {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 table {
-    border-radius: 10px;
-    border: 2px solid black;
-    width: 60%;
-    overflow: hidden;
-    border-collapse: collapse;
-    box-shadow: 5px 5px 10px #888;
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 60%;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 10px #888;
 }
 
 thead th {
-    background-color: darkgreen;
-    color: white;
-    font-weight: bold;
+  background-color: darkgreen;
+  color: white;
+  font-weight: bold;
 }
 
-th, td {
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: .5em;
-    padding-bottom: .5em;
+th,
+td {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 tr {
@@ -70,39 +68,39 @@ tr {
 }
 
 tbody tr:hover {
-    background-color:darkseagreen;
-
+  background-color: darkseagreen;
+  cursor: pointer;
 }
 
 /* Button Styling */
 button {
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .button_dark {
-    background-color: darkseagreen;
-    color: black;
+  background-color: darkseagreen;
+  color: black;
 }
 
 .button_dark:hover {
-    background-color: darkgreen; /* Darker green on hover */
-    color: white;
+  background-color: darkgreen; /* Darker green on hover */
+  color: white;
 }
 
 .button_light {
-    background-color: rgb(197, 240, 197);
-    color: black;
+  background-color: rgb(197, 240, 197);
+  color: black;
 }
 
 .button_light:hover {
-    background-color: rgb(145, 202, 145); /* Darker green on hover */
+  background-color: rgb(145, 202, 145); /* Darker green on hover */
 }
 
 footer {

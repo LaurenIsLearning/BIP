@@ -1,58 +1,47 @@
 import { useState, useEffect } from "react";
-
-// Set up interface for teams
-interface Team {
-    id: number;
-    name: string;
-    points: number;
-}
+import { useNavigate } from "react-router-dom";
+import { fetchAllTeams } from "../services/TeamService";
+import { Team } from "../models/Team";
 
 function RankingsTable() {
-    const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
+  const navigate = useNavigate();
 
-    // Get info from teams data
-    useEffect(() => {
+  // Navigate to stats page with team ID
+  const navigateToStats = (teamId: string) => {
+    navigate(`/Stats/${teamId}`);
+  };
 
-        // Get the team data from the database
-        const fetchTeams = async () => {
-            const response = await fetch('http://localhost:3000/api/teams');
-            const json = await response.json();
+  // Get info from teams data
+  useEffect(() => {
+    fetchAllTeams().then((fetchedTeams) => {
+      setTeams(fetchedTeams);
+    });
+  }, []);
 
-            if(response.ok) {
-                setTeams(json as Team[]);
-            }
-
-            console.log(response)
-        }
-
-        fetchTeams();
-    }, []);
-
-    // Sort the list of teams in descending order
-    const sortedTeams = [...teams].sort((a, b) => b.points - a.points);
-
-    return (
-        <>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Team Name</th>
-                    <th>Team Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                {sortedTeams.map((team, index) => (
-                    <tr key={index}>
-                        <th>{index + 1}</th>
-                        <th>{team.name}</th>
-                        <th>{team.points}</th>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-        </>    
-    )
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Team Name</th>
+            <th>Team Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.map((team, index) => (
+            <tr key={index} onClick={() => navigateToStats(team.teamId)}>
+              <th>{team.ranking || index + 1}</th>{" "}
+              {/* Fallback index until ^ rank is populated later */}
+              <th>{team.teamName}</th>
+              <th>{team.sessionPoints}</th>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 }
 
 export default RankingsTable;

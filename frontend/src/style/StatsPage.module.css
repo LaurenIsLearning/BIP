@@ -5,6 +5,10 @@
   gap: 50px;
 }
 
+p {
+  text-align: center;
+}
+
 .top_half {
   display: flex;
   justify-content: center;
