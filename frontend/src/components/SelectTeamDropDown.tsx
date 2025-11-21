@@ -14,6 +14,7 @@ function SelectTeamDropDown({ selectedTeamId }: Props) {
   const showTeamStats = (teamId?: string) => {
     if (!teamId) return;
     navigate(`/Stats/${teamId}`);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top
   };
 
   useEffect(() => {
