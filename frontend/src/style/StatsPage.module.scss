@@ -5,6 +5,30 @@
   gap: 50px;
 }
 
+.no_id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  > select {
+    font-size: 20pt;
+    padding: 10px;
+  }
+}
+
+.has_id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  > select {
+    font-size: 16pt;
+    padding: 10px;
+    margin: 10px;
+  }
+}
+
 p {
   text-align: center;
 }

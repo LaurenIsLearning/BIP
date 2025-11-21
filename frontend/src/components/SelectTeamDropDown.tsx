@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllTeams } from "../services/TeamService";
 import { Team } from "../models/Team";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-  setTeamId: React.Dispatch<React.SetStateAction<string>>;
+  selectedTeamId: string;
 }
 
-function SelectTeamDropDown({ setTeamId }: Props) {
+function SelectTeamDropDown({ selectedTeamId }: Props) {
   const [teams, setTeams] = useState<Team[]>([]);
+  const navigate = useNavigate();
+
+  const showTeamStats = (teamId?: string) => {
+    if (!teamId) return;
+    navigate(`/Stats/${teamId}`);
+  };
 
   useEffect(() => {
     fetchAllTeams().then((fetchedTeams) => {
@@ -20,7 +27,10 @@ function SelectTeamDropDown({ setTeamId }: Props) {
   }
 
   return (
-    <select onChange={(e) => setTeamId(e.target.value)}>
+    <select
+      onChange={(e) => showTeamStats(e.target.value)}
+      value={selectedTeamId || ""}
+    >
       <option value="">Select a team</option>
       {teams.map((team) => (
         <option key={team.teamName} value={team.teamId}>

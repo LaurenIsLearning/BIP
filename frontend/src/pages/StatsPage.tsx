@@ -16,18 +16,15 @@ function StatsPage() {
   const [team, setTeam] = useState<Team>();
   // set initial id from url if it exists
   const { teamId } = useParams<{ teamId: string }>();
-  const [currentTeamId, setCurrentTeamId] = useState(teamId || "");
-
-  console.log("currentTeamId = ", currentTeamId, typeof currentTeamId);
 
   useEffect(() => {
-    if (!currentTeamId) return;
+    if (!teamId) return;
 
-    fetchTeam(currentTeamId).then((fetchedTeam) => {
+    fetchTeam(teamId).then((fetchedTeam) => {
       setTeam(fetchedTeam);
       setPlayers(fetchedTeam.players);
     });
-  }, [currentTeamId]);
+  }, [teamId]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [comboTotal, setComboTotal] = useState(0);
 
@@ -68,8 +65,16 @@ function StatsPage() {
       .filter((s) => s !== null) as number[]
   );
 
-  if (!currentTeamId || currentTeamId === "")
-    return <SelectTeamDropDown setTeamId={setCurrentTeamId} />;
+  if (!teamId || teamId === "")
+    return (
+      <>
+        <NavBar />
+        <div className={styles.no_id}>
+          <p>Please select a team to view statistics:</p>
+          <SelectTeamDropDown selectedTeamId={teamId} />
+        </div>
+      </>
+    );
 
   if (!team) return <div>Loading...</div>;
 
@@ -123,6 +128,10 @@ function StatsPage() {
         )}
       </div>
       <CombinationContainer players={players} />
+      <div className={styles.has_id}>
+        <p>View stats for another team:</p>
+        <SelectTeamDropDown selectedTeamId={teamId} />
+      </div>
     </>
   );
 }
