@@ -8,45 +8,23 @@ import useComCalc from "../hooks/useComCalc";
 import { useEffect, useState } from "react";
 import PlayerCardSmall from "../components/PlayerCardSmall";
 import NavBar from "../components/NavBar";
+import { useParams } from "react-router-dom";
+import { fetchTeam } from "../services/TeamService";
+import SelectTeamDropDown from "../components/SelectTeamDropDown";
 
-interface Props {
-  teamId: number;
-}
-
-function StatsPage({ teamId }: Props) {
+function StatsPage() {
   const [team, setTeam] = useState<Team>();
+  // set initial id from url if it exists
+  const { teamId } = useParams<{ teamId: string }>();
 
   useEffect(() => {
-    // Rank Placeholder
-    let index = 1;
+    if (!teamId) return;
 
-    // Fetch team data from the backend
-    fetch(`http://localhost:3000/api/teams/${teamId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const fetchedTeam = new Team(
-          data.name, // team name
-          data.players.map(
-            (p: any) =>
-              new Player(
-                p.name, // player's name
-                p.skill, // skill level
-                p.sesswr, // session win rate
-                p.sesspa, // session points average
-                p.overallwr, // overall win rate
-                p.overallmp, // overall match points
-                false
-              )
-          ),
-          data.points, // team session points
-          data.ranking || index++
-        );
-
-        setTeam(fetchedTeam);
-        setPlayers(fetchedTeam.players);
-      });
-  }, []);
-
+    fetchTeam(teamId).then((fetchedTeam) => {
+      setTeam(fetchedTeam);
+      setPlayers(fetchedTeam.players);
+    });
+  }, [teamId]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [comboTotal, setComboTotal] = useState(0);
 
@@ -86,6 +64,17 @@ function StatsPage({ teamId }: Props) {
       .map((p) => (p.played ? p.skillLevel : null))
       .filter((s) => s !== null) as number[]
   );
+
+  if (!teamId || teamId === "")
+    return (
+      <>
+        <NavBar />
+        <div className={styles.no_id}>
+          <p>Please select a team to view statistics:</p>
+          <SelectTeamDropDown selectedTeamId={teamId} />
+        </div>
+      </>
+    );
 
   if (!team) return <div>Loading...</div>;
 
@@ -139,6 +128,10 @@ function StatsPage({ teamId }: Props) {
         )}
       </div>
       <CombinationContainer players={players} />
+      <div className={styles.has_id}>
+        <p>View stats for another team:</p>
+        <SelectTeamDropDown selectedTeamId={teamId} />
+      </div>
     </>
   );
 }
