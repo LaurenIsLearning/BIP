@@ -71,7 +71,7 @@ function StatsPage() {
         <NavBar />
         <div className={styles.no_id}>
           <p>Please select a team to view statistics:</p>
-          <SelectTeamDropDown selectedTeamId={teamId} />
+          <SelectTeamDropDown selectedTeamId={teamId} mode="stats" />
         </div>
       </>
     );
@@ -130,7 +130,7 @@ function StatsPage() {
       <CombinationContainer players={players} />
       <div className={styles.has_id}>
         <p>View stats for another team:</p>
-        <SelectTeamDropDown selectedTeamId={teamId} />
+        <SelectTeamDropDown selectedTeamId={teamId} mode="stats" />
       </div>
     </>
   );

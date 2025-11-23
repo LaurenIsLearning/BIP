@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route
-        path="/Comparison/:teamId1?/:teamId2?"
+        path="/Comparison/:teamOneId?/:teamTwoId?"
         element={<ComparisonPage />}
       />
       <Route path="/Admin" element={<AdminPage />} />
