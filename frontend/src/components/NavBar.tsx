@@ -16,7 +16,9 @@ function NavBar() {
           <button className="button_light">
             <Link to={"/Stats"}>View Team</Link>
           </button>
-          <button className="button_light">Team Comparison Page</button>
+          <button className="button_light">
+            <Link to={"/Comparison"}>Team Comparison Page</Link>
+          </button>
           <button className="button_light">
             <Link to={"/Login"}>Login</Link>
           </button>

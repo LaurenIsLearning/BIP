@@ -7,4 +7,11 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 2px;
+}
+
+.no_id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=ComparisonPage.module.css.map */

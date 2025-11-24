@@ -5,14 +5,25 @@ import { useEffect, useMemo, useState } from "react";
 import useComCalc from "../hooks/useComCalc";
 import CombinationContainer from "./CombinationContainer";
 import PlayerCardSmall from "./PlayerCardSmall";
+import { fetchTeam } from "../services/TeamService";
+import SelectTeamDropDown from "./SelectTeamDropDown";
 
 interface Props {
-  team: Team;
+  teamId?: string;
+  mode: string;
 }
 
-function TeamCompare({ team }: Props) {
-  const [players, setPlayers] = useState(team.players);
+function TeamCompare({ teamId = "", mode }: Props) {
+  const [team, setTeam] = useState<Team | null>(null);
+  const [players, setPlayers] = useState<Player[]>([]);
   const [comboTotal, setComboTotal] = useState(0);
+
+  useEffect(() => {
+    fetchTeam(teamId).then((fetchedTeam) => {
+      setTeam(fetchedTeam);
+      setPlayers(fetchedTeam.players);
+    });
+  }, [teamId]);
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
@@ -51,6 +62,9 @@ function TeamCompare({ team }: Props) {
   );
 
   const { count } = useComCalc(skills, playedSkills);
+
+  if (!teamId || !team)
+    return <SelectTeamDropDown selectedTeamId={teamId} mode={mode} />;
 
   return (
     <div className={styles.root}>
