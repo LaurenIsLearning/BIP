@@ -1,0 +1,37 @@
+.sidebar {
+  width: 220px;
+  background: #084d08;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 0.5rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.8rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  background: #0c7819;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  background: #0f8d1e;
+}
+
+.active {
+  background: #66c96d !important;
+  color: black !important;
+}

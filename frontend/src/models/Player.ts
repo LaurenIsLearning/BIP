@@ -1,4 +1,5 @@
 export class Player {
+  playerId: string; //Player's unique identifier
   playerName: string; // Player's name
   skillLevel: number; // Player's skill level (2-7)
   sessionWR: number; // Player's current session winrate
@@ -8,6 +9,7 @@ export class Player {
   played: boolean = false; // Whether the player has played or not
 
   constructor(
+    playerId: string,
     playerName: string,
     skillLevel: number,
     sessionWR: number,
@@ -16,6 +18,7 @@ export class Player {
     overallMP: number,
     played: boolean = false
   ) {
+    this.playerId = playerId;
     this.playerName = playerName;
     this.skillLevel = skillLevel;
     this.sessionWR = sessionWR;

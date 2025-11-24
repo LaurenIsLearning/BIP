@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-interface Team {
-  id: number;
-  name: string;
-  points: number;
-}
+import { Team } from "../../models/Team";
 
 interface Props {
   teams: Team[];
@@ -12,16 +7,21 @@ interface Props {
 }
 
 export default function EditTeamForm({ teams, onSaved }: Props) {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
-  const team = teams.find((t) => t.id === selectedId);
+  const [selectedId, setSelectedId] = useState<string>("");
+
+  const team = teams.find((t) => t.teamId === selectedId);
 
   async function saveTeam() {
     if (!team) return;
 
-    await fetch(`http://localhost:3000/api/teams/${team.id}`, {
+    await fetch(`http://localhost:3000/api/teams/${team.teamId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(team),
+      body: JSON.stringify({
+        teamName: team.teamName,
+        sessionPoints: team.sessionPoints,
+        ranking: team.ranking,
+      }),
     });
 
     onSaved();
@@ -29,17 +29,15 @@ export default function EditTeamForm({ teams, onSaved }: Props) {
 
   return (
     <>
-      <h2>Edit Team</h2>
-
       <label>Select Team</label>
       <select
-        value={selectedId ?? ""}
-        onChange={(e) => setSelectedId(Number(e.target.value))}
+        value={selectedId}
+        onChange={(e) => setSelectedId(e.target.value)}
       >
         <option value="">Choose...</option>
         {teams.map((t) => (
-          <option key={t.id} value={t.id}>
-            {t.name}
+          <option key={t.teamId} value={t.teamId}>
+            {t.teamName}
           </option>
         ))}
       </select>
@@ -48,15 +46,22 @@ export default function EditTeamForm({ teams, onSaved }: Props) {
         <>
           <label>Team Name</label>
           <input
-            value={team.name}
-            onChange={(e) => (team.name = e.target.value)}
+            value={team.teamName}
+            onChange={(e) => (team.teamName = e.target.value)}
           />
 
-          <label>Points</label>
+          <label>Session Points</label>
           <input
             type="number"
-            value={team.points}
-            onChange={(e) => (team.points = Number(e.target.value))}
+            value={team.sessionPoints}
+            onChange={(e) => (team.sessionPoints = Number(e.target.value))}
+          />
+
+          <label>Ranking</label>
+          <input
+            type="number"
+            value={team.ranking}
+            onChange={(e) => (team.ranking = Number(e.target.value))}
           />
 
           <button onClick={saveTeam}>Save Changes</button>

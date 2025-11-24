@@ -8,11 +8,13 @@ async function seed() {
   for (const team of data) {
     const teamRes = await pool.query(
       "INSERT INTO teams (name, points) VALUES ($1, $2) ON CONFLICT (name) DO NOTHING RETURNING id",
-      [team.name, team.points]
+      [team.teamName, team.sessionPoints]
     );
+
     const teamId =
       teamRes.rows[0]?.id ||
-      (await pool.query("SELECT id FROM teams WHERE name=$1", [team.name])).rows[0].id;
+      (await pool.query("SELECT id FROM teams WHERE name=$1", [team.teamName]))
+        .rows[0].id;
 
     for (const player of team.players) {
       await pool.query(
@@ -20,17 +22,17 @@ async function seed() {
          VALUES ($1, $2, $3, $4, $5, $6, $7)`,
         [
           teamId,
-          player.name,
-          player.skill,
-          player.sessWR,
-          player.sessPA,
+          player.playerName,
+          player.skillLevel,
+          player.sessionWR,
+          player.sessionPA,
           player.overallWR,
           player.overallMP,
         ]
       );
     }
 
-    console.log(`Seeded team: ${team.name}`);
+    console.log(`Seeded team: ${team.teamName}`);
   }
 
   console.log("~All teams and players have been seeded!");

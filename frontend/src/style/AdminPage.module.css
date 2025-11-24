@@ -1,103 +1,17 @@
-/* MAIN PAGE LAYOUT */
-.container {
+.page {
   padding: 2rem;
-  max-width: 1300px;
-  margin: 0 auto;
 }
 
-.header {
-  margin: 2rem 0;
-}
-
-.header h1 {
-  font-size: 2.8rem;
-  margin: 0;
-}
-
-
-/* ACTION BUTTON ROW */
-.controls {
+.layout {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-
-.controls button {
-  background: #0a5f0a;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.controls button:hover {
-  background: #0c7c0c;
-}
-
-
-/* TEAMS TITLE */
-.teamSection {
   margin-top: 2rem;
+  gap: 2rem;
 }
 
-.teamSection h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-
-/* TEAMS GRID */
-.teamGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding-bottom: 3rem;
-}
-
-
-/* EACH TEAM CARD */
-.teamCard {
+.content {
+  flex: 1;
   background: white;
-  border: 1px solid #dcdcdc;
+  padding: 2rem;
   border-radius: 10px;
-  padding: 1.4rem;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-  transition: transform 0.15s ease;
-}
-
-.teamCard:hover {
-  transform: scale(1.02);
-}
-
-.teamCard h3 {
-  margin: 0;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.teamPoints {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #555;
-}
-
-
-/* BUTTON INSIDE EACH TEAM CARD */
-.editButton {
-  margin-top: 1rem;
-  background: #044e8e;
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-}
-
-.editButton:hover {
-  background: #0664b7;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
 }

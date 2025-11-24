@@ -8,7 +8,13 @@ const router = express.Router();
 router.get("/", async (_req, res) => {
   try {
     const result = await pool.query("SELECT * FROM teams ORDER BY id");
-    res.json(result.rows);
+    const formatted = result.rows.map((t) => ({
+      teamID: t.id,
+      teamName: t.name,
+      sessionPoints: t.session_points,
+      ranking: t.ranking
+    }));
+    res.json(formatted);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching teams");

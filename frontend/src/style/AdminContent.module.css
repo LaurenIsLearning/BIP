@@ -1,0 +1,15 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0;
+}

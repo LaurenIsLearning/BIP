@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react";
-
-interface Team {
-  id: number;
-  name: string;
-}
-
-interface Player {
-  id: number;
-  name: string;
-  skill: number;
-  sessWR: number;
-  sessPA: number;
-  overallWR: number;
-  overallMP: number;
-}
+import { useState } from "react";
+import { Team } from "../../models/Team";
+import { Player } from "../../models/Player";
 
 interface Props {
   teams: Team[];
@@ -21,55 +8,50 @@ interface Props {
 }
 
 export default function EditPlayerForm({ teams, onSaved }: Props) {
-  const [teamId, setTeamId] = useState<number | null>(null);
-  const [players, setPlayers] = useState<Player[]>([]);
-  const [playerId, setPlayerId] = useState<number | null>(null);
+  const [teamId, setTeamId] = useState<string>("");
+  const [playerId, setPlayerId] = useState<string>("");
 
-  const player = players.find((p) => p.id === playerId);
-
-  // Load players from backend
-  useEffect(() => {
-    if (!teamId) return;
-
-    fetch(`http://localhost:3000/api/teams/${teamId}/players`)
-      .then((r) => r.json())
-      .then((data) => setPlayers(data));
-  }, [teamId]);
+  const team = teams.find((t) => t.teamId === teamId);
+  const player = team?.players.find((p) => p.playerId === playerId);
 
   async function savePlayer() {
-    if (!player) return;
+    if (!teamId || !player) return;
 
-    await fetch(`http://localhost:3000/api/players/${player.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(player),
-    });
+    await fetch(
+      `http://localhost:3000/api/teams/${teamId}/players/${player.playerId}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }
+    );
 
     onSaved();
   }
 
   return (
     <>
-      <h2>Edit Player</h2>
-
       <label>Select Team</label>
-      <select value={teamId ?? ""} onChange={(e) => setTeamId(Number(e.target.value))}>
+      <select value={teamId} onChange={(e) => setTeamId(e.target.value)}>
         <option value="">Choose...</option>
         {teams.map((t) => (
-          <option key={t.id} value={t.id}>
-            {t.name}
+          <option key={t.teamId} value={t.teamId}>
+            {t.teamName}
           </option>
         ))}
       </select>
 
-      {teamId && (
+      {team && (
         <>
           <label>Select Player</label>
-          <select value={playerId ?? ""} onChange={(e) => setPlayerId(Number(e.target.value))}>
+          <select
+            value={playerId}
+            onChange={(e) => setPlayerId(e.target.value)}
+          >
             <option value="">Choose...</option>
-            {players.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
+            {team.players.map((p) => (
+              <option key={p.playerId} value={p.playerId}>
+                {p.playerName}
               </option>
             ))}
           </select>
@@ -78,23 +60,20 @@ export default function EditPlayerForm({ teams, onSaved }: Props) {
 
       {player && (
         <>
-          <label>Name</label>
-          <input value={player.name} onChange={(e) => (player.name = e.target.value)} />
+          <label>Player Name</label>
+          <input
+            value={player.playerName}
+            onChange={(e) => (player.playerName = e.target.value)}
+          />
 
-          <label>Skill</label>
-          <input type="number" value={player.skill} onChange={(e) => (player.skill = Number(e.target.value))} />
-
-          <label>Session WR</label>
-          <input type="number" value={player.sessWR} onChange={(e) => (player.sessWR = Number(e.target.value))} />
-
-          <label>Session PA</label>
-          <input type="number" value={player.sessPA} onChange={(e) => (player.sessPA = Number(e.target.value))} />
-
-          <label>Overall WR</label>
-          <input type="number" value={player.overallWR} onChange={(e) => (player.overallWR = Number(e.target.value))} />
-
-          <label>Overall MP</label>
-          <input type="number" value={player.overallMP} onChange={(e) => (player.overallMP = Number(e.target.value))} />
+          <label>Skill Level</label>
+          <input
+            type="number"
+            value={player.skillLevel}
+            onChange={(e) => (player.skillLevel = Number(e.target.value))}
+            min={2}
+            max={7}
+          />
 
           <button onClick={savePlayer}>Save Changes</button>
         </>

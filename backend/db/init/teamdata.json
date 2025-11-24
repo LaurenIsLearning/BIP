@@ -1,847 +1,1052 @@
 [
   {
-    "name": "SEYBERTS",
-    "points": 107,
+    "teamId": "c557d7b9-13e0-4a8c-bcf1-7d090013eb05",
+    "teamName": "SEYBERTS",
+    "sessionPoints": 107,
     "players": [
       {
-        "skill": 7,
-        "name": "Ryan Hogans",
-        "sessWR": 1.0,
-        "sessPA": 0.93,
+        "playerId": "847adf3e-84c9-44cc-9030-b817cacd3d72",
+        "playerName": "Ryan Hogans",
+        "skillLevel": 7,
+        "sessionWR": 1.0,
+        "sessionPA": 0.93,
         "overallWR": 0.9024,
-        "overallMP": 82
+        "overallMP": 82,
+        "played": false
       },
       {
-        "skill": 7,
-        "name": "Max Krause",
-        "sessWR": 1.0,
-        "sessPA": 0.83,
+        "playerId": "d0ddf382-3e14-4e77-99ea-b9b7bc9d0376",
+        "playerName": "Max Krause",
+        "skillLevel": 7,
+        "sessionWR": 1.0,
+        "sessionPA": 0.83,
         "overallWR": 0.9048,
-        "overallMP": 63
+        "overallMP": 63,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Chris Morales",
-        "sessWR": 0.5,
-        "sessPA": 0.45,
+        "playerId": "53621fdb-8ebc-4eda-85a1-ccf2981f0a39",
+        "playerName": "Chris Morales",
+        "skillLevel": 5,
+        "sessionWR": 0.5,
+        "sessionPA": 0.45,
         "overallWR": 0.439,
-        "overallMP": 246
+        "overallMP": 246,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Brayan Buendia",
-        "sessWR": 0.75,
-        "sessPA": 0.58,
+        "playerId": "ac3d6451-fb8e-48d6-9d8b-691c92bdb45a",
+        "playerName": "Brayan Buendia",
+        "skillLevel": 6,
+        "sessionWR": 0.75,
+        "sessionPA": 0.58,
         "overallWR": 0.6333,
-        "overallMP": 30
+        "overallMP": 30,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Riley Gardner",
-        "sessWR": 0.5,
-        "sessPA": 0.55,
+        "playerId": "03a3db81-6ed5-4b40-9adf-34fa4758a321",
+        "playerName": "Riley Gardner",
+        "skillLevel": 4,
+        "sessionWR": 0.5,
+        "sessionPA": 0.55,
         "overallWR": 0.6154,
-        "overallMP": 13
+        "overallMP": 13,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "May Listenberger",
-        "sessWR": 0.2857,
-        "sessPA": 0.42,
+        "playerId": "3c497a6c-9eef-4a87-b834-81d510d94bd1",
+        "playerName": "May Listenberger",
+        "skillLevel": 3,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.42,
         "overallWR": 0.4898,
-        "overallMP": 98
+        "overallMP": 98,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Heather Willet",
-        "sessWR": 0.2857,
-        "sessPA": 0.33,
+        "playerId": "dc7539df-c3bc-4fb1-80f7-534c94cb9768",
+        "playerName": "Heather Willet",
+        "skillLevel": 2,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.33,
         "overallWR": 0.2857,
-        "overallMP": 7
+        "overallMP": 7,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Andrew Nguyen",
-        "sessWR": 0.8,
-        "sessPA": 0.8,
+        "playerId": "ec04fb69-63ac-4ad9-ab51-a6b7fbe3b433",
+        "playerName": "Andrew Nguyen",
+        "skillLevel": 5,
+        "sessionWR": 0.8,
+        "sessionPA": 0.8,
         "overallWR": 0.55,
-        "overallMP": 40
+        "overallMP": 40,
+        "played": false
       }
     ]
   },
   {
-    "name": "Got Felt?",
-    "points": 92,
+    "teamId": "df9a53ec-2b10-4a8e-9ec2-344a1e667aba",
+    "teamName": "Got Felt?",
+    "sessionPoints": 92,
     "players": [
       {
-        "skill": 5,
-        "name": "Mary Davies",
-        "sessWR": 0.1667,
-        "sessPA": 0.11,
+        "playerId": "a8e65ade-a4f6-4090-9f57-c844d46e2b0b",
+        "playerName": "Mary Davies",
+        "skillLevel": 5,
+        "sessionWR": 0.1667,
+        "sessionPA": 0.11,
         "overallWR": 0.4951,
-        "overallMP": 408
+        "overallMP": 408,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Kim Bebout",
-        "sessWR": 0.5,
-        "sessPA": 0.5,
+        "playerId": "8649011c-8f7e-4e68-b447-76624c1b4329",
+        "playerName": "Kim Bebout",
+        "skillLevel": 3,
+        "sessionWR": 0.5,
+        "sessionPA": 0.5,
         "overallWR": 0.4559,
-        "overallMP": 68
+        "overallMP": 68,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Mary Sattler",
-        "sessWR": 1.0,
-        "sessPA": 1.0,
+        "playerId": "cc9029aa-76f9-4f92-a865-45396f0469fa",
+        "playerName": "Mary Sattler",
+        "skillLevel": 3,
+        "sessionWR": 1.0,
+        "sessionPA": 1.0,
         "overallWR": 0.4545,
-        "overallMP": 22
+        "overallMP": 22,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Adam Mitchell",
-        "sessWR": 0.375,
-        "sessPA": 0.33,
+        "playerId": "f0b04a1c-62ab-45bd-8b7b-37c784bce4e6",
+        "playerName": "Adam Mitchell",
+        "skillLevel": 6,
+        "sessionWR": 0.375,
+        "sessionPA": 0.33,
         "overallWR": 0.5377,
-        "overallMP": 106
+        "overallMP": 106,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Nancy Williams",
-        "sessWR": 0.6,
-        "sessPA": 0.6,
+        "playerId": "e3e4ac0a-ce1b-4294-a6f8-91b952ee27ef",
+        "playerName": "Nancy Williams",
+        "skillLevel": 2,
+        "sessionWR": 0.6,
+        "sessionPA": 0.6,
         "overallWR": 0.3171,
-        "overallMP": 41
+        "overallMP": 41,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Curt Harter",
-        "sessWR": 0.66,
-        "sessPA": 0.75,
+        "playerId": "57f5462c-6a17-4d7a-8f2c-5a754a8f98a8",
+        "playerName": "Curt Harter",
+        "skillLevel": 3,
+        "sessionWR": 0.66,
+        "sessionPA": 0.75,
         "overallWR": 0.6667,
-        "overallMP": 18
+        "overallMP": 18,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Bobby Grear",
-        "sessWR": 0.4444,
-        "sessPA": 0.51,
+        "playerId": "9dd934e0-c52b-4c3b-9c45-406fe0335e61",
+        "playerName": "Bobby Grear",
+        "skillLevel": 3,
+        "sessionWR": 0.4444,
+        "sessionPA": 0.51,
         "overallWR": 0.45,
-        "overallMP": 20
+        "overallMP": 20,
+        "played": false
       }
     ]
   },
   {
-    "name": "Rubber Duckies",
-    "points": 104,
+    "teamId": "6a8fe0ac-1e6d-4064-aed8-632e61936bf9",
+    "teamName": "Rubber Duckies",
+    "sessionPoints": 104,
     "players": [
       {
-        "skill": 5,
-        "name": "Alec Cordobes",
-        "sessWR": 0.6,
-        "sessPA": 0.46,
+        "playerId": "5ddf0a27-5bbd-4f49-8b5b-4c0303302c29",
+        "playerName": "Alec Cordobes",
+        "skillLevel": 5,
+        "sessionWR": 0.6,
+        "sessionPA": 0.46,
         "overallWR": 0.5833,
-        "overallMP": 48
+        "overallMP": 48,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Lauren Fries",
-        "sessWR": 0.7692,
-        "sessPA": 0.61,
+        "playerId": "db440055-df82-4c3f-9307-664def148967",
+        "playerName": "Lauren Fries",
+        "skillLevel": 3,
+        "sessionWR": 0.7692,
+        "sessionPA": 0.61,
         "overallWR": 0.6136,
-        "overallMP": 44
+        "overallMP": 44,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Jeff Mercer Jr",
-        "sessWR": 0.75,
-        "sessPA": 0.58,
+        "playerId": "dde83d97-eecb-4f3d-a813-9e67afc370c7",
+        "playerName": "Jeff Mercer Jr",
+        "skillLevel": 6,
+        "sessionWR": 0.75,
+        "sessionPA": 0.58,
         "overallWR": 0.75,
-        "overallMP": 28
+        "overallMP": 28,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Luke Schwieterman",
-        "sessWR": 0.8571,
-        "sessPA": 0.57,
+        "playerId": "96c9c02a-f825-46cb-b533-ea1436a1ffcd",
+        "playerName": "Luke Schwieterman",
+        "skillLevel": 5,
+        "sessionWR": 0.8571,
+        "sessionPA": 0.57,
         "overallWR": 0.5833,
-        "overallMP": 36
+        "overallMP": 36,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Ryan Bentz",
-        "sessWR": 0.75,
-        "sessPA": 0.55,
+        "playerId": "5ebef843-46b1-46cf-b100-bed066de5c28",
+        "playerName": "Ryan Bentz",
+        "skillLevel": 3,
+        "sessionWR": 0.75,
+        "sessionPA": 0.55,
         "overallWR": 0.6571,
-        "overallMP": 35
+        "overallMP": 35,
+        "played": false
       }
     ]
   },
   {
-    "name": "8 Ball Junkies",
-    "points": 91,
+    "teamId": "60cfd8ce-95f8-4bad-b91f-c1c38f356efe",
+    "teamName": "8 Ball Junkies",
+    "sessionPoints": 91,
     "players": [
       {
-        "skill": 4,
-        "name": "Groundhog Eaglin",
-        "sessWR": 0.5714,
-        "sessPA": 0.52,
+        "playerId": "c7b7a5af-a271-4435-a28c-b9e591b504f5",
+        "playerName": "Groundhog Eaglin",
+        "skillLevel": 4,
+        "sessionWR": 0.5714,
+        "sessionPA": 0.52,
         "overallWR": 0.4646,
-        "overallMP": 99
+        "overallMP": 99,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Linda Murphy",
-        "sessWR": 0.5,
-        "sessPA": 0.5,
+        "playerId": "7e4ff1a2-545e-49d5-bde0-7d12c2120cde",
+        "playerName": "Linda Murphy",
+        "skillLevel": 2,
+        "sessionWR": 0.5,
+        "sessionPA": 0.5,
         "overallWR": 0.3093,
-        "overallMP": 430
+        "overallMP": 430,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Mike Talamantez",
-        "sessWR": 0.25,
-        "sessPA": 0.25,
+        "playerId": "62bad963-e1b3-46e6-9c9c-a101f1191cbe",
+        "playerName": "Mike Talamantez",
+        "skillLevel": 6,
+        "sessionWR": 0.25,
+        "sessionPA": 0.25,
         "overallWR": 0.5121,
-        "overallMP": 990
+        "overallMP": 990,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Jeffery Ahrens",
-        "sessWR": 0.7143,
-        "sessPA": 0.66,
+        "playerId": "9ca2487f-49d0-4a65-bc0b-8d5e9add6703",
+        "playerName": "Jeffery Ahrens",
+        "skillLevel": 3,
+        "sessionWR": 0.7143,
+        "sessionPA": 0.66,
         "overallWR": 0.4691,
-        "overallMP": 243
+        "overallMP": 243,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Erin Miller",
-        "sessWR": 0.2941,
-        "sessPA": 0.35,
+        "playerId": "fdc62ba8-3ba7-4848-a830-b805c4ceaeb1",
+        "playerName": "Erin Miller",
+        "skillLevel": 2,
+        "sessionWR": 0.2941,
+        "sessionPA": 0.35,
         "overallWR": 0.36,
-        "overallMP": 50
+        "overallMP": 50,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Chuck Oneal",
-        "sessWR": 0.2857,
-        "sessPA": 0.38,
+        "playerId": "b6b6658b-35a5-44d1-b6c8-1590a34d2adf",
+        "playerName": "Chuck Oneal",
+        "skillLevel": 2,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.38,
         "overallWR": 0.4,
-        "overallMP": 30
+        "overallMP": 30,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Thomas Martin",
-        "sessWR": 0.4,
-        "sessPA": 0.46,
+        "playerId": "ad2a3fee-54c4-4353-a70c-186924afc960",
+        "playerName": "Thomas Martin",
+        "skillLevel": 3,
+        "sessionWR": 0.4,
+        "sessionPA": 0.46,
         "overallWR": 0.45,
-        "overallMP": 20
+        "overallMP": 20,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Todd Hall",
-        "sessWR": 0.2857,
-        "sessPA": 0.38,
+        "playerId": "4302ad52-caac-4d9f-8d64-54ce8bdf3f22",
+        "playerName": "Todd Hall",
+        "skillLevel": 2,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.38,
         "overallWR": 0.2857,
-        "overallMP": 7
+        "overallMP": 7,
+        "played": false
       }
     ]
   },
   {
-    "name": "Knight's Of The Rectangle",
-    "points": 87,
+    "teamId": "b81c9c63-81a0-46f4-b8fa-46ba84d14e2a",
+    "teamName": "Knight's Of The Rectangle",
+    "sessionPoints": 87,
     "players": [
       {
-        "skill": 4,
-        "name": "Alysha Waldren",
-        "sessWR": 0.875,
-        "sessPA": 0.62,
+        "playerId": "609666d6-cbaa-4a42-8096-e6186c89c769",
+        "playerName": "Alysha Waldren",
+        "skillLevel": 4,
+        "sessionWR": 0.875,
+        "sessionPA": 0.62,
         "overallWR": 0.4878,
-        "overallMP": 164
+        "overallMP": 164,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Eggy Mettler",
-        "sessWR": 0.75,
-        "sessPA": 0.58,
+        "playerId": "0a92ff59-13c1-4f02-8fb5-4e61b0af2726",
+        "playerName": "Eggy Mettler",
+        "skillLevel": 5,
+        "sessionWR": 0.75,
+        "sessionPA": 0.58,
         "overallWR": 0.5478,
-        "overallMP": 115
+        "overallMP": 115,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Amanda Durnell",
-        "sessWR": 0.4545,
-        "sessPA": 0.36,
+        "playerId": "d0c9b5c7-93a5-4f13-8b61-e60ab5f8c8d8",
+        "playerName": "Amanda Durnell",
+        "skillLevel": 4,
+        "sessionWR": 0.4545,
+        "sessionPA": 0.36,
         "overallWR": 0.4626,
-        "overallMP": 588
+        "overallMP": 588,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Alex Mckim",
-        "sessWR": 0.8,
-        "sessPA": 0.56,
+        "playerId": "40f20cdf-ab51-401f-af51-1c84a3cdbb8a",
+        "playerName": "Alex Mckim",
+        "skillLevel": 6,
+        "sessionWR": 0.8,
+        "sessionPA": 0.56,
         "overallWR": 0.625,
-        "overallMP": 216
+        "overallMP": 216,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Vanessa Mettler",
-        "sessWR": 0.6364,
-        "sessPA": 0.6,
+        "playerId": "b0bd1170-a4d7-4ea8-8dbf-c7b6ee8ab77f",
+        "playerName": "Vanessa Mettler",
+        "skillLevel": 3,
+        "sessionWR": 0.6364,
+        "sessionPA": 0.6,
         "overallWR": 0.5,
-        "overallMP": 84
+        "overallMP": 84,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "DG Benson",
-        "sessWR": 0.375,
-        "sessPA": 0.41,
+        "playerId": "23d89a1c-059e-4b4f-a383-3f3f98a4d01d",
+        "playerName": "DG Benson",
+        "skillLevel": 3,
+        "sessionWR": 0.375,
+        "sessionPA": 0.41,
         "overallWR": 0.4043,
-        "overallMP": 47
+        "overallMP": 47,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Angie Gonsalez",
-        "sessWR": 0.1667,
-        "sessPA": 0.27,
+        "playerId": "112a0789-495b-4a14-9f08-3a64f74fa898",
+        "playerName": "Angie Gonsalez",
+        "skillLevel": 2,
+        "sessionWR": 0.1667,
+        "sessionPA": 0.27,
         "overallWR": 0.1111,
-        "overallMP": 54
+        "overallMP": 54,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Daun Wilson",
-        "sessWR": 0,
-        "sessPA": 0,
+        "playerId": "26422e3e-4f79-4331-a5cb-c423a61a8f05",
+        "playerName": "Daun Wilson",
+        "skillLevel": 3,
+        "sessionWR": 0,
+        "sessionPA": 0,
         "overallWR": 0.6,
-        "overallMP": 25
+        "overallMP": 25,
+        "played": false
       }
     ]
   },
   {
-    "name": "Slop Counts",
-    "points": 91,
+    "teamId": "38ef182f-e68d-4a61-994e-b1a6bdb0a276",
+    "teamName": "Slop Counts",
+    "sessionPoints": 91,
     "players": [
       {
-        "skill": 7,
-        "name": "Jordan Torres",
-        "sessWR": 0.5,
-        "sessPA": 0.5,
+        "playerId": "3ef233e3-9320-42ae-97f1-f45b80141248",
+        "playerName": "Jordan Torres",
+        "skillLevel": 7,
+        "sessionWR": 0.5,
+        "sessionPA": 0.5,
         "overallWR": 0.5536,
-        "overallMP": 56
+        "overallMP": 56,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Jordan Vachon",
-        "sessWR": 0.5,
-        "sessPA": 0.44,
+        "playerId": "fd8c0f3a-b676-4fbc-b52b-cfb932d85722",
+        "playerName": "Jordan Vachon",
+        "skillLevel": 5,
+        "sessionWR": 0.5,
+        "sessionPA": 0.44,
         "overallWR": 0.4847,
-        "overallMP": 163
+        "overallMP": 163,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Allie Zern",
-        "sessWR": 0.6667,
-        "sessPA": 0.55,
+        "playerId": "f2e7ff7b-4b23-4ba3-9167-24d9ffeea5e7",
+        "playerName": "Allie Zern",
+        "skillLevel": 4,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.55,
         "overallWR": 0.5204,
-        "overallMP": 98
+        "overallMP": 98,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Nicole Huntley",
-        "sessWR": 0,
-        "sessPA": 0.16,
+        "playerId": "083a70ce-d298-4c0a-8b74-138ac966450a",
+        "playerName": "Nicole Huntley",
+        "skillLevel": 3,
+        "sessionWR": 0,
+        "sessionPA": 0.16,
         "overallWR": 0.4429,
-        "overallMP": 70
+        "overallMP": 70,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Chelsey Bishop",
-        "sessWR": 0.625,
-        "sessPA": 0.54,
+        "playerId": "0c67fc17-2303-4074-990d-bbd8eb5e3b9d",
+        "playerName": "Chelsey Bishop",
+        "skillLevel": 3,
+        "sessionWR": 0.625,
+        "sessionPA": 0.54,
         "overallWR": 0.3929,
-        "overallMP": 56
+        "overallMP": 56,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Lc Chung",
-        "sessWR": 1.0,
-        "sessPA": 0.66,
+        "playerId": "801e5e19-d679-4572-ad98-516e37998240",
+        "playerName": "Lc Chung",
+        "skillLevel": 6,
+        "sessionWR": 1.0,
+        "sessionPA": 0.66,
         "overallWR": 0.6129,
-        "overallMP": 124
+        "overallMP": 124,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Tyler Pulse",
-        "sessWR": 0.8333,
-        "sessPA": 0.61,
+        "playerId": "5d86c8e1-f66b-4cd5-b18b-6b74b86881c6",
+        "playerName": "Tyler Pulse",
+        "skillLevel": 6,
+        "sessionWR": 0.8333,
+        "sessionPA": 0.61,
         "overallWR": 0.6017,
-        "overallMP": 28
+        "overallMP": 28,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Cameron Stieglitz",
-        "sessWR": 0.625,
-        "sessPA": 0.45,
+        "playerId": "f015f6df-3502-4cd9-a14e-65bf7ed01870",
+        "playerName": "Cameron Stieglitz",
+        "skillLevel": 4,
+        "sessionWR": 0.625,
+        "sessionPA": 0.45,
         "overallWR": 0.5,
-        "overallMP": 62
+        "overallMP": 62,
+        "played": false
       }
     ]
   },
   {
-    "name": "Lucky 777",
-    "points": 87,
+    "teamId": "2e5bd43c-ee68-4bdd-b591-45901feb4776",
+    "teamName": "Lucky 777",
+    "sessionPoints": 87,
     "players": [
       {
-        "skill": 4,
-        "name": "Zach Fritts",
-        "sessWR": 0.7778,
-        "sessPA": 0.55,
+        "playerId": "b87f6dd3-4ee2-4cf1-8434-5b15eac8b945",
+        "playerName": "Zach Fritts",
+        "skillLevel": 4,
+        "sessionWR": 0.7778,
+        "sessionPA": 0.55,
         "overallWR": 0.625,
-        "overallMP": 0.32
+        "overallMP": 0.32,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Jimmy Fisher",
-        "sessWR": 0.625,
-        "sessPA": 0.62,
+        "playerId": "2e6445c0-70c6-40d5-8abd-3aea070f61f4",
+        "playerName": "Jimmy Fisher",
+        "skillLevel": 3,
+        "sessionWR": 0.625,
+        "sessionPA": 0.62,
         "overallWR": 0.4483,
-        "overallMP": 87
+        "overallMP": 87,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Dale Troutner",
-        "sessWR": 0.55,
-        "sessPA": 0.45,
+        "playerId": "ab9a9bae-4e54-4694-a66c-cf759023a5d7",
+        "playerName": "Dale Troutner",
+        "skillLevel": 4,
+        "sessionWR": 0.55,
+        "sessionPA": 0.45,
         "overallWR": 0.4973,
-        "overallMP": 187
+        "overallMP": 187,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Chris Boylan",
-        "sessWR": 0.2593,
-        "sessPA": 0.24,
+        "playerId": "b89fc38f-4f07-4e30-bd30-dc25d7cf5a0c",
+        "playerName": "Chris Boylan",
+        "skillLevel": 4,
+        "sessionWR": 0.2593,
+        "sessionPA": 0.24,
         "overallWR": 0.3902,
-        "overallMP": 82
+        "overallMP": 82,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Keith Long",
-        "sessWR": 0.5556,
-        "sessPA": 0.4,
+        "playerId": "c7f4802e-b3fe-408d-9f0e-222958cfb4fe",
+        "playerName": "Keith Long",
+        "skillLevel": 5,
+        "sessionWR": 0.5556,
+        "sessionPA": 0.4,
         "overallWR": 0.6226,
-        "overallMP": 53
+        "overallMP": 53,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Rick Austin",
-        "sessWR": 0,
-        "sessPA": 0,
+        "playerId": "6f8ce858-0e00-4cc8-b0db-600d524d02a0",
+        "playerName": "Rick Austin",
+        "skillLevel": 6,
+        "sessionWR": 0,
+        "sessionPA": 0,
         "overallWR": 0.5725,
-        "overallMP": 131
+        "overallMP": 131,
+        "played": false
       }
     ]
   },
   {
-    "name": "kirkpatrick Gang",
-    "points": 80,
+    "teamId": "8bce6ba1-8ff5-4f60-8719-3cbdcc54e7c5",
+    "teamName": "kirkpatrick Gang",
+    "sessionPoints": 80,
     "players": [
       {
-        "skill": 4,
-        "name": "Sue Kirkpatrick",
-        "sessWR": 0.4,
-        "sessPA": 0.36,
+        "playerId": "f03b3f79-0aee-4e2e-a62e-84dda8a91689",
+        "playerName": "Sue Kirkpatrick",
+        "skillLevel": 4,
+        "sessionWR": 0.4,
+        "sessionPA": 0.36,
         "overallWR": 0.4696,
-        "overallMP": 115
+        "overallMP": 115,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Ren Kirkpatrick",
-        "sessWR": 0.3333,
-        "sessPA": 0.29,
+        "playerId": "9e2d0814-7e03-4063-bfa1-ff7b1b2be5dc",
+        "playerName": "Ren Kirkpatrick",
+        "skillLevel": 2,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.29,
         "overallWR": 0.3261,
-        "overallMP": 46
+        "overallMP": 46,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Junior Henning",
-        "sessWR": 0.2857,
-        "sessPA": 0.38,
+        "playerId": "d4fddf0f-ae12-4ecd-9d95-6d5679786d85",
+        "playerName": "Junior Henning",
+        "skillLevel": 2,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.38,
         "overallWR": 0.2791,
-        "overallMP": 43
+        "overallMP": 43,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Bubba Kirkpatrick",
-        "sessWR": 0.5455,
-        "sessPA": 0.45,
+        "playerId": "f8711d85-5acd-4b83-9d08-3545915e5fd7",
+        "playerName": "Bubba Kirkpatrick",
+        "skillLevel": 5,
+        "sessionWR": 0.5455,
+        "sessionPA": 0.45,
         "overallWR": 0.4857,
-        "overallMP": 35
+        "overallMP": 35,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Abdul Mohammed",
-        "sessWR": 0.6667,
-        "sessPA": 0.55,
+        "playerId": "7d9cc220-83b7-4bd4-9a17-83b8fb48fb92",
+        "playerName": "Abdul Mohammed",
+        "skillLevel": 6,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.55,
         "overallWR": 0.5616,
-        "overallMP": 203
+        "overallMP": 203,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Tiffany Mohammed",
-        "sessWR": 0.3333,
-        "sessPA": 0.33,
+        "playerId": "3ddde6eb-5337-4db0-a0d7-658a2b28b1f4",
+        "playerName": "Tiffany Mohammed",
+        "skillLevel": 4,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.33,
         "overallWR": 0.4514,
-        "overallMP": 144
+        "overallMP": 144,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Jasmin Bajic",
-        "sessWR": 0.7,
-        "sessPA": 0.56,
+        "playerId": "8b984782-61b1-43a4-b4e1-2044871cd608",
+        "playerName": "Jasmin Bajic",
+        "skillLevel": 3,
+        "sessionWR": 0.7,
+        "sessionPA": 0.56,
         "overallWR": 0.4554,
-        "overallMP": 112
+        "overallMP": 112,
+        "played": false
       },
       {
-        "skill": 7,
-        "name": "James Jenkins",
-        "sessWR": 0.5,
-        "sessPA": 0.5,
+        "playerId": "db2488b0-51e2-46b4-a471-9605a434e3d8",
+        "playerName": "James Jenkins",
+        "skillLevel": 7,
+        "sessionWR": 0.5,
+        "sessionPA": 0.5,
         "overallWR": 0.5,
-        "overallMP": 2
+        "overallMP": 2,
+        "played": false
       }
     ]
   },
   {
-    "name": "Recreational Hazard",
-    "points": 96,
+    "teamId": "ceacfa08-6868-4f56-b9b3-14f0f6fb9eac",
+    "teamName": "Recreational Hazard",
+    "sessionPoints": 96,
     "players": [
       {
-        "skill": 5,
-        "name": "Matt Moore",
-        "sessWR": 0.625,
-        "sessPA": 0.62,
+        "playerId": "efb1d11b-7cea-4f06-97d2-536e5c3d8f13",
+        "playerName": "Matt Moore",
+        "skillLevel": 5,
+        "sessionWR": 0.625,
+        "sessionPA": 0.62,
         "overallWR": 0.5,
-        "overallMP": 102
+        "overallMP": 102,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Bob Ruby",
-        "sessWR": 0.5556,
-        "sessPA": 0.44,
+        "playerId": "68a53b7b-f322-4a6b-9508-d4f8568637f3",
+        "playerName": "Bob Ruby",
+        "skillLevel": 4,
+        "sessionWR": 0.5556,
+        "sessionPA": 0.44,
         "overallWR": 0.5524,
-        "overallMP": 105
+        "overallMP": 105,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Bruce Mcnamara",
-        "sessWR": 0.6667,
-        "sessPA": 0.72,
+        "playerId": "f2cafd4e-1428-49ab-aeb6-97194a0e7e87",
+        "playerName": "Bruce Mcnamara",
+        "skillLevel": 5,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.72,
         "overallWR": 0.5217,
-        "overallMP": 92
+        "overallMP": 92,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Kari Mcnamara",
-        "sessWR": 0.5,
-        "sessPA": 0.5,
+        "playerId": "5a05abf6-97fd-4dfa-a57c-b4e017a7bec3",
+        "playerName": "Kari Mcnamara",
+        "skillLevel": 5,
+        "sessionWR": 0.5,
+        "sessionPA": 0.5,
         "overallWR": 0.5714,
-        "overallMP": 105
+        "overallMP": 105,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Jason Church",
-        "sessWR": 0.6667,
-        "sessPA": 0.55,
+        "playerId": "58af323d-baf7-4cee-b5f9-382ab6e1a5e6",
+        "playerName": "Jason Church",
+        "skillLevel": 5,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.55,
         "overallWR": 0.4646,
-        "overallMP": 99
+        "overallMP": 99,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "David Bester",
-        "sessWR": 0.3333,
-        "sessPA": 0.27,
+        "playerId": "0c2803bc-7887-4139-85e7-92cc1c8dfe0e",
+        "playerName": "David Bester",
+        "skillLevel": 6,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.27,
         "overallWR": 0.4773,
-        "overallMP": 88
+        "overallMP": 88,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Alec Vanness",
-        "sessWR": 0,
-        "sessPA": 0.33,
+        "playerId": "69352484-6991-48ad-b741-b82fa413c621",
+        "playerName": "Alec Vanness",
+        "skillLevel": 2,
+        "sessionWR": 0,
+        "sessionPA": 0.33,
         "overallWR": 0,
-        "overallMP": 3
+        "overallMP": 3,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Luvy Arora",
-        "sessWR": 0.2,
-        "sessPA": 0.33,
+        "playerId": "f20ddef2-852c-4f59-92bb-40ffdd0f3cec",
+        "playerName": "Luvy Arora",
+        "skillLevel": 2,
+        "sessionWR": 0.2,
+        "sessionPA": 0.33,
         "overallWR": 0.2632,
-        "overallMP": 19
+        "overallMP": 19,
+        "played": false
       }
     ]
   },
   {
-    "name": "Cue Hefner",
-    "points": 86,
+    "teamId": "c8b0875d-3d5b-4c7b-8b05-05a610b86943",
+    "teamName": "Cue Hefner",
+    "sessionPoints": 86,
     "players": [
       {
-        "skill": 5,
-        "name": "Jeremy Oyer",
-        "sessWR": 0.6667,
-        "sessPA": 0.5,
+        "playerId": "54bada37-39e6-4a76-a4ff-e1f85f5c45e6",
+        "playerName": "Jeremy Oyer",
+        "skillLevel": 5,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.5,
         "overallWR": 0.5033,
-        "overallMP": 151
+        "overallMP": 151,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Ashley Sherwood",
-        "sessWR": 0.3333,
-        "sessPA": 0.44,
+        "playerId": "ea47b674-31e9-4a36-a59b-88939a69742f",
+        "playerName": "Ashley Sherwood",
+        "skillLevel": 3,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.44,
         "overallWR": 0.4783,
-        "overallMP": 322
+        "overallMP": 322,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Steve Douglas",
-        "sessWR": 0.3333,
-        "sessPA": 0.33,
+        "playerId": "c699cfad-a03c-4520-9372-27842ce9edb5",
+        "playerName": "Steve Douglas",
+        "skillLevel": 5,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.33,
         "overallWR": 0.6212,
-        "overallMP": 66
+        "overallMP": 66,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Thomas Hedstrom",
-        "sessWR": 0.375,
-        "sessPA": 0.33,
+        "playerId": "b4e1d1bc-4ded-4fa7-b472-14afcb710f4f",
+        "playerName": "Thomas Hedstrom",
+        "skillLevel": 5,
+        "sessionWR": 0.375,
+        "sessionPA": 0.33,
         "overallWR": 0.527,
-        "overallMP": 74
+        "overallMP": 74,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Vinnie Tippman",
-        "sessWR": 0.4,
-        "sessPA": 0.53,
+        "playerId": "f72ab07b-ec88-47a5-9db7-36297e316efc",
+        "playerName": "Vinnie Tippman",
+        "skillLevel": 3,
+        "sessionWR": 0.4,
+        "sessionPA": 0.53,
         "overallWR": 0.5128,
-        "overallMP": 39
+        "overallMP": 39,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Maria Minga",
-        "sessWR": 0.3333,
-        "sessPA": 0.33,
+        "playerId": "423ad4a1-1f6b-4dc0-ab91-da21b3d4f011",
+        "playerName": "Maria Minga",
+        "skillLevel": 4,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.33,
         "overallWR": 0.5357,
-        "overallMP": 28
+        "overallMP": 28,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Zach Parrish",
-        "sessWR": 0.75,
-        "sessPA": 0.54,
+        "playerId": "6bcec7c0-aaa3-4bf7-a2ca-04703cbd94de",
+        "playerName": "Zach Parrish",
+        "skillLevel": 3,
+        "sessionWR": 0.75,
+        "sessionPA": 0.54,
         "overallWR": 0.75,
-        "overallMP": 8
+        "overallMP": 8,
+        "played": false
       }
     ]
   },
   {
-    "name": "38 Cent",
-    "points": 77,
+    "teamId": "b784a27f-5d1b-4ad1-bd3f-b69795de2222",
+    "teamName": "38 Cent",
+    "sessionPoints": 77,
     "players": [
       {
-        "skill": 6,
-        "name": "Thomas Hiser",
-        "sessWR": 0.3333,
-        "sessPA": 0.22,
+        "playerId": "28232cb9-5816-4bc8-96df-557819706c3d",
+        "playerName": "Thomas Hiser",
+        "skillLevel": 6,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.22,
         "overallWR": 0.5745,
-        "overallMP": 470
+        "overallMP": 470,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Forest Miser",
-        "sessWR": 0.2857,
-        "sessPA": 0.28,
+        "playerId": "d5cc2af1-38ef-4f62-9c88-85203ab53172",
+        "playerName": "Forest Miser",
+        "skillLevel": 5,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.28,
         "overallWR": 0.4416,
-        "overallMP": 197
+        "overallMP": 197,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Johnny Hernandez",
-        "sessWR": 0.3333,
-        "sessPA": 0.33,
+        "playerId": "c8159e88-01dc-49ed-97ea-c9d296723efc",
+        "playerName": "Johnny Hernandez",
+        "skillLevel": 5,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.33,
         "overallWR": 0.46,
-        "overallMP": 100
+        "overallMP": 100,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Amontray Thomas",
-        "sessWR": 0.4,
-        "sessPA": 0.4,
+        "playerId": "0e61c071-5560-465b-8c7d-bd4c112fca37",
+        "playerName": "Amontray Thomas",
+        "skillLevel": 3,
+        "sessionWR": 0.4,
+        "sessionPA": 0.4,
         "overallWR": 0.4453,
-        "overallMP": 137
+        "overallMP": 137,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Raul Nunez",
-        "sessWR": 0.5,
-        "sessPA": 0.41,
+        "playerId": "1e23795a-f245-4d78-8f7a-54d78691a154",
+        "playerName": "Raul Nunez",
+        "skillLevel": 3,
+        "sessionWR": 0.5,
+        "sessionPA": 0.41,
         "overallWR": 0.5652,
-        "overallMP": 23
+        "overallMP": 23,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Kyle Tuffley",
-        "sessWR": 0.5714,
-        "sessPA": 0.42,
+        "playerId": "e3d3ac9d-5220-410e-b7da-2e7d8e622ce8",
+        "playerName": "Kyle Tuffley",
+        "skillLevel": 5,
+        "sessionWR": 0.5714,
+        "sessionPA": 0.42,
         "overallWR": 0.5492,
-        "overallMP": 295
+        "overallMP": 295,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Austin Grey",
-        "sessWR": 0.125,
-        "sessPA": 0.29,
+        "playerId": "f47693b3-cb49-4c8e-bb28-d17605b3c70f",
+        "playerName": "Austin Grey",
+        "skillLevel": 4,
+        "sessionWR": 0.125,
+        "sessionPA": 0.29,
         "overallWR": 0.4783,
-        "overallMP": 23
+        "overallMP": 23,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Jacob Devine",
-        "sessWR": 1.0,
-        "sessPA": 1.0,
+        "playerId": "f03a600e-169b-4733-b5f0-0326e5e5077d",
+        "playerName": "Jacob Devine",
+        "skillLevel": 3,
+        "sessionWR": 1.0,
+        "sessionPA": 1.0,
         "overallWR": 0.6667,
-        "overallMP": 6
+        "overallMP": 6,
+        "played": false
       }
     ]
   },
   {
-    "name": "Y-NOT",
-    "points": 75,
+    "teamId": "dbfa38d1-f58e-4fa2-a2bb-0ef98f6ebfb7",
+    "teamName": "Y-NOT",
+    "sessionPoints": 75,
     "players": [
       {
-        "skill": 5,
-        "name": "Dee Lidy",
-        "sessWR": 0.1667,
-        "sessPA": 0.22,
+        "playerId": "a4d0f590-7407-4390-bab1-df13d10a03ac",
+        "playerName": "Dee Lidy",
+        "skillLevel": 5,
+        "sessionWR": 0.1667,
+        "sessionPA": 0.22,
         "overallWR": 0.5094,
-        "overallMP": 265
+        "overallMP": 265,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Bob Monnier Sr",
-        "sessWR": 0.625,
-        "sessPA": 0.58,
+        "playerId": "f0ab5a1e-5456-441e-889b-6019fb0f3ee0",
+        "playerName": "Bob Monnier Sr",
+        "skillLevel": 5,
+        "sessionWR": 0.625,
+        "sessionPA": 0.58,
         "overallWR": 0.5589,
-        "overallMP": 671
+        "overallMP": 671,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Ashley Ingram",
-        "sessWR": 0.2857,
-        "sessPA": 0.19,
+        "playerId": "13372882-0a13-4287-81b5-6b22dde09075",
+        "playerName": "Ashley Ingram",
+        "skillLevel": 6,
+        "sessionWR": 0.2857,
+        "sessionPA": 0.19,
         "overallWR": 0.5146,
-        "overallMP": 103
+        "overallMP": 103,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Tanna Lehmbeck",
-        "sessWR": 0.1,
-        "sessPA": 0.13,
+        "playerId": "d9c98a2d-01c0-4239-8a65-9ef53e22c04c",
+        "playerName": "Tanna Lehmbeck",
+        "skillLevel": 2,
+        "sessionWR": 0.1,
+        "sessionPA": 0.13,
         "overallWR": 0.1577,
-        "overallMP": 241
+        "overallMP": 241,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Chris Fecteau",
-        "sessWR": 0.7778,
-        "sessPA": 0.51,
+        "playerId": "b5c770a7-52e9-4889-8c91-af61dbf74c0e",
+        "playerName": "Chris Fecteau",
+        "skillLevel": 6,
+        "sessionWR": 0.7778,
+        "sessionPA": 0.51,
         "overallWR": 0.6337,
-        "overallMP": 172
+        "overallMP": 172,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Ashley Fecteau",
-        "sessWR": 0.5,
-        "sessPA": 0.33,
+        "playerId": "7ebf6e0f-95ee-4d34-9460-19a0c4215ccb",
+        "playerName": "Ashley Fecteau",
+        "skillLevel": 3,
+        "sessionWR": 0.5,
+        "sessionPA": 0.33,
         "overallWR": 0.4074,
-        "overallMP": 81
+        "overallMP": 81,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Terri Kemerley",
-        "sessWR": 0.2,
-        "sessPA": 0.4,
+        "playerId": "6f6bab96-b0cc-40e1-b471-6cd837c681ae",
+        "playerName": "Terri Kemerley",
+        "skillLevel": 2,
+        "sessionWR": 0.2,
+        "sessionPA": 0.4,
         "overallWR": 0.811,
-        "overallMP": 74
+        "overallMP": 74,
+        "played": false
       },
       {
-        "skill": 2,
-        "name": "Chuck Kemerley",
-        "sessWR": 0.4,
-        "sessPA": 0.4,
+        "playerId": "21d71888-f48c-48cc-82e3-7d65133265ed",
+        "playerName": "Chuck Kemerley",
+        "skillLevel": 2,
+        "sessionWR": 0.4,
+        "sessionPA": 0.4,
         "overallWR": 0.3,
-        "overallMP": 20
+        "overallMP": 20,
+        "played": false
       }
     ]
   },
   {
-    "name": "Waz 8ers",
-    "points": 70,
+    "teamId": "c89ac696-a496-4cad-a30e-79ccf6f9e810",
+    "teamName": "Waz 8ers",
+    "sessionPoints": 70,
     "players": [
       {
-        "skill": 6,
-        "name": "Brandy Lampkins",
-        "sessWR": 0.5,
-        "sessPA": 0.41,
+        "playerId": "a3f3a408-ba96-4583-a79c-acb99b4f01d3",
+        "playerName": "Brandy Lampkins",
+        "skillLevel": 6,
+        "sessionWR": 0.5,
+        "sessionPA": 0.41,
         "overallWR": 0.5487,
-        "overallMP": 195
+        "overallMP": 195,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Kurt Shively",
-        "sessWR": 0.3333,
-        "sessPA": 0.38,
+        "playerId": "8ad70ea1-21b5-448c-b211-ad85ae0f19a1",
+        "playerName": "Kurt Shively",
+        "skillLevel": 4,
+        "sessionWR": 0.3333,
+        "sessionPA": 0.38,
         "overallWR": 0.4754,
-        "overallMP": 183
+        "overallMP": 183,
+        "played": false
       },
       {
-        "skill": 3,
-        "name": "Super Dave Lampkins",
-        "sessWR": 0.4444,
-        "sessPA": 0.48,
+        "playerId": "aa3acd75-8556-49bf-a6b8-0616a7c1bc1c",
+        "playerName": "Super Dave Lampkins",
+        "skillLevel": 3,
+        "sessionWR": 0.4444,
+        "sessionPA": 0.48,
         "overallWR": 0.3915,
-        "overallMP": 235
+        "overallMP": 235,
+        "played": false
       },
       {
-        "skill": 5,
-        "name": "Kevin Powell",
-        "sessWR": 0.375,
-        "sessPA": 0.29,
+        "playerId": "b5dc5a23-5cea-4a88-9997-8b9acb51b25c",
+        "playerName": "Kevin Powell",
+        "skillLevel": 5,
+        "sessionWR": 0.375,
+        "sessionPA": 0.29,
         "overallWR": 0.5185,
-        "overallMP": 108
+        "overallMP": 108,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Stucks Stucky",
-        "sessWR": 0.1111,
-        "sessPA": 0.07,
+        "playerId": "c5c36c77-64ae-4d65-8eea-c71ad8608062",
+        "playerName": "Stucks Stucky",
+        "skillLevel": 4,
+        "sessionWR": 0.1111,
+        "sessionPA": 0.07,
         "overallWR": 0.4286,
-        "overallMP": 84
+        "overallMP": 84,
+        "played": false
       },
       {
-        "skill": 6,
-        "name": "Erin Bixler",
-        "sessWR": 0.4,
-        "sessPA": 0.33,
+        "playerId": "e04e2b46-fb4e-4cf4-ac11-2cf39a21b92e",
+        "playerName": "Erin Bixler",
+        "skillLevel": 6,
+        "sessionWR": 0.4,
+        "sessionPA": 0.33,
         "overallWR": 0.56,
-        "overallMP": 100
+        "overallMP": 100,
+        "played": false
       },
       {
-        "skill": 4,
-        "name": "Oscar De La Cruz",
-        "sessWR": 0.6667,
-        "sessPA": 0.51,
+        "playerId": "404b55e2-84ec-4e7f-8454-a59abc7b4230",
+        "playerName": "Oscar De La Cruz",
+        "skillLevel": 4,
+        "sessionWR": 0.6667,
+        "sessionPA": 0.51,
         "overallWR": 0.6176,
-        "overallMP": 34
+        "overallMP": 34,
+        "played": false
       }
     ]
   }
