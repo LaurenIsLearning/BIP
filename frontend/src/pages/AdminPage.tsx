@@ -1,25 +1,45 @@
 import { useState } from "react";
-import NavBar from "../components/NavBar";
-import AdminSidebar from "../components/admin/AdminSidebar.tsx";
-import AdminContent from "../components/admin/AdminContent.tsx";
-import styles from "../style/AdminPage.module.css";
+import TeamSelector from "../components/TeamSelector";
+import PlayerSearch from "../components/PlayerSearch";
 
-export type AdminTool = "addTeam" | "editTeam" | "addPlayer" | "editPlayer";
+type Panel =
+  | "addTeam"
+  | "editTeam"
+  | "addPlayer"
+  | "editPlayer"
+  | null;
 
 export default function AdminPage() {
-  const [activeTool, setActiveTool] = useState<AdminTool>("addTeam");
+  const [panel, setPanel] = useState<Panel>(null);
 
   return (
-    <main className={styles.page}>
-      <NavBar />
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      
+      {/* LEFT SIDEBAR */}
+      <aside style={{ width: "240px", padding: "1rem", borderRight: "1px solid #ccc" }}>
+        <h3>Admin Options</h3>
 
-      <div className={styles.layout}>
-        <AdminSidebar active={activeTool} onSelect={setActiveTool} />
+        <button onClick={() => setPanel("addTeam")}>Add Team</button>
+        <button onClick={() => setPanel("editTeam")}>Edit Team</button>
 
-        <div className={styles.content}>
-          <AdminContent tool={activeTool} />
-        </div>
-      </div>
-    </main>
+        <hr />
+
+        <button onClick={() => setPanel("addPlayer")}>Add Player</button>
+        <button onClick={() => setPanel("editPlayer")}>Edit Player</button>
+      </aside>
+
+      {/* RIGHT CONTENT */}
+      <main style={{ flex: 1, padding: "1rem" }}>
+        {!panel && <p>Select an action from the menu.</p>}
+
+        {panel === "addTeam" && <AddTeamForm />}
+
+        {panel === "editTeam" && <EditTeamPanel />}
+
+        {panel === "addPlayer" && <AddPlayerForm />}
+
+        {panel === "editPlayer" && <EditPlayerPanel />}
+      </main>
+    </div>
   );
 }

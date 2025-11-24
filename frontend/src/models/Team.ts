@@ -2,19 +2,19 @@ import { Player } from "./Player";
 
 export class Team {
   teamId: string; // Unique identifier for the team
-  teamName: string; // Team's name
+  name: string; // Team's name
+  points: number; // Team's current session points
   players: Player[]; // Array of players in the team
-  sessionPoints: number; // Team's current session points
 
   constructor(
     teamId: string,
-    teamName: string,
+    name: string,
+    points: number,
     players: Player[],
-    sessionPoints: number,
   ) {
     this.teamId = teamId;
-    this.teamName = teamName;
+    this.name = name;
+    this.points = points;
     this.players = players;
-    this.sessionPoints = sessionPoints;
   }
 }

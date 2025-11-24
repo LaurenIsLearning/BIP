@@ -19,8 +19,7 @@ export default function EditTeamForm({ teams, onSaved }: Props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         teamName: team.teamName,
-        sessionPoints: team.sessionPoints,
-        ranking: team.ranking,
+        sessionPoints: team.sessionPoints
       }),
     });
 
