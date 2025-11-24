@@ -18,7 +18,7 @@ export default function TeamPicker({ onSelect }: Props) {
     setSearch(value);
 
     const team = teams.find(
-      (t) => t.teamName.toLowerCase() === value.toLowerCase()
+      (t) => t.name.toLowerCase() === value.toLowerCase()
     );
 
     onSelect(team || null);
@@ -38,14 +38,14 @@ export default function TeamPicker({ onSelect }: Props) {
 
       <datalist id="team-list">
         {teams.map((t) => (
-          <option key={t.teamId} value={t.teamName} />
+          <option key={t.teamId} value={t.name} />
         ))}
       </datalist>
 
       <select
         onChange={(e) => {
           const team = teams.find((t) => t.teamId === e.target.value);
-          if (team) setSearch(team.teamName);
+          if (team) setSearch(team.name);
           onSelect(team || null);
         }}
         style={{ padding: "6px" }}
@@ -53,7 +53,7 @@ export default function TeamPicker({ onSelect }: Props) {
         <option value="">-- Choose Team --</option>
         {teams.map((t) => (
           <option key={t.teamId} value={t.teamId}>
-            {t.teamName}
+            {t.name}
           </option>
         ))}
       </select>
