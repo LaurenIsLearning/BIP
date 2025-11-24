@@ -20,35 +20,45 @@ CREATE TABLE IF NOT EXISTS players (
 CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
 
 --  Computed Views
+--Tie-based ranking
 CREATE OR REPLACE VIEW v_team_rankings AS
+WITH stats AS (
+  SELECT
+    t.id,
+    t.name,
+    COALESCE(SUM(
+      CASE
+        WHEN m.team1_id = t.id THEN m.team1_points
+        WHEN m.team2_id = t.id THEN m.team2_points
+        ELSE 0
+      END
+    ), 0) AS total_points,
+    COALESCE(SUM(
+      CASE
+        WHEN (m.team1_id = t.id AND m.team1_points > m.team2_points) OR
+             (m.team2_id = t.id AND m.team2_points > m.team1_points)
+        THEN 1 ELSE 0
+      END
+    ), 0) AS wins,
+    COALESCE(SUM(
+      CASE
+        WHEN (m.team1_id = t.id AND m.team1_points < m.team2_points) OR
+             (m.team2_id = t.id AND m.team2_points < m.team1_points)
+        THEN 1 ELSE 0
+      END
+    ), 0) AS losses
+  FROM teams t
+  LEFT JOIN matches m
+    ON t.id IN (m.team1_id, m.team2_id)
+  GROUP BY t.id, t.name
+)
 SELECT
-  t.id,
-  t.name,
-  COALESCE(SUM(
-    CASE
-      WHEN m.team1_id = t.id THEN m.team1_points
-      WHEN m.team2_id = t.id THEN m.team2_points
-      ELSE 0
-    END
-  ), 0) AS total_points,
-  COALESCE(SUM(
-    CASE
-      WHEN (m.team1_id = t.id AND m.team1_points > m.team2_points) OR
-           (m.team2_id = t.id AND m.team2_points > m.team1_points)
-      THEN 1 ELSE 0
-    END
-  ), 0) AS wins,
-  COALESCE(SUM(
-    CASE
-      WHEN (m.team1_id = t.id AND m.team1_points < m.team2_points) OR
-           (m.team2_id = t.id AND m.team2_points < m.team1_points)
-      THEN 1 ELSE 0
-    END
-  ), 0) AS losses
-FROM teams t
-LEFT JOIN matches m
-  ON t.id IN (m.team1_id, m.team2_id)
-GROUP BY t.id, t.name;
+  *,
+  RANK() OVER (
+    ORDER BY total_points DESC, wins DESC, name ASC
+  ) AS ranking
+FROM stats;
+
 
 ---- Example Query
 -- SELECT * FROM v_team_rankings
