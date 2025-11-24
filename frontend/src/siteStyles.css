@@ -17,3 +17,34 @@ h2 {
 h3 {
     font-size: 2.5em;
 }
+
+/* Button Styling */
+button {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button_dark {
+    background-color: darkseagreen;
+    color: black;
+}
+
+.button_dark:hover {
+    background-color: darkgreen; /* Darker green on hover */
+    color: white;
+}
+
+.button_light {
+    background-color: rgb(197, 240, 197);
+    color: black;
+}
+
+.button_light:hover {
+    background-color: rgb(145, 202, 145); /* Darker green on hover */
+}

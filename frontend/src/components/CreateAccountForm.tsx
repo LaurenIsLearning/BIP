@@ -6,34 +6,49 @@ function CreateAccountForm () {
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [secPassword, setSecPassword] = useState('');
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
     const navigate = useNavigate();
 
     // Handle submit function
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        // Create a POST request and have the data in the body
-        // I am not sure how we are accessing the data
-        const response = await fetch("http://localhost:8080/api/users/create_account", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userName, password }),
-        });
+        // Make sure password == secondPassword
+        if(password == secPassword)
+        {
+            setPasswordsMatch(true);
 
-        if(response.ok) {
-            const data = await response.json();  
-            
-            // save the user to local storage
-            localStorage.setItem('user', JSON.stringify(data));
-            // update the auth context
-            //dispatch({type: 'LOGIN', payload: data});
+            console.log("Passwords match, so sending data to backend");
 
-            // Go to home page
-            navigate('/');
-            return data;
+            // Create a POST request and have the data in the body
+            const response = await fetch("http://localhost:3000/api/users/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userName, password }),
+            });
+
+            // Make sure no errors
+            if(response.ok) {
+                const data = await response.json();  
+                
+                // save the user to local storage
+                localStorage.setItem('user', JSON.stringify(data));
+                // update the auth context
+                //dispatch({type: 'LOGIN', payload: data});
+
+                // Go to home page
+                navigate('/');
+                return data;
+            }
         }
+        else {
+            // Setting this to false shows the user that the passwords do not match
+            setPasswordsMatch(false);
+        }
+
     }
 
     return (
@@ -51,8 +66,9 @@ function CreateAccountForm () {
                     </section>
                     <section className={styles.group}>
                         <label>Re-enter Password: </label>
-                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                        <input type="password" onChange={(e) => setSecPassword(e.target.value)} value={secPassword}></input>
                     </section>
+                    {!passwordsMatch && <><p className={styles.error_mssg}>Passwords do not match</p></>}
                     <button type="submit">Submit</button>
                 </form>
             </section>
