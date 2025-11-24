@@ -26,7 +26,7 @@ router.get("/", async (_req, res) => {
 });
 
 //GET /api/teams/:id ::get one team and its players
-r//GET /api/teams/:id :: get one team and its players
+//GET /api/teams/:id :: get one team and its players
 router.get("/:id", async (req, res) => {
   try {
     const query = `
