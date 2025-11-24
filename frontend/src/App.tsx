@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ComparisonPage from "./pages/ComparisonPage";
-import AdminPage from "./pages/AdminPage";
+import AdminPage from "./pages/AdminPageOLD.tsx";
 import StatsPage from "./pages/StatsPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 
