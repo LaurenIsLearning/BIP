@@ -4,7 +4,6 @@ import { pool } from "../db.js"
 const router = express.Router();
 
 //GET /api/teams ::to get list of teams
-//GET /api/teams :: get list of teams
 router.get("/", async (_req, res) => {
   try {
     const result = await pool.query(
@@ -26,7 +25,6 @@ router.get("/", async (_req, res) => {
 });
 
 //GET /api/teams/:id ::get one team and its players
-//GET /api/teams/:id :: get one team and its players
 router.get("/:id", async (req, res) => {
   try {
     const query = `
