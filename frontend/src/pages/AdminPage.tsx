@@ -1,6 +1,10 @@
 import { useState } from "react";
-import TeamSelector from "../components/TeamSelector";
-import PlayerSearch from "../components/PlayerSearch";
+//import TeamSelector from "../components/TeamSelector";
+//import PlayerSearch from "../components/PlayerSearch";
+import AddTeamForm from "../components/admin/AddTeamForm";
+import AddPlayerForm from "../components/admin/AddPlayerForm";
+import EditTeamPanel from "../components/admin/EditTeamPanel";
+import EditPlayerPanel from "../components/admin/EditPlayerPanel";
 
 type Panel =
   | "addTeam"
