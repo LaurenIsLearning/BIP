@@ -1,0 +1,8 @@
+select {
+  font-size: 20pt;
+  padding: 10px;
+  max-width: 250px;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  justify-self: center;
+}/*# sourceMappingURL=SelectTeamDropdown.module.css.map */
