@@ -1,49 +1,30 @@
-import { useState } from "react";
-//import TeamSelector from "../components/TeamSelector";
-//import PlayerSearch from "../components/PlayerSearch";
-import AddTeamForm from "../components/admin/AddTeamForm";
-import AddPlayerForm from "../components/admin/AddPlayerForm";
-import EditTeamPanel from "../components/admin/EditTeamPanel";
-import EditPlayerPanel from "../components/admin/EditPlayerPanel";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import "../style/AdminPage.css";
 
-type Panel =
-  | "addTeam"
-  | "editTeam"
-  | "addPlayer"
-  | "editPlayer"
-  | null;
+function AdminPage() {
+    return (
+        <>
+            <NavBar />
 
-export default function AdminPage() {
-  const [panel, setPanel] = useState<Panel>(null);
+            <section className="admin-hero">
+                <h1>Admin Panel</h1>
+                <p>Manage Teams, Players, and League Data</p>
+            </section>
 
-  return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      
-      {/* LEFT SIDEBAR */}
-      <aside style={{ width: "240px", padding: "1rem", borderRight: "1px solid #ccc" }}>
-        <h3>Admin Options</h3>
+            <section className="admin-options">
+                <h2>Actions</h2>
+                <div className="admin-buttons">
+                    <button>Add Team</button>
+                    <button>Edit Team</button>
+                    <button>Add Player</button>
+                    <button>Edit Player</button>
+                </div>
+            </section>
 
-        <button onClick={() => setPanel("addTeam")}>Add Team</button>
-        <button onClick={() => setPanel("editTeam")}>Edit Team</button>
-
-        <hr />
-
-        <button onClick={() => setPanel("addPlayer")}>Add Player</button>
-        <button onClick={() => setPanel("editPlayer")}>Edit Player</button>
-      </aside>
-
-      {/* RIGHT CONTENT */}
-      <main style={{ flex: 1, padding: "1rem" }}>
-        {!panel && <p>Select an action from the menu.</p>}
-
-        {panel === "addTeam" && <AddTeamForm />}
-
-        {panel === "editTeam" && <EditTeamPanel />}
-
-        {panel === "addPlayer" && <AddPlayerForm />}
-
-        {panel === "editPlayer" && <EditPlayerPanel />}
-      </main>
-    </div>
-  );
+            <Footer />
+        </>
+    );
 }
+
+export default AdminPage;

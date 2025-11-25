@@ -1,17 +1,42 @@
-.page {
-  padding: 2rem;
+.admin-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: var(--hero-background, #f5f5f5);
 }
 
-.layout {
-  display: flex;
-  margin-top: 2rem;
-  gap: 2rem;
+.admin-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
 }
 
-.content {
-  flex: 1;
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+.admin-options {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.admin-options h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-buttons button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #2d6cdf;
+    color: white;
+    transition: 0.2s;
+}
+
+.admin-buttons button:hover {
+    background-color: #1c4fb4;
 }
