@@ -18,9 +18,9 @@ function LoginPage () {
             {loggingIn ? <LoginForm /> : <CreateAccountForm />}
 
             {loggingIn ? (
-                <button onClick={toggleForm}>Don't have an account? Sign Up</button>
+                <button onClick={toggleForm} className="button_dark">Don't have an account? Sign Up</button>
             ) : (
-                <button onClick={toggleForm}>Already have an account? Log In</button>
+                <button onClick={toggleForm} className="button_dark">Already have an account? Log In</button>
             )}
             <Footer />
         </>    

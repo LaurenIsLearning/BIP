@@ -4,9 +4,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: darkgreen;
-  margin-bottom: 3em;
   padding: 1%;
   color: white;
+  box-shadow: 4px 4px 10px #888;
 }
 
 nav .link {
