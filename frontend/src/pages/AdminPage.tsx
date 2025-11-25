@@ -1,9 +1,15 @@
-// admin page placeholder
-export default function AdminPage() {
-  return (
-    <div>
-      <h1>Admin Page</h1>
-      <p>This is the admin dashboard placeholder.</p>
-    </div>
-  );
+import NavBar from "../components/NavBar";
+import "../style/HomePage.css"
+import Footer from "../components/Footer";
+
+function AdminPage() {
+    return (
+        <>
+            <NavBar />
+
+            <Footer />
+        </>
+    )
 }
+
+export default AdminPage;

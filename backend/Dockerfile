@@ -1,18 +1,25 @@
-# Use an official Node image
+# Use official Node image
 FROM node:20-alpine
 
-# Create and set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of the backend source code
-COPY . .
+# Install dependencies including dev deps
+RUN npm install --include=dev
 
-# Expose your backend port
-EXPOSE 3001
+# Copy backend folders individually (prevents Git Bash path rewrite bug)
+COPY src ./src
+COPY db ./db
+COPY tsconfig.json .
 
-# Start the server
-CMD ["npm", "start"]
+# Build TypeScript to /app/dist
+RUN npm run build
+
+# Expose backend port
+EXPOSE 3000
+
+# Start the compiled server
+CMD ["node", "dist/backend.js"]

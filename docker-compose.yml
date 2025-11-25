@@ -10,9 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      # persistent storage
       - pgdata:/var/lib/postgresql/data
-      # automatically run everything in backend/db/init/ (schema + seed SQL)
       - ./backend/db/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U bip -d bip"]
@@ -28,17 +26,15 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_HOST=db
-      - DB_USER=bip
-      - DB_PASS=bip
-      - DB_NAME=bip
-      - DB_PORT=5432
-      - PORT=3000
+      DB_HOST: db
+      DB_USER: bip
+      DB_PASS: bip
+      DB_NAME: bip
+      DB_PORT: 5432
+      PORT: 3000
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/app
-    command: npm run dev
+    command: node dist/backend.js
 
   web:
     build: ./frontend
@@ -48,7 +44,10 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=http://localhost:3000
+      VITE_API_URL: http://localhost:3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   pgdata:

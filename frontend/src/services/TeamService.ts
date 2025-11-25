@@ -1,17 +1,35 @@
 import { Team } from "../models/Team";
 import { Player } from "../models/Player";
 
-function mapPlayers(players: any[] | undefined): Player[] {
+interface PlayerResponse {
+  playerId: string;
+  name: string;
+  skill: number;
+  sessWR: number;
+  sessPA: number;
+  overallWR: number;
+  overallMP: number;
+}
+
+interface TeamResponse {
+  teamId: string;
+  name: string;
+  points: number;
+  players?: PlayerResponse[];
+}
+
+function mapPlayers(players: PlayerResponse[] | undefined): Player[] {
   if (!Array.isArray(players)) return [];
   return players.map(
-    (p: any) =>
+    (p) =>
       new Player(
+        p.playerId,
         p.name,
         p.skill,
-        p.sesswr,
-        p.sesspa,
-        p.overallwr,
-        p.overallmp,
+        p.sessWR,
+        p.sessPA,
+        p.overallWR,
+        p.overallMP,
         false
       )
   );
@@ -19,25 +37,29 @@ function mapPlayers(players: any[] | undefined): Player[] {
 
 export async function fetchAllTeams(): Promise<Team[]> {
   const res = await fetch("http://localhost:3000/api/teams");
-  const data = await res.json();
+  const data: TeamResponse[] = await res.json();
 
   console.log("Fetched teams:", data);
 
   return data.map(
-    (t: any) =>
+    (t) =>
       new Team(
-        t.id,
+        t.teamId,
         t.name,
-        mapPlayers(undefined), // No players in this endpoint
         t.points,
-        t.ranking
+        []
       )
   );
 }
 
 export async function fetchTeam(id: string): Promise<Team> {
   const res = await fetch(`http://localhost:3000/api/teams/${id}`);
-  const t = await res.json();
+  const t: TeamResponse = await res.json();
 
-  return new Team(t.id, t.name, mapPlayers(t.players), t.points, t.ranking);
+  return new Team(
+    t.teamId,
+    t.name, 
+    t.points,
+    mapPlayers(t.players)
+  );
 }

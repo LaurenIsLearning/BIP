@@ -8,9 +8,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Copy all source code
-COPY . .
-
 # Expose Vite dev port
 EXPOSE 5173
 
