@@ -8,7 +8,7 @@ function HomePage() {
     return (
         <>
             <NavBar />
-            <HomeHero />
+            {/* <HomeHero /> */}
             {/* <RankingsPreview /> */}
             <Footer />
         </>
