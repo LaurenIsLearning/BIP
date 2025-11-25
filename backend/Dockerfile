@@ -4,14 +4,16 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy only package files first (better caching)
+# Copy package files
 COPY package*.json ./
 
-# Install ALL dependencies including dev dependencies
+# Install dependencies including dev deps
 RUN npm install --include=dev
 
-# Copy the rest of your backend source code
-COPY . .
+# Copy backend folders individually (prevents Git Bash path rewrite bug)
+COPY src ./src
+COPY db ./db
+COPY tsconfig.json .
 
 # Build TypeScript to /app/dist
 RUN npm run build
