@@ -1,0 +1,44 @@
+.profile_card {
+    width: fit-content;
+    max-width: 60%;
+    border-radius: 2em;
+    box-shadow: 4px 4px 8px #888;
+    margin: 2em;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.inline_box {
+    display: inline;
+    width: fit-content;
+
+}
+
+.info_box {
+    display: block;
+    float: right;
+    margin-left: 2em;
+    margin-right: 5em;
+}
+
+.name_user {
+    float: left;
+}
+
+.btn_section {
+    display: flex;
+    gap: 1.5em;
+}
+
+.stat_section {
+
+}
+
+.player_image {
+  width: 15em;
+  height: 15em;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
