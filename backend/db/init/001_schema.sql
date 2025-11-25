@@ -16,39 +16,74 @@ CREATE TABLE IF NOT EXISTS players (
   overallMP FLOAT CHECK (overallMP >= 0)
 );
 
+CREATE TABLE matches (
+  id SERIAL PRIMARY KEY,
+  team1_id INTEGER REFERENCES teams(id) ON DELETE CASCADE,
+  team2_id INTEGER REFERENCES teams(id) ON DELETE CASCADE,
+  team1_points INTEGER NOT NULL DEFAULT 0,
+  team2_points INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'player',  -- 'player', 'admin', etc.
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- (Optional) Connect players → users
+-- Only use if players need login accounts
+ALTER TABLE players
+ADD COLUMN user_id INTEGER REFERENCES users(id);
+
+
 --  Indexes
 CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+
 
 --  Computed Views
+--Tie-based ranking
 CREATE OR REPLACE VIEW v_team_rankings AS
+WITH stats AS (
+  SELECT
+    t.id,
+    t.name,
+    COALESCE(SUM(
+      CASE
+        WHEN m.team1_id = t.id THEN m.team1_points
+        WHEN m.team2_id = t.id THEN m.team2_points
+        ELSE 0
+      END
+    ), 0) AS total_points,
+    COALESCE(SUM(
+      CASE
+        WHEN (m.team1_id = t.id AND m.team1_points > m.team2_points) OR
+             (m.team2_id = t.id AND m.team2_points > m.team1_points)
+        THEN 1 ELSE 0
+      END
+    ), 0) AS wins,
+    COALESCE(SUM(
+      CASE
+        WHEN (m.team1_id = t.id AND m.team1_points < m.team2_points) OR
+             (m.team2_id = t.id AND m.team2_points < m.team1_points)
+        THEN 1 ELSE 0
+      END
+    ), 0) AS losses
+  FROM teams t
+  LEFT JOIN matches m
+    ON t.id IN (m.team1_id, m.team2_id)
+  GROUP BY t.id, t.name
+)
 SELECT
-  t.id,
-  t.name,
-  COALESCE(SUM(
-    CASE
-      WHEN m.team1_id = t.id THEN m.team1_points
-      WHEN m.team2_id = t.id THEN m.team2_points
-      ELSE 0
-    END
-  ), 0) AS total_points,
-  COALESCE(SUM(
-    CASE
-      WHEN (m.team1_id = t.id AND m.team1_points > m.team2_points) OR
-           (m.team2_id = t.id AND m.team2_points > m.team1_points)
-      THEN 1 ELSE 0
-    END
-  ), 0) AS wins,
-  COALESCE(SUM(
-    CASE
-      WHEN (m.team1_id = t.id AND m.team1_points < m.team2_points) OR
-           (m.team2_id = t.id AND m.team2_points < m.team1_points)
-      THEN 1 ELSE 0
-    END
-  ), 0) AS losses
-FROM teams t
-LEFT JOIN matches m
-  ON t.id IN (m.team1_id, m.team2_id)
-GROUP BY t.id, t.name;
+  *,
+  RANK() OVER (
+    ORDER BY total_points DESC, wins DESC, name ASC
+  ) AS ranking
+FROM stats;
+
 
 ---- Example Query
 -- SELECT * FROM v_team_rankings
