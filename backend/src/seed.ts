@@ -1,6 +1,20 @@
 import { pool } from "./db.js";
 import fs from "fs";
 
+async function seedAdmin() {
+  const adminEmail = "admin@bip.com";
+  const adminHash = "$2b$10$IvegmjBudDHTKCny/yK3cuPhjkULsV3/owlmitPnbvoaAGifdEWwO"
+
+  await pool.query(
+    `INSERT INTO users (email, password_hash, role)
+     VALUES ($1, $2, 'admin')
+     ON CONFLICT (email) DO NOTHING`,
+    [adminEmail, adminHash]
+  );
+
+  console.log("Admin user seeded:", adminEmail);
+}
+
 async function seed() {
   const fileUrl = new URL("../db/init/teamdata.json", import.meta.url);
   const raw = fs.readFileSync(fileUrl, "utf8");
@@ -42,8 +56,8 @@ async function seed() {
 
     console.log(`Seeded team: ${team.name}`);
   }
-
   console.log("~All teams and players have been seeded!");
+
   pool.end();
 }
 

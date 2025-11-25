@@ -25,8 +25,24 @@ CREATE TABLE matches (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'player',  -- 'player', 'admin', etc.
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- (Optional) Connect players → users
+-- Only use if players need login accounts
+ALTER TABLE players
+ADD COLUMN user_id INTEGER REFERENCES users(id);
+
+
 --  Indexes
 CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+
 
 --  Computed Views
 --Tie-based ranking
