@@ -1,15 +1,25 @@
 import { useState } from "react";
 import image from "../assets/ryan_temp_image.jpeg";
-import styles from "../style/ProfileCard.module.css"
+import VerificationForm from "./VerificationForm";
+import styles from "../style/ProfileCard.module.css";
 
 
 function ProfileCard () {
     const [verified, setVerified] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const toggleVerified = () => {
         setVerified(prev => !prev);
+
+        if(!verified)
+        {
+            togglePopup();
+        }
     }
 
+    function togglePopup() {
+      setShowPopup(!showPopup);
+    }
 
     return (
         <>
@@ -25,6 +35,7 @@ function ProfileCard () {
                     depending on if the account is verified or not */}
                     <h3 className={styles.name_user}>First Last</h3>
                     <h4>Team Name</h4>
+                    <h4>email@gmail.com</h4>
                     <section className={styles.btn_section}>
                         <button>Logout</button>
                         {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
@@ -43,6 +54,12 @@ function ProfileCard () {
                 </p>
             </section>
         </section>
+        {showPopup && 
+            <section className={styles.popup_card}>
+                <VerificationForm />
+                <button onClick={togglePopup}>Go away</button>
+            </section>
+        }
         </>
     )
 }
