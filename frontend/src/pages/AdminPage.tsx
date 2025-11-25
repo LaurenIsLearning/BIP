@@ -1,30 +1,18 @@
 import NavBar from "../components/NavBar";
+import HomeHero from "../components/HomeHero";
+import RankingsPreview from "../components/RankingsPreview";
+import "../style/HomePage.css"
 import Footer from "../components/Footer";
-import "../style/AdminPage.css";
 
-function AdminPage() {
+function HomePage() {
     return (
         <>
             <NavBar />
-
-            <section className="admin-hero">
-                <h1>Admin Panel</h1>
-                <p>Manage Teams, Players, and League Data</p>
-            </section>
-
-            <section className="admin-options">
-                <h2>Actions</h2>
-                <div className="admin-buttons">
-                    <button>Add Team</button>
-                    <button>Edit Team</button>
-                    <button>Add Player</button>
-                    <button>Edit Player</button>
-                </div>
-            </section>
-
+            <HomeHero />
+            {/* <RankingsPreview /> */}
             <Footer />
         </>
-    );
+    )
 }
 
-export default AdminPage;
+export default HomePage;

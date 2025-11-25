@@ -16,6 +16,15 @@ CREATE TABLE IF NOT EXISTS players (
   overallMP FLOAT CHECK (overallMP >= 0)
 );
 
+CREATE TABLE matches (
+  id SERIAL PRIMARY KEY,
+  team1_id INTEGER REFERENCES teams(id) ON DELETE CASCADE,
+  team2_id INTEGER REFERENCES teams(id) ON DELETE CASCADE,
+  team1_points INTEGER NOT NULL DEFAULT 0,
+  team2_points INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
 --  Indexes
 CREATE INDEX IF NOT EXISTS idx_players_team_id ON players (team_id);
 

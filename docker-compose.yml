@@ -26,12 +26,12 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_HOST=db
-      - DB_USER=bip
-      - DB_PASS=bip
-      - DB_NAME=bip
-      - DB_PORT=5432
-      - PORT=3000
+      DB_HOST: db
+      DB_USER: bip
+      DB_PASS: bip
+      DB_NAME: bip
+      DB_PORT: 5432
+      PORT: 3000
     ports:
       - "3000:3000"
     command: node dist/backend.js
@@ -44,7 +44,10 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=http://localhost:3000
+      VITE_API_URL: http://localhost:3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   pgdata:
