@@ -7,23 +7,41 @@ ul {
   display: flex;
   justify-content: space-around;
 
-  /* pool ball emoji */
-  list-style-type: "\1F3B1";
-}
-
-section h1 b {
-  color: darkgreen;
 }
 
 /* Hero (attempted) Styling ---------------------------*/
 .hero {
   margin: 0 auto;
+  background-image: url("../assets/billiards_background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 30em;
+  /* filter: brightness(50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 }
 
-.hero h1 {
-  width: 100%;
-  text-align: center;
+.overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 30em;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired darkness */
 }
+
+.hero_text {
+  filter: brightness(100%);
+  width: 70%;
+  color: white;
+}
+
+.hero_text h1 {
+  display: block;
+}
+
 
 /* Pre-table Styling ----------------------------------*/
 .horizontal-button-section {

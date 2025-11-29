@@ -1,42 +1,58 @@
+/* File for full-site styling */
+
 #root {
-  width: 100vw; /* Full viewport width */
-  margin: 0 auto;
-  padding: 0;
   text-align: center;
+
+  margin: 0;
+  padding: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+    font-size: 4em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h2 {
+    font-size: 3em;
 }
 
-.card {
-  padding: 2em;
+h3 {
+    font-size: 2.5em;
 }
 
-.read-the-docs {
-  color: #888;
+
+/* Button styling */
+button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button_dark {
+  background-color: darkseagreen;
+  color: black;
+}
+
+.button_dark:hover {
+  background-color: darkgreen; /* Darker green on hover */
+  color: white;
+}
+
+.button_light {
+  background-color: rgb(197, 240, 197);
+  color: black;
+}
+
+.button_light:hover {
+  background-color: rgb(145, 202, 145); /* Darker green on hover */
 }

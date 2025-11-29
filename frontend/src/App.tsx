@@ -4,6 +4,7 @@ import ComparisonPage from "./pages/ComparisonPage";
 import AdminPage from "./pages/AdminPage.tsx";
 import StatsPage from "./pages/StatsPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import "./App.css";
 
 function App() {
   return (
