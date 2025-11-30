@@ -1,0 +1,13 @@
+.homeContainer {
+    padding: 2rem;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subText {
+    font-size: 1.2rem;
+    color: #444;
+}

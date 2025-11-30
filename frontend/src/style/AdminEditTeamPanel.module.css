@@ -1,0 +1,36 @@
+.panelContainer {
+    padding: 2rem;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subText {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+.backButton {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #0f8727;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: #65d97c;
+}
+
+.placeholderBox {
+    padding: 1.5rem;
+    background: #f3f3f3;
+    border-radius: 8px;
+    color: #555;
+    border: 1px solid #ddd;
+}
