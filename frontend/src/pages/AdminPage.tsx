@@ -1,12 +1,14 @@
+//import "../style/HomePage.css"
 import NavBar from "../components/NavBar";
-import "../style/HomePage.css"
 import Footer from "../components/Footer";
 
 function AdminPage() {
     return (
         <>
             <NavBar />
-
+            <main>
+                <h1>Admin Dashboard</h1>
+            </main>
             <Footer />
         </>
     )
