@@ -1,36 +1,127 @@
+/* Entire panel spacing */
 .panelContainer {
-    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.heading {
+.heading{
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin: 0;
 }
 
-.subText {
-    font-size: 1.2rem;
-    color: #444;
-    margin-bottom: 1.5rem;
+.subText{
+    font-size: 1.5rem;
 }
 
 .backButton {
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #0f8727;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    background: #2b8e2b;
     color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.backButton:hover {
+    background: #237423;
+}
+
+/* team info section */
+
+.fieldset label {
+    display: flex;
+    display: column;
+}
+
+/* Two-column layout */
+.editGrid {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* LEFT SECTION — player list */
+.playerList {
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.playerList ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.playerItem {
+    text-align: left;
+    padding: 0.25rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f8f8f8;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: 0.2s;
+}
+
+.playerItem:hover {
+    background: #eaeaea;
+}
+
+.playerItemSelected {
+    text-align: left;
+    padding: 0.25rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #7dcf91;
+    ;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: 0.2s;
+}
+
+/* RIGHT SECTION — editor pane */
+.editorPanel {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.placeholderText {
+    text-align: center;
+    color: #777;
+}
+
+/* Form */
+.editForm label {
+    text-align: left;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.editForm input {
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.saveButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    background: #2b8e2b;
+    color: white;
+    border: none;
     border-radius: 6px;
     cursor: pointer;
 }
 
-.backButton:hover {
-    background-color: #65d97c;
-}
-
-.placeholderBox {
-    padding: 1.5rem;
-    background: #f3f3f3;
-    border-radius: 8px;
-    color: #555;
-    border: 1px solid #ddd;
+.saveButton:hover {
+    background: #237423;
 }
