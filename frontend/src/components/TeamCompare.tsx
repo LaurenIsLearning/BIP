@@ -27,7 +27,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
-      if (comboTotal + player.skillLevel > 23) return; // Prevent toggling if it would exceed the combo total
+      if (comboTotal + player.skill > 23) return; // Prevent toggling if it would exceed the combo total
 
       let currentlyPlayed = 0;
       for (const p of players) {
@@ -38,7 +38,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
 
     setPlayers((prevPlayers) =>
       prevPlayers.map((p) =>
-        p.playerName === player.playerName ? { ...p, played: !p.played } : p
+        p.name === player.name ? { ...p, played: !p.played } : p
       )
     );
   };
@@ -48,16 +48,16 @@ function TeamCompare({ teamId = "", mode }: Props) {
     let total = 0;
     for (const player of players) {
       if (player.played) {
-        total += player.skillLevel;
+        total += player.skill;
       }
     }
 
     setComboTotal(total);
   }, [players]);
 
-  const skills = useMemo(() => players.map((p) => p.skillLevel), [players]);
+  const skills = useMemo(() => players.map((p) => p.skill), [players]);
   const playedSkills = useMemo(
-    () => players.filter((p) => p.played).map((p) => p.skillLevel),
+    () => players.filter((p) => p.played).map((p) => p.skill),
     [players]
   );
 
@@ -68,7 +68,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
 
   return (
     <div className={styles.root}>
-      <h3>{team.teamName}</h3>
+      <h3>{team.name}</h3>
       <div className={styles.team_header}>
         <div className={styles.info_container}>
           <p>Total Combos</p>
@@ -82,7 +82,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
       <div className={styles.players_container}>
         {players.map((player) => (
           <PlayerCardSmall
-            key={player.playerName}
+            key={player.name}
             player={player}
             onTogglePlayed={togglePlayed}
           />

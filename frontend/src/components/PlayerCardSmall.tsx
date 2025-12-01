@@ -11,11 +11,11 @@ interface Props {
 
 function PlayerCardSmall({ player, onTogglePlayed }: Props) {
   // Looks better without decimal places,
-  const sessionWRPer = (player.sessionWR * 100).toFixed(0) + "%";
-  const sessionPAPer = (player.sessionPA * 100).toFixed(0) + "%";
+  const sessWRPer = (player.sessWR * 100).toFixed(0) + "%";
+  const sessPAPer = (player.sessPA * 100).toFixed(0) + "%";
   const overallWRPer = (player.overallWR * 100).toFixed(0) + "%";
 
-  const playerSplit = player.playerName.split(" ");
+  const playerSplit = player.name.split(" ");
   const first = playerSplit[0];
   const lastInitial = playerSplit.length > 1 ? playerSplit[1][0] + "." : "";
   const shortenedName = `${first} ${lastInitial}`;
@@ -26,7 +26,7 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
   return (
     <div
       className={`
-  ${styles[`color_${player.skillLevel}`]} 
+  ${styles[`color_${player.skill}`]} 
   ${showStatExtras ? styles.extended : styles.collapsed}
   ${styles.player_card_small}
   ${player.played ? styles.played : ""}
@@ -38,7 +38,7 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
       >
         <div className={styles.player_name_and_sl}>
           <p className={styles.player_name}>{shortenedName}</p>
-          <p>SL: {player.skillLevel}</p>
+          <p>SL: {player.skill}</p>
         </div>
         {showStatExtras ? (
           <div className={styles.player_additional_stats}>
@@ -46,8 +46,8 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
               <>
                 <p onClick={() => setShowSessionStats(false)}>Session Stats</p>
                 <div className={styles.stat_block}>
-                  <p>WR: {sessionWRPer}</p>
-                  <p>PA: {sessionPAPer}</p>
+                  <p>WR: {sessWRPer}</p>
+                  <p>PA: {sessPAPer}</p>
                 </div>
               </>
             ) : (

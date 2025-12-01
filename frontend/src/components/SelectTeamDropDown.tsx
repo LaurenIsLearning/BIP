@@ -48,8 +48,8 @@ function SelectTeamDropDown({ selectedTeamId = "", mode }: Props) {
     >
       <option value="">Select a team</option>
       {teams.map((team) => (
-        <option key={team.teamName} value={team.teamId}>
-          {team.teamName}
+        <option key={team.name} value={team.teamId}>
+          {team.name}
         </option>
       ))}
     </select>
