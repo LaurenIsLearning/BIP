@@ -30,6 +30,8 @@ function StatsPage() {
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
+      if (!player.canBePlayed) return; // Prevent toggling if player cannot be played
+
       if (comboTotal + player.skill > 23) return; // Prevent toggling if it would exceed the combo total
 
       let currentlyPlayed = 0;
@@ -41,7 +43,7 @@ function StatsPage() {
 
     setPlayers((prevPlayers) =>
       prevPlayers.map((p) =>
-        p.playerId === player.playerId ? { ...p, played: !p.played } : p
+        p.name === player.name ? { ...p, played: !p.played } : p
       )
     );
   };
@@ -58,12 +60,21 @@ function StatsPage() {
     setComboTotal(total);
   }, [players]);
 
-  const { count } = useComCalc(
+  const { count, determineIfCanBePlayed } = useComCalc(
     players.map((p) => p.skill),
     players
       .map((p) => (p.played ? p.skill : null))
       .filter((s) => s !== null) as number[]
   );
+
+  useEffect(() => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((p) => ({
+        ...p,
+        canBePlayed: determineIfCanBePlayed(p),
+      }))
+    );
+  }, [determineIfCanBePlayed]);
 
   if (!teamId || teamId === "")
     return (
