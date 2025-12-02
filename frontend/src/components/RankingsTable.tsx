@@ -32,8 +32,7 @@ function RankingsTable() {
         <tbody>
           {teams.map((team, index) => (
             <tr key={index} onClick={() => navigateToStats(team.teamId)}>
-              <th>{team.ranking || index + 1}</th>{" "}
-              {/* Fallback index until ^ rank is populated later */}
+              <th>{team.ranking}</th>
               <th>{team.name}</th>
               <th>{team.points}</th>
             </tr>

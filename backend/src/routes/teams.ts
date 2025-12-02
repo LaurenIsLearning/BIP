@@ -1,5 +1,5 @@
 import express from "express";
-import { pool } from "../db.js"
+import { pool } from "../db.js";
 
 const router = express.Router();
 
@@ -7,14 +7,18 @@ const router = express.Router();
 router.get("/", async (_req, res) => {
   try {
     const result = await pool.query(
-      `SELECT id, name, points FROM teams ORDER BY id`
+      `SELECT t.id, t.name, t.points, vr.ranking AS ranking
+       FROM teams t
+       JOIN v_team_rankings vr ON vr.id = t.id
+       ORDER BY vr.ranking ASC`
     );
 
     // Map DB → FE model
-    const formatted = result.rows.map(t => ({
+    const formatted = result.rows.map((t) => ({
       teamId: t.id.toString(),
       name: t.name,
       points: t.points,
+      ranking: t.ranking,
     }));
 
     res.json(formatted);
@@ -32,11 +36,13 @@ router.get("/:id", async (req, res) => {
         t.id,
         t.name,
         t.points,
+        vr.ranking AS ranking,
         COALESCE(json_agg(p.* ORDER BY p.id), '[]'::json) AS players
       FROM teams t
+      JOIN v_team_rankings vr ON vr.id = t.id
       LEFT JOIN players p ON t.id = p.team_id
       WHERE t.id = $1
-      GROUP BY t.id;
+      GROUP BY t.id, t.name, t.points, vr.ranking;
     `;
 
     const result = await pool.query(query, [req.params.id]);
@@ -52,6 +58,7 @@ router.get("/:id", async (req, res) => {
       teamId: row.id.toString(),
       name: row.name,
       points: row.points,
+      ranking: row.ranking,
       players: row.players.map((p) => ({
         playerId: p.id.toString(),
         name: p.name,
@@ -60,7 +67,6 @@ router.get("/:id", async (req, res) => {
         sessPA: p.sesspa,
         overallWR: p.overallwr,
         overallMP: p.overallmp,
-        played: false,
       })),
     };
 
@@ -70,6 +76,5 @@ router.get("/:id", async (req, res) => {
     res.status(500).send("Error fetching team");
   }
 });
-
 
 export default router;
