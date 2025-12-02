@@ -35,7 +35,7 @@ function RankingsTable() {
               <th>{team.ranking || index + 1}</th>{" "}
               {/* Fallback index until ^ rank is populated later */}
               <th>{team.name}</th>
-              <th>{team.sessionPoints}</th>
+              <th>{team.points}</th>
             </tr>
           ))}
         </tbody>
