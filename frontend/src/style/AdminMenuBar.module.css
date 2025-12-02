@@ -1,0 +1,43 @@
+.menuBar {
+  background: #c2e2b9;
+  padding: 1rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column; /*to stack header/buttons*/
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.menuLabel{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: black;
+}
+
+.menuButtons {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    padding: 0;
+    margin: .5rem;
+}
+
+.menuBar button {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #f0f0f0;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.menuBar button:hover {
+  background: #cccccc;
+}
+
+.active {
+  background: #0f8727 !important;
+  color: white;
+}

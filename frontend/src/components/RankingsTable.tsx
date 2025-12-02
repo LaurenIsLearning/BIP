@@ -34,7 +34,7 @@ function RankingsTable() {
             <tr key={index} onClick={() => navigateToStats(team.teamId)}>
               <th>{team.ranking || index + 1}</th>{" "}
               {/* Fallback index until ^ rank is populated later */}
-              <th>{team.teamName}</th>
+              <th>{team.name}</th>
               <th>{team.sessionPoints}</th>
             </tr>
           ))}

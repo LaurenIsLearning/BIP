@@ -22,4 +22,7 @@ RUN npm run build
 EXPOSE 3000
 
 # Start the compiled server
-CMD ["node", "dist/backend.js"]
+#CMD ["node", "dist/backend.js"]
+
+# DEBUG: Run seed THEN start backend
+CMD ["sh", "-c", "node dist/seed.js && node dist/backend.js"]

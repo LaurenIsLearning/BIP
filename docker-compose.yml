@@ -13,7 +13,7 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./backend/db/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U bip -d bip"]
+      test: [ "CMD-SHELL", "pg_isready -U bip -d bip" ]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -21,7 +21,6 @@ services:
   backend:
     build: ./backend
     container_name: bip_backend
-    env_file: ./backend/.env
     depends_on:
       db:
         condition: service_healthy
@@ -34,20 +33,24 @@ services:
       PORT: 3000
     ports:
       - "3000:3000"
-    command: node dist/backend.js
 
   web:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: bip_web
-    depends_on:
-      - backend
+    command: npm run dev -- --host
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - node_modules_cache:/app/node_modules
     ports:
       - "5173:5173"
     environment:
       VITE_API_URL: http://localhost:3000
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      CHOKIDAR_USEPOLLING: "true"
 
 volumes:
   pgdata:
+  node_modules_cache:
+

@@ -30,7 +30,7 @@ function StatsPage() {
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
-      if (comboTotal + player.skillLevel > 23) return; // Prevent toggling if it would exceed the combo total
+      if (comboTotal + player.skill > 23) return; // Prevent toggling if it would exceed the combo total
 
       let currentlyPlayed = 0;
       for (const p of players) {
@@ -41,7 +41,7 @@ function StatsPage() {
 
     setPlayers((prevPlayers) =>
       prevPlayers.map((p) =>
-        p.playerName === player.playerName ? { ...p, played: !p.played } : p
+        p.playerId === player.playerId ? { ...p, played: !p.played } : p
       )
     );
   };
@@ -51,7 +51,7 @@ function StatsPage() {
     let total = 0;
     for (const player of players) {
       if (player.played) {
-        total += player.skillLevel;
+        total += player.skill;
       }
     }
 
@@ -59,9 +59,9 @@ function StatsPage() {
   }, [players]);
 
   const { count } = useComCalc(
-    players.map((p) => p.skillLevel),
+    players.map((p) => p.skill),
     players
-      .map((p) => (p.played ? p.skillLevel : null))
+      .map((p) => (p.played ? p.skill : null))
       .filter((s) => s !== null) as number[]
   );
 
@@ -84,14 +84,14 @@ function StatsPage() {
       <div className={styles.top_half}>
         <div>
           <PlayerCardLarge
-            key={players[0].playerName}
+            key={players[0].name}
             player={players[0]}
             onTogglePlayed={togglePlayed}
           />
           <p>Team Captain</p>
         </div>
         <div className={styles.team_info}>
-          <p className={styles.team_name}>{team.teamName}</p>
+          <p className={styles.team_name}>{team.name}</p>
           <div className={styles.team_extras_container}>
             <div className={styles.team_extras}>
               <p>Team Ranking</p>
@@ -109,7 +109,7 @@ function StatsPage() {
         </div>
         <div>
           <PlayerCardLarge
-            key={players[1].playerName}
+            key={players[1].name}
             player={players[1]}
             onTogglePlayed={togglePlayed}
           />
@@ -120,7 +120,7 @@ function StatsPage() {
         {players.map((player, index) =>
           index >= 2 ? (
             <PlayerCardSmall
-              key={player.playerName}
+              key={player.name}
               player={player}
               onTogglePlayed={togglePlayed}
             />

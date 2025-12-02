@@ -9,10 +9,10 @@ interface Props {
 }
 
 function CombinationContainer({ players }: Props) {
-  const skills = players.map((player) => player.skillLevel);
+  const skills = players.map((player) => player.skill);
   const selectedSkills = players
     .filter((player) => player.played)
-    .map((player) => player.skillLevel);
+    .map((player) => player.skill);
 
   const { combinations } = useComCalc(skills, selectedSkills);
 
