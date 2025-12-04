@@ -41,3 +41,40 @@ router.put("/update", async (req, res) => {
     }
 
 });
+
+//create a new player
+router.post("/add", async (req, res) => {
+    const { teamId, player } = req.body;
+
+    if (!player || !teamId) {
+        return res.status(400).json({ error: "Missing teamId or player data" });
+    }
+    try {
+        const result = await pool.query(
+            `
+        INSERT INTO players (team_id, name, skill, sesswr, sesspa, overallwr, overallmp)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING id
+        `,
+            [
+                teamId,
+                player.name,
+                player.skill,
+                player.sessWR,
+                player.sessPA,
+                player.overallWR,
+                player.overallMP,
+            ]
+        );
+
+        res.json({
+            message: "Player created successfully",
+            playerId: result.rows[0].id.toString(),
+        });
+    } catch (err) {
+        console.error("Error creating player:", err);
+        res.status(500).json({ error: "Database insert failed" });
+    }
+});
+
+export default router;

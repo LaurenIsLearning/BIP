@@ -16,6 +16,13 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
     async function handleSave(e: React.FormEvent) {
         e.preventDefault(); //stop page reload after save
         if (!formData) return;
+
+        const isNew = !selectedPlayer || selectedPlayer.name === "";
+        const endpoint = isNew
+            ? "/api/players/add"
+            : "/api/players/update"
+
+
         console.log("Saving player:", formData);
 
         const response = await fetch("http://localhost:3001/api/players/update", {
