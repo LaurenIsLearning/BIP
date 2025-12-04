@@ -12,6 +12,32 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
     const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
     const [formData, setFormData] = useState<Player | null>(null);
 
+    //to update player
+    async function handleSave(e: React.FormEvent) {
+        e.preventDefault(); //stop page reload after save
+        if (!formData) return;
+        console.log("Saving player:", formData);
+
+        const response = await fetch("http://localhost:3001/api/players/update", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                teamId: team.teamId,
+                player: formData
+            }),
+        });
+
+        if (!response.ok) {
+            alert("Failed to update player");
+            return;
+        }
+
+        alert("Player saved!");
+
+        //refresh page or reload team from backend
+        onBack?.();
+    }
+
     return (
         <>
             <section className={styles.panelContainer}>
@@ -97,7 +123,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
 
                     {
                         selectedPlayer && (
-                            <form className={styles.editForm}>
+                            <form className={styles.editForm} onSubmit={handleSave}>
                                 <h3 className={styles.editTitle}>
                                     Editing {formData?.name || "New Player"}
                                 </h3>
