@@ -19,7 +19,8 @@ COPY tsconfig.json .
 RUN npm run build
 
 # Expose backend port
-EXPOSE 3000
+ENV PORT=8080
+EXPOSE 8080
 
 # Start the compiled server
 #CMD ["node", "dist/backend.js"]
