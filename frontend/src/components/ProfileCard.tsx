@@ -2,11 +2,13 @@ import { useState } from "react";
 import image from "../assets/ryan_temp_image.jpeg";
 import VerificationForm from "./VerificationForm.tsx";
 import styles from "../style/ProfileCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 
 function ProfileCard () {
     const [verified, setVerified] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
 
     // This funtionallity will be changed later
     const toggleVerified = () => {
@@ -20,6 +22,17 @@ function ProfileCard () {
 
     function togglePopup() {
       setShowPopup(!showPopup);
+    }
+
+    const logout = () => {
+        // remove user from storage
+        localStorage.removeItem('user')
+
+        // dispatch logout action
+        // dispatch({ type: 'LOGOUT' })
+
+        // Go to the Home page
+        navigate('/'); 
     }
 
     return (
@@ -38,7 +51,7 @@ function ProfileCard () {
                     <h4>Team Name</h4>
                     <h4>email@gmail.com</h4>
                     <section className={styles.btn_section}>
-                        <button className="button_light">Logout</button>
+                        <button className="button_light" onClick={logout}>Logout</button>
                         {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
                         {!verified && <button className="button_light" onClick={toggleVerified}>Verify</button>}
                         {verified && <button className="button_light" onClick={toggleVerified}>Remove Verification</button>}
