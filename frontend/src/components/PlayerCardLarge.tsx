@@ -15,9 +15,11 @@ function PlayerCardLarge({ player, onTogglePlayed }: Props) {
   const overallWRPer = (player.overallWR * 100).toFixed(0) + "%";
   return (
     <div
-      className={`${styles.player_card} ${
-        styles[`color_${player.skill}`]
-      } ${player.played ? styles.played : ""}`}
+      className={`${styles.player_card} 
+      ${styles[`color_${player.skill}`]} 
+      ${player.played ? styles.played : ""} 
+      ${!player.canBePlayed && !player.played ? styles.cannot_play : ""}
+      `}
     >
       <div className={styles.top_half}>
         <img

@@ -51,7 +51,8 @@ WITH stats AS (
   SELECT
     t.id,
     t.name,
-    COALESCE(SUM(
+    -- Include seeded `teams.points` as a base, plus any points from matches
+    COALESCE(t.points, 0) + COALESCE(SUM(
       CASE
         WHEN m.team1_id = t.id THEN m.team1_points
         WHEN m.team2_id = t.id THEN m.team2_points
@@ -79,8 +80,9 @@ WITH stats AS (
 )
 SELECT
   *,
+  -- Rank only by points and wins so identical point/win totals get the same rank
   RANK() OVER (
-    ORDER BY total_points DESC, wins DESC, name ASC
+    ORDER BY total_points DESC, wins DESC
   ) AS ranking
 FROM stats;
 

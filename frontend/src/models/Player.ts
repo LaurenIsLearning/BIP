@@ -6,7 +6,8 @@ export class Player {
   sessPA: number; // Player's current session points achieved percentage
   overallWR: number; // Player's overall winrate
   overallMP: number; // Player's overall matches played
-  played: boolean = false; // Whether the player has played or not
+  played: boolean; // Whether the player has played or not
+  canBePlayed: boolean; // Whether the player can be toggled to played or not
 
   constructor(
     playerId: string,
@@ -15,8 +16,7 @@ export class Player {
     sessWR: number,
     sessPA: number,
     overallWR: number,
-    overallMP: number,
-    played: boolean = false
+    overallMP: number
   ) {
     this.playerId = playerId;
     this.name = name;
@@ -25,6 +25,7 @@ export class Player {
     this.sessPA = sessPA;
     this.overallWR = overallWR;
     this.overallMP = overallMP;
-    this.played = played;
+    this.played = false; // Default to false, this is not stored in DB
+    this.canBePlayed = true; // Default to true, this is not stored in DB
   }
 }
