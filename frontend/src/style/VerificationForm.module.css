@@ -1,9 +1,10 @@
 .verify {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
 }
 
 .group {
-    width: 100%;
     display: inline;
     margin: 1em;
     gap: 1em;

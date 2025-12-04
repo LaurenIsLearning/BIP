@@ -8,6 +8,7 @@ function ProfileCard () {
     const [verified, setVerified] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
 
+    // This funtionallity will be changed later
     const toggleVerified = () => {
         setVerified(prev => !prev);
 
