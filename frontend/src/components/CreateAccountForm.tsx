@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateAccountForm () {
 
-    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secPassword, setSecPassword] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(true);
@@ -27,7 +27,7 @@ function CreateAccountForm () {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ userName, password }),
+                body: JSON.stringify({ userEmail, password }),
             });
 
             // Make sure no errors
@@ -57,8 +57,8 @@ function CreateAccountForm () {
                 <form className={styles.login_form} onSubmit={handleSubmit}>
                     <h3>Create an Account</h3>
                     <section className={styles.group}>
-                        <label>User Name: </label>
-                        <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName}></input>
+                        <label>User Email: </label>
+                        <input type="email" onChange={(e) => setUserEmail(e.target.value)} value={userEmail}></input>
                     </section>
                     <section className={styles.group}>
                         <label>Password: </label>
