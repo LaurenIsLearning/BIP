@@ -1,0 +1,67 @@
+import { useState } from "react";
+import image from "../assets/ryan_temp_image.jpeg";
+import VerificationForm from "./VerificationForm.tsx";
+import styles from "../style/ProfileCard.module.css";
+
+
+function ProfileCard () {
+    const [verified, setVerified] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+
+    const toggleVerified = () => {
+        setVerified(prev => !prev);
+
+        if(!verified)
+        {
+            togglePopup();
+        }
+    }
+
+    function togglePopup() {
+      setShowPopup(!showPopup);
+    }
+
+    return (
+        <>
+        <section className={styles.profile_card}>
+            <section className={styles.inline_box}>
+                <img
+                    src={image} // Eventually given image of player
+                    alt="First Last Name"
+                    className={styles.player_image}
+                ></img>
+                <section className={styles.info_box}>
+                    {/* most of the data displayed in this section will vary 
+                    depending on if the account is verified or not */}
+                    <h3 className={styles.name_user}>First Last</h3>
+                    <h4>Team Name</h4>
+                    <h4>email@gmail.com</h4>
+                    <section className={styles.btn_section}>
+                        <button>Logout</button>
+                        {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
+                        {!verified && <button onClick={toggleVerified}>Verify</button>}
+                        {verified && <button onClick={toggleVerified}>Remove Verification</button>}
+                    </section>
+                </section>
+                
+            </section>
+            <hr />
+            <section className={styles.stat_section}>
+                <p>
+                    You are not verified yet, so there are no recorded stats 
+                    for you. In order to see detailed stats, you need to verify 
+                    your account.
+                </p>
+            </section>
+        </section>
+        {showPopup && 
+            <section className={styles.popup_card}>
+                <VerificationForm />
+                <button onClick={togglePopup}>Go away</button>
+            </section>
+        }
+        </>
+    )
+}
+
+export default ProfileCard;

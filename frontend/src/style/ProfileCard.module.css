@@ -1,0 +1,34 @@
+.profile_card {
+    width: 60%;
+    border-radius: 2em;
+    padding: 1em;
+    box-shadow: 4px 4px 10px #888;
+}
+
+.inline_box {
+    display: inline-flex;
+}
+
+.player_image {
+    
+}
+
+.info_box {
+
+}
+
+.name_user {
+
+}
+
+.btn_section {
+
+}
+
+.stat_section {
+
+}
+
+.popup_card {
+
+}
