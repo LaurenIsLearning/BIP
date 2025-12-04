@@ -4,6 +4,8 @@ import LoginForm from "../components/LoginForm";
 import CreateAccountForm from "../components/CreateAccountForm";
 import { useState } from "react";
 
+import ProfilePage from "./ProfilePage";
+
 function LoginPage () {
     const [loggingIn, setLoggingIn] = useState(true);
 
@@ -23,6 +25,7 @@ function LoginPage () {
                 <button onClick={toggleForm} className="button_dark">Already have an account? Log In</button>
             )}
             <Footer />
+            <ProfilePage />
         </>    
     )
 }

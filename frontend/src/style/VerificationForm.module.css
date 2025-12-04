@@ -1,0 +1,10 @@
+.verify {
+    display: block;
+}
+
+.group {
+    width: 100%;
+    display: inline;
+    margin: 1em;
+    gap: 1em;
+}

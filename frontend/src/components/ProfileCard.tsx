@@ -37,15 +37,23 @@ function ProfileCard () {
                     <h4>Team Name</h4>
                     <h4>email@gmail.com</h4>
                     <section className={styles.btn_section}>
-                        <button>Logout</button>
+                        <button className="button_light">Logout</button>
                         {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
-                        {!verified && <button onClick={toggleVerified}>Verify</button>}
-                        {verified && <button onClick={toggleVerified}>Remove Verification</button>}
+                        {!verified && <button className="button_light" onClick={toggleVerified}>Verify</button>}
+                        {verified && <button className="button_light" onClick={toggleVerified}>Remove Verification</button>}
                     </section>
                 </section>
                 
             </section>
             <hr />
+            {showPopup && <>
+                <section className={styles.verify_form}>
+                    <VerificationForm />
+                    <button className="button_light" onClick={togglePopup}>Cancel Verification</button>
+                </section>
+                <hr />
+            </>  
+            }
             <section className={styles.stat_section}>
                 <p>
                     You are not verified yet, so there are no recorded stats 
@@ -54,12 +62,7 @@ function ProfileCard () {
                 </p>
             </section>
         </section>
-        {showPopup && 
-            <section className={styles.popup_card}>
-                <VerificationForm />
-                <button onClick={togglePopup}>Go away</button>
-            </section>
-        }
+        
         </>
     )
 }
