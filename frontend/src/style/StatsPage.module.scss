@@ -16,7 +16,6 @@
 .has_id {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   > select {
     font-size: 16pt;
@@ -33,10 +32,11 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: space-around;
+  padding-top: 10px;
 
   > .team_info {
     display: flex;
-    width: 50vw;
     flex-direction: column;
 
     > .team_name {

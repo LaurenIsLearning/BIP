@@ -5,14 +5,14 @@ export class Team {
   name: string; // Team's name
   points: number; // Team's current session points
   players: Player[]; // Array of players in the team
-  ranking?: number;
+  ranking: number;
 
   constructor(
     teamId: string,
     name: string,
     points: number,
     players: Player[],
-    ranking?: number
+    ranking: number
   ) {
     this.teamId = teamId;
     this.name = name;

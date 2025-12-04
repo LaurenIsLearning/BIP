@@ -17,6 +17,14 @@ function StatsPage() {
   // set initial id from url if it exists
   const { teamId } = useParams<{ teamId: string }>();
 
+  const [isWide, setIsWide] = useState(window.innerWidth > 900);
+
+  useEffect(() => {
+    const handleResize = () => setIsWide(window.innerWidth > 900);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (!teamId) return;
 
@@ -30,6 +38,8 @@ function StatsPage() {
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
+      if (!player.canBePlayed) return; // Prevent toggling if player cannot be played
+
       if (comboTotal + player.skill > 23) return; // Prevent toggling if it would exceed the combo total
 
       let currentlyPlayed = 0;
@@ -41,7 +51,7 @@ function StatsPage() {
 
     setPlayers((prevPlayers) =>
       prevPlayers.map((p) =>
-        p.playerId === player.playerId ? { ...p, played: !p.played } : p
+        p.name === player.name ? { ...p, played: !p.played } : p
       )
     );
   };
@@ -58,12 +68,21 @@ function StatsPage() {
     setComboTotal(total);
   }, [players]);
 
-  const { count } = useComCalc(
+  const { count, determineIfCanBePlayed } = useComCalc(
     players.map((p) => p.skill),
     players
       .map((p) => (p.played ? p.skill : null))
       .filter((s) => s !== null) as number[]
   );
+
+  useEffect(() => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((p) => ({
+        ...p,
+        canBePlayed: determineIfCanBePlayed(p),
+      }))
+    );
+  }, [determineIfCanBePlayed]);
 
   if (!teamId || teamId === "")
     return (
@@ -77,6 +96,47 @@ function StatsPage() {
     );
 
   if (!team) return <div>Loading...</div>;
+
+  if (!isWide) {
+    return (
+      <>
+        <NavBar />
+        <div className={styles.top_half}>
+          <div className={styles.team_info}>
+            <p className={styles.team_name}>{team.name}</p>
+            <div className={styles.team_extras_container}>
+              <div className={styles.team_extras}>
+                <p>Ranking</p>
+                <p>{team.ranking}</p>
+              </div>
+              <div className={styles.team_extras}>
+                <p>Combinations</p>
+                <p>{count}</p>
+              </div>
+              <div className={styles.team_extras}>
+                <p>Point Total</p>
+                <p>{comboTotal}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.bottom_half}>
+          {players.map((player) => (
+            <PlayerCardSmall
+              key={player.name}
+              player={player}
+              onTogglePlayed={togglePlayed}
+            />
+          ))}
+        </div>
+        <CombinationContainer players={players} />
+        <div className={styles.has_id}>
+          <p>View stats for another team:</p>
+          <SelectTeamDropDown selectedTeamId={teamId} mode="stats" />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -94,15 +154,15 @@ function StatsPage() {
           <p className={styles.team_name}>{team.name}</p>
           <div className={styles.team_extras_container}>
             <div className={styles.team_extras}>
-              <p>Team Ranking</p>
+              <p>Ranking</p>
               <p>{team.ranking}</p>
             </div>
             <div className={styles.team_extras}>
-              <p>Possible Combinations</p>
+              <p>Combinations</p>
               <p>{count}</p>
             </div>
             <div className={styles.team_extras}>
-              <p>Combo Point Total</p>
+              <p>Point Total</p>
               <p>{comboTotal}</p>
             </div>
           </div>

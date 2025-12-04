@@ -30,13 +30,16 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
   ${showStatExtras ? styles.extended : styles.collapsed}
   ${styles.player_card_small}
   ${player.played ? styles.played : ""}
+  ${!player.canBePlayed && !player.played ? styles.cannot_play : ""}
 `}
     >
       <div
         className={showStatExtras ? styles.content_extended : styles.content}
-        onClick={() => onTogglePlayed(player)}
       >
-        <div className={styles.player_name_and_sl}>
+        <div
+          className={styles.player_name_and_sl}
+          onClick={() => onTogglePlayed(player)}
+        >
           <p className={styles.player_name}>{shortenedName}</p>
           <p>SL: {player.skill}</p>
         </div>
@@ -63,7 +66,9 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
         ) : null}
       </div>
       <button
-        className={showStatExtras ? "" : styles.rotated}
+        className={`${styles.arrow_button}${
+          showStatExtras ? "" : " " + styles.rotated
+        }`}
         onClick={() => setShowStatExtras(!showStatExtras)}
       >
         <img
