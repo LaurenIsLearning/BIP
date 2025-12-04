@@ -7,14 +7,15 @@ import validator from "validator";
 const router = express.Router();
 
 // Create a json web token
-const createToken = (_id) => {
-    return jwt.sign({_id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
+const createToken = (id) => {
+    return jwt.sign({id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
 }
 
 // Login Route
 router.post('/login', async (req, res) => {
     // Get username and password from request body
     const { userEmail, password } = req.body;
+    console.log("Email: ", userEmail);
 
     try {
         // Make sure all fields are filled
@@ -33,7 +34,7 @@ router.post('/login', async (req, res) => {
 
         // Get user from database
         const selectQuery = 'SELECT * FROM users WHERE email = $1';
-        const result = await pool.query(selectQuery, userEmail);
+        const result = await pool.query(selectQuery, [userEmail]);
         const { rows } = result;
 
         // Check if user exists
@@ -48,14 +49,15 @@ router.post('/login', async (req, res) => {
             const currUser = rows[0];
 
             // Check if the password is correct
-            if(currUser.password_hash == passwordHash)
+            const validPassword = await bcrypt.compare(password, currUser.password_hash);
+            if(validPassword)
             {
                 // Create token
                 const token = createToken(currUser.id)
 
                 // Send user and token
                 res.status(200).json({
-                    user: { userName: currUser.userName, _id: currUser._id },
+                    user: { userName: currUser.userName, id: currUser.id },
                     token
                 });
             } else {
@@ -77,6 +79,8 @@ router.post('/signup', async (req, res) => {
     // Get username and password from request body
     const { userEmail, password } = req.body;
 
+    console.log("SIGNUP VALUES:", userEmail, password);
+
     try {
         // Make sure all fields are filled
         if(!userEmail || !password) {
@@ -90,7 +94,7 @@ router.post('/signup', async (req, res) => {
 
         // Check if the email is already in use
         const selectQuery = 'SELECT * FROM users WHERE email = $1';
-        const initialResult = await pool.query(selectQuery, userEmail);
+        const initialResult = await pool.query(selectQuery, [userEmail]);
         if(initialResult.rows.length != 0)
         {
             throw Error('Account with that email is already in use')
@@ -105,11 +109,11 @@ router.post('/signup', async (req, res) => {
             `INSERT INTO users (email, password_hash, role)
             VALUES ($1, $2, 'player')
             ON CONFLICT (email) DO NOTHING`,
-            [userEmail, password]
+            [userEmail, passwordHash]
         ); 
 
         // Get the user we just created
-        const result = await pool.query(selectQuery, userEmail);
+        const result = await pool.query(selectQuery, [userEmail]);
         const currUser = result.rows[0];
         console.log('User added:', currUser);
         
@@ -118,7 +122,7 @@ router.post('/signup', async (req, res) => {
 
         // Make sure to also add token
         res.status(200).json({
-            user: { userName: currUser.userName, _id: currUser._id },
+            user: { userName: currUser.userName, id: currUser.id },
             token
         });
     } catch (err) {

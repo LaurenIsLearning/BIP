@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateAccountForm () {
-
+    const [error, setError] = useState(null);
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secPassword, setSecPassword] = useState('');
@@ -30,18 +30,24 @@ function CreateAccountForm () {
                 body: JSON.stringify({ userEmail, password }),
             });
 
+            // Get data
+            const data = await response.json();  
+
             // Make sure no errors
             if(response.ok) {
-                const data = await response.json();  
-                
+                // Remove any possible errors
+                setError(null);
+
                 // save the user to local storage
                 localStorage.setItem('user', JSON.stringify(data));
-                // update the auth context
-                //dispatch({type: 'LOGIN', payload: data});
 
                 // Go to home page
                 navigate('/');
                 return data;
+            }
+            else {
+                console.log(data.error)
+                setError(data.error);
             }
         }
         else {
@@ -70,6 +76,7 @@ function CreateAccountForm () {
                     </section>
                     {!passwordsMatch && <><p className={styles.error_mssg}>Passwords do not match</p></>}
                     <button type="submit">Submit</button>
+                    {error && <p className={styles.error_mssg}>{error}</p>}
                 </form>
             </section>
         </>
