@@ -1,6 +1,7 @@
 import styles from "../style/Login.module.css"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
 function CreateAccountForm () {
     const [error, setError] = useState(null);
@@ -9,6 +10,13 @@ function CreateAccountForm () {
     const [secPassword, setSecPassword] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(true);
     const navigate = useNavigate();
+
+    // Get the login function 
+    const auth = useContext(AuthContext);
+    if (!auth) {
+        throw new Error("LoginForm must be used inside an AuthProvider");
+    }
+    const { login } = auth;
 
     // Handle submit function
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,8 +46,11 @@ function CreateAccountForm () {
                 // Remove any possible errors
                 setError(null);
 
-                // save the user to local storage
-                localStorage.setItem('user', JSON.stringify(data));
+                // login through AuthContext
+                login({
+                    user: data.user,
+                    token: data.token,
+                });
 
                 // Go to home page
                 navigate('/');

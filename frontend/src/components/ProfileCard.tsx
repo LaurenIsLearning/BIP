@@ -1,78 +1,114 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import image from "../assets/ryan_temp_image.jpeg";
-import VerificationForm from "./VerificationForm.tsx";
 import styles from "../style/ProfileCard.module.css";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext.tsx";
 
 
 function ProfileCard () {
-    const [verified, setVerified] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
+    // Variables that get updated as user types
+    const [imageVal, setImageVal] = useState('');
+    const [nameVal, setNameVal] = useState('');
+    const [teamVal, setTeamVal] = useState('');
+
+    // Variables that change UI info
+    const [userImage, setUserImage] = useState('');
+    const [userName, setUserName] = useState('');
+    const [userTeam, setUserTeam] = useState('');
+
+    // Get the logout function
+    const auth = useContext(AuthContext);
+    if (!auth) {
+        throw new Error("LoginForm must be used inside an AuthProvider");
+    }
+    const { logout } = auth;
+
+    const [editingProf, setEditingProf] = useState(false);
     const navigate = useNavigate();
 
-    // This funtionallity will be changed later
-    const toggleVerified = () => {
-        setVerified(prev => !prev);
+    const toggleForm = () => {
 
-        if(!verified)
+        if(editingProf)
         {
-            togglePopup();
+            setEditingProf(false);
+        } else {
+            setEditingProf(true);
         }
     }
 
-    function togglePopup() {
-      setShowPopup(!showPopup);
-    }
-
-    const logout = () => {
-        // remove user from storage
-        localStorage.removeItem('user')
-
-        // dispatch logout action
-        // dispatch({ type: 'LOGOUT' })
+    const callLogout = () => {
+        // Logout through AuthContext
+        logout();
 
         // Go to the Home page
         navigate('/'); 
     }
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+
+        setUserImage(imageVal);
+        setUserName(nameVal);
+        setUserTeam(teamVal);
+
+        toggleForm();
+
+
+    }
+
+    // Update user info in backend
 
     return (
         <>
         <section className={styles.profile_card}>
             <section className={styles.inline_box}>
                 <img
-                    src={image} // Eventually given image of player
-                    alt="First Last Name"
+                    src={userImage || image} // Eventually given image of player
+                    alt="User Image"
                     className={styles.player_image}
                 ></img>
                 <section className={styles.info_box}>
                     {/* most of the data displayed in this section will vary 
                     depending on if the account is verified or not */}
-                    <h3 className={styles.name_user}>First Last</h3>
-                    <h4>Team Name</h4>
+                    <h3 className={styles.name_user}>{userName || "User Name"}</h3>
+                    <h4>{userTeam || "No team"}</h4>
                     <h4>email@gmail.com</h4>
                     <section className={styles.btn_section}>
-                        <button className="button_light" onClick={logout}>Logout</button>
+                        <button className="button_light" onClick={callLogout}>Logout</button>
                         {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
-                        {!verified && <button className="button_light" onClick={toggleVerified}>Verify</button>}
-                        {verified && <button className="button_light" onClick={toggleVerified}>Remove Verification</button>}
+                        {!editingProf && <button className="button_light" onClick={toggleForm}>Edit Account Info</button>}
+                        {editingProf && <button className="button_light" onClick={toggleForm}>Cancel Account Edit</button>}
+                        
                     </section>
                 </section>
                 
             </section>
             <hr />
-            {showPopup && <>
+            {editingProf && <>
                 <section className={styles.verify_form}>
-                    <VerificationForm />
-                    <button className="button_light" onClick={togglePopup}>Cancel Verification</button>
+                    <form className={styles.verify} onSubmit={handleSubmit}>
+                                    <section className={styles.group}>
+                                        <label>Attach image of yourself for admin to verify: </label>
+                                        <input type="file" id="imageInput" accept="image/png, image/jpeg, image/gif"
+                                        onChange={(e) => setImageVal(e.target.value)} value={imageVal}  />
+                                    </section>
+                                    <section className={styles.group}>
+                                        <label>Enter your name (first and last): </label>
+                                        <input type="text"   onChange={(e) => setNameVal(e.target.value)} value={nameVal}/>
+                                    </section>
+                                    <section className={styles.group}>
+                                        <label>Enter your team name: </label>
+                                        <input type="text"  onChange={(e) => setTeamVal(e.target.value)} value={teamVal}/>
+                                    </section>  
+                                    <button type="submit" className="button_light">Submit</button>
+                                </form>
                 </section>
                 <hr />
             </>  
             }
             <section className={styles.stat_section}>
                 <p>
-                    You are not verified yet, so there are no recorded stats 
-                    for you. In order to see detailed stats, you need to verify 
-                    your account.
+                    Your account is not synced with a player. 
                 </p>
             </section>
         </section>

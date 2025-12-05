@@ -1,5 +1,6 @@
 import styles from "../style/VerificationForm.module.css";
-import { useState } from "react";
+import { useState, createContext } from "react";
+
 
 function VerificationForm () {
     const [playerImage, setPlayerImage] = useState('');
