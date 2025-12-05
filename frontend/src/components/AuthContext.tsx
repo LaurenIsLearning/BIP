@@ -1,9 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 
+// Create interface for user
 export interface User {
   _id: string;
   email: string;
+  role: string;
   name?: string;
 }
 
@@ -33,12 +35,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
+  // When logging in, give data to local storage
   const login = (data: AuthData) => {
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data.user);
     setToken(data.token);
   };
 
+  // When logging out, remove data from local storage
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);

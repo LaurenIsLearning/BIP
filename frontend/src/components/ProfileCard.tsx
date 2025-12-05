@@ -28,6 +28,7 @@ function ProfileCard () {
 
     const userEmail = user?.email;
 
+    // Decides if the edit profile section is shown or not
     const toggleForm = () => {
 
         if(editingProf)
@@ -54,8 +55,6 @@ function ProfileCard () {
         setUserTeam(teamVal);
 
         toggleForm();
-
-
     }
 
     // Update user info in backend

@@ -1,13 +1,13 @@
 import logo from "../ball15.png";
 import { Link } from "react-router-dom";
 import styles from "../style/NavBar.module.css";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import {AuthContext} from './AuthContext.tsx';
-//import UserContext from './UserContext.js';
 
 function NavBar() {
   const auth  = useContext(AuthContext);
   const user = auth?.user;
+  const isAdmin = user?.role === "admin";
 
   return (
     <>
@@ -30,8 +30,13 @@ function NavBar() {
               <button className="button_light">Login</button>
             </Link>
           )}
-          {user && (
+          {user && !isAdmin && (
             <Link to={"/Profile"}>
+              <button className="button_light">Profile</button>
+            </Link>
+          )}
+          {user && isAdmin && (
+            <Link to={"/Admin"}>
               <button className="button_light">Profile</button>
             </Link>
           )}

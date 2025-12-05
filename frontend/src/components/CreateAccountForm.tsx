@@ -11,7 +11,7 @@ function CreateAccountForm () {
     const [passwordsMatch, setPasswordsMatch] = useState(true);
     const navigate = useNavigate();
 
-    // Get the login function 
+    // Get the login function from AuthContext
     const auth = useContext(AuthContext);
     if (!auth) {
         throw new Error("LoginForm must be used inside an AuthProvider");
@@ -65,7 +65,6 @@ function CreateAccountForm () {
             // Setting this to false shows the user that the passwords do not match
             setPasswordsMatch(false);
         }
-
     }
 
     return (
