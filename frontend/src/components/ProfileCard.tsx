@@ -16,15 +16,17 @@ function ProfileCard () {
     const [userName, setUserName] = useState('');
     const [userTeam, setUserTeam] = useState('');
 
+    const [editingProf, setEditingProf] = useState(false);
+    const navigate = useNavigate();
+
     // Get the logout function
     const auth = useContext(AuthContext);
     if (!auth) {
         throw new Error("LoginForm must be used inside an AuthProvider");
     }
-    const { logout } = auth;
+    const { logout, user } = auth;
 
-    const [editingProf, setEditingProf] = useState(false);
-    const navigate = useNavigate();
+    const userEmail = user?.email;
 
     const toggleForm = () => {
 
@@ -72,10 +74,9 @@ function ProfileCard () {
                     depending on if the account is verified or not */}
                     <h3 className={styles.name_user}>{userName || "User Name"}</h3>
                     <h4>{userTeam || "No team"}</h4>
-                    <h4>email@gmail.com</h4>
+                    {userEmail || <h4>example@email.com</h4>}
                     <section className={styles.btn_section}>
                         <button className="button_light" onClick={callLogout}>Logout</button>
-                        {/* CHANGE THESE BUTTONS' FUNCTIONALITY LATER!!!!*/}
                         {!editingProf && <button className="button_light" onClick={toggleForm}>Edit Account Info</button>}
                         {editingProf && <button className="button_light" onClick={toggleForm}>Cancel Account Edit</button>}
                         

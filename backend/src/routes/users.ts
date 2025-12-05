@@ -57,7 +57,11 @@ router.post('/login', async (req, res) => {
 
                 // Send user and token
                 res.status(200).json({
-                    user: { userName: currUser.userName, id: currUser.id },
+                    user: { 
+                        id: currUser.id,
+                        email: currUser.email,
+                        role: currUser.role
+                        },
                     token
                 });
             } else {
@@ -122,7 +126,11 @@ router.post('/signup', async (req, res) => {
 
         // Make sure to also add token
         res.status(200).json({
-            user: { userName: currUser.userName, id: currUser.id },
+            user: { 
+                id: currUser.id,
+                email: currUser.email,
+                role: currUser.role
+                },
             token
         });
     } catch (err) {
@@ -132,5 +140,40 @@ router.post('/signup', async (req, res) => {
 
 })
 
+// Find a user
+router.post('/find/:id', async (req, res) => {
+    try {
+        const query = `
+        SELECT 
+            u.id,
+            u.email,
+            u.role,
+        FROM users u
+        WHERE u.id = $1
+        `;
+
+        // Find the user
+        const result = await pool.query(query, [req.params.id]);
+
+        if (result.rows.length == 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const currUser = result.rows[0];
+        console.log('User found:', currUser);
+
+        res.status(200).json({
+            user: { 
+                id: currUser.id,
+                email: currUser.email,
+                role: currUser.role
+                }
+        });
+
+    } catch(err) {
+        console.log("SEARCH ERROR:", err); 
+        res.status(400).json({error: err.message});
+    }
+})
 
 export default router; 
