@@ -26,12 +26,12 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
   return (
     <div
       className={`
-  ${styles[`color_${player.skill}`]} 
-  ${showStatExtras ? styles.extended : styles.collapsed}
-  ${styles.player_card_small}
-  ${player.played ? styles.played : ""}
-  ${!player.canBePlayed && !player.played ? styles.cannot_play : ""}
-`}
+        ${styles[`color_${player.skill}`]} 
+        ${showStatExtras ? styles.extended : styles.collapsed}
+        ${styles.player_card_small}
+        ${player.played ? styles.played : ""}
+        ${!player.canBePlayed && !player.played ? styles.cannot_play : ""}
+      `}
     >
       <div
         className={showStatExtras ? styles.content_extended : styles.content}
@@ -39,15 +39,25 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
         <div
           className={styles.player_name_and_sl}
           onClick={() => onTogglePlayed(player)}
+          data-testid={`player-toggle-${player.name.replace(/\s+/g, "-")}`}
         >
           <p className={styles.player_name}>{shortenedName}</p>
           <p>SL: {player.skill}</p>
         </div>
+
         {showStatExtras ? (
           <div className={styles.player_additional_stats}>
             {showSessionStats ? (
               <>
-                <p onClick={() => setShowSessionStats(false)}>Session Stats</p>
+                <p
+                  onClick={() => setShowSessionStats(false)}
+                  data-testid={`player-toggle-session-${player.name.replace(
+                    /\s+/g,
+                    "-"
+                  )}`}
+                >
+                  Session Stats
+                </p>
                 <div className={styles.stat_block}>
                   <p>WR: {sessWRPer}</p>
                   <p>PA: {sessPAPer}</p>
@@ -55,7 +65,15 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
               </>
             ) : (
               <>
-                <p onClick={() => setShowSessionStats(true)}>Overall Stats</p>
+                <p
+                  onClick={() => setShowSessionStats(true)}
+                  data-testid={`player-toggle-overall-${player.name.replace(
+                    /\s+/g,
+                    "-"
+                  )}`}
+                >
+                  Overall Stats
+                </p>
                 <div className={styles.stat_block}>
                   <p>WR: {overallWRPer}</p>
                   <p>MP: {player.overallMP}</p>
@@ -65,11 +83,13 @@ function PlayerCardSmall({ player, onTogglePlayed }: Props) {
           </div>
         ) : null}
       </div>
+
       <button
         className={`${styles.arrow_button}${
           showStatExtras ? "" : " " + styles.rotated
         }`}
         onClick={() => setShowStatExtras(!showStatExtras)}
+        data-testid={`player-expand-${player.name.replace(/\s+/g, "-")}`}
       >
         <img
           className={styles.arrow_icon}
