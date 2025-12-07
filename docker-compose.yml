@@ -22,6 +22,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
     container_name: bip_backend
     depends_on:
       db:

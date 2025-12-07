@@ -11,27 +11,26 @@ const createToken = (id) => {
     return jwt.sign({id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
 }
 
-// Get teams
+// Get users
 router.get("/", async (req, res) => {
   try {
-    const result = await pool.query(
-      `SELECT u.id, u.email, t.role, u.player_id, u.team_id 
-       FROM users u`
-    );
+    const result = await pool.query(`
+      SELECT 
+        id,
+        email,
+        role,
+        name,
+        player_id,
+        team_id,
+        created_at
+      FROM users
+      ORDER BY id ASC
+    `);
 
-    // Map DB → FE model
-    const formatted = result.rows.map((u) => ({
-      id: u.id.toString(),
-      email: u.email,
-      name: u.name,
-      player_id: u.player_id,
-      team_id: u.team_id
-    }));
-
-    res.json(formatted);
+    res.json(result.rows);
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Error fetching users");
+    console.error("Error fetching users:", err);
+    res.status(500).json({ error: "Error fetching users" });
   }
 });
 
@@ -294,5 +293,26 @@ router.get('/find/:id', async (req, res) => {
         res.status(400).json({error: err.message});
     }
 })
+
+//delete a user
+router.delete("/:id", async (req, res) => {
+    const userId = Number(req.params.id);
+
+    if (isNaN(userId)) {
+        return res.status(404).json({ error: "Invalid user ID"});
+    }
+
+    try {
+        // remove user (also player_id and team_id justincase)
+        await pool.query(
+            `DELETE FROM users WHERE id = $1`,
+            [userId]
+        );
+        res.status(200).json({ message: "User deleted"});
+    }catch (err) {
+        console.error("DELETE USER ERROR:", err);
+        res.status(500).json({error:"Failed to delete user"});
+    }
+});
 
 export default router; 
