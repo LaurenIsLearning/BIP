@@ -159,11 +159,11 @@ function StatsPage() {
             </div>
             <div className={styles.team_extras}>
               <p>Combinations</p>
-              <p>{count}</p>
+              <p data-testid="combinations-count">{count}</p>
             </div>
             <div className={styles.team_extras}>
               <p>Point Total</p>
-              <p>{comboTotal}</p>
+              <p data-testid="point-total">{comboTotal}</p>
             </div>
           </div>
         </div>

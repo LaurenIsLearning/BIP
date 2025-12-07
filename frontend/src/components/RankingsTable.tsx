@@ -31,7 +31,11 @@ function RankingsTable() {
         </thead>
         <tbody>
           {teams.map((team, index) => (
-            <tr key={index} onClick={() => navigateToStats(team.teamId)}>
+            <tr
+              key={index}
+              data-testid={`team-row-${team.name}`}
+              onClick={() => navigateToStats(team.teamId)}
+            >
               <th>{team.ranking}</th>
               <th>{team.name}</th>
               <th>{team.points}</th>

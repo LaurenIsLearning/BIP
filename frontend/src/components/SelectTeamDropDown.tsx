@@ -43,6 +43,7 @@ function SelectTeamDropDown({ selectedTeamId = "", mode }: Props) {
   return (
     <select
       className={styles.select}
+      data-testid={`select-team-${mode}`} // unique per dropdown based on mode
       onChange={(e) => showTeamStats(e.target.value)}
       value={selectedTeamId || ""}
     >

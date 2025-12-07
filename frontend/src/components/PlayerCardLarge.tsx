@@ -33,6 +33,7 @@ function PlayerCardLarge({ player, onTogglePlayed }: Props) {
         <p
           className={styles.player_name}
           onClick={() => onTogglePlayed(player)}
+          data-testid={`player-toggle-${player.name.replace(/\s+/g, "-")}`}
         >
           {player.name}
         </p>
