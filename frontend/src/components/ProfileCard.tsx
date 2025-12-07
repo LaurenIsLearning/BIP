@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import image from "../assets/ryan_temp_image.jpeg";
 import styles from "../style/ProfileCard.module.css";
 import { useNavigate } from "react-router-dom";
@@ -39,6 +39,7 @@ function ProfileCard () {
         }
     }
 
+    // Logoun
     const callLogout = () => {
         // Logout through AuthContext
         logout();
@@ -47,13 +48,60 @@ function ProfileCard () {
         navigate('/'); 
     }
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    useEffect(() => {
+        if (user) {
+            setUserName(user.name || "");
+            setUserTeam(user.team || "");
+        }
+    }, [user]);
+
+    // Change the user's data after they submit Edit Profile
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        setUserImage(imageVal);
-        setUserName(nameVal);
-        setUserTeam(teamVal);
+        if (!user) {
+            console.error("User is null — cannot update.");
+            return;
+        }
 
+        // Create PATCH request to edit user data
+        const response = await fetch(`http://localhost:3000/api/users/change/${user.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ nameVal, teamVal }),
+        });
+
+        // Get data
+        const data = await response.json(); 
+
+        console.log(response);
+
+        // Make sure we have an okay response
+        if(!response.ok) {
+            auth.updateUser({ ...user, name: '', team: ''});
+            return;
+        }
+
+        const msg = data.message?.toString().trim();
+        console.log("data.message:", data.message, typeof data.message);
+        console.log("Full response data:", data);
+
+        // Check if the user is valid
+        if(msg == "Valid Player") {
+            auth.updateUser({ ...user, name: nameVal, team: teamVal});
+            console.log("Valid Acount");
+        }
+        else if(msg == "Invalid Player") {
+            auth.updateUser({ ...user, name: nameVal, team: ''});
+            console.log("Invalid Account");
+        } else {
+            console.log("We are in the else")
+        }
+
+
+        // Don't show the edit form section
         toggleForm();
     }
 
@@ -71,7 +119,7 @@ function ProfileCard () {
                 <section className={styles.info_box}>
                     {/* most of the data displayed in this section will vary 
                     depending on if the account is verified or not */}
-                    <h3 className={styles.name_user}>{userName || "User Name"}</h3>
+                    <h3 className={styles.name_user}>{userName || "Name"}</h3>
                     <h4>{userTeam || "No team"}</h4>
                     {userEmail || <h4>example@email.com</h4>}
                     <section className={styles.btn_section}>
@@ -87,21 +135,21 @@ function ProfileCard () {
             {editingProf && <>
                 <section className={styles.verify_form}>
                     <form className={styles.verify} onSubmit={handleSubmit}>
-                                    <section className={styles.group}>
-                                        <label>Attach image of yourself for admin to verify: </label>
-                                        <input type="file" id="imageInput" accept="image/png, image/jpeg, image/gif"
-                                        onChange={(e) => setImageVal(e.target.value)} value={imageVal}  />
-                                    </section>
-                                    <section className={styles.group}>
-                                        <label>Enter your name (first and last): </label>
-                                        <input type="text"   onChange={(e) => setNameVal(e.target.value)} value={nameVal}/>
-                                    </section>
-                                    <section className={styles.group}>
-                                        <label>Enter your team name: </label>
-                                        <input type="text"  onChange={(e) => setTeamVal(e.target.value)} value={teamVal}/>
-                                    </section>  
-                                    <button type="submit" className="button_light">Submit</button>
-                                </form>
+                        <section className={styles.group}>
+                            <label>Attach image of yourself for admin to verify: </label>
+                            <input type="file" id="imageInput" accept="image/png, image/jpeg, image/gif"
+                                    onChange={(e) => setImageVal(e.target.value)} value={imageVal}  />
+                        </section>
+                        <section className={styles.group}>
+                            <label>Enter your name (first and last): </label>
+                            <input type="text"   onChange={(e) => setNameVal(e.target.value)} value={nameVal}/>
+                        </section>
+                        <section className={styles.group}>
+                            <label>Enter your team name: </label>
+                            <input type="text"  onChange={(e) => setTeamVal(e.target.value)} value={teamVal}/>
+                        </section>  
+                            <button type="submit" className="button_light">Submit</button>
+                    </form>
                 </section>
                 <hr />
             </>  

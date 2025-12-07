@@ -30,6 +30,9 @@ CREATE TABLE users (
     email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
     role TEXT NOT NULL DEFAULT 'player',  -- 'player', 'admin', etc.
+    name TEXT DEFAULT 'unamed',
+    player_id BIGSERIAL REFERENCES players(id) ON DELETE CASCADE,
+    team_id BIGSERIAL REFERENCES teams(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT NOW()
 );
 

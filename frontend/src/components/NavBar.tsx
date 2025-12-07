@@ -30,14 +30,14 @@ function NavBar() {
               <button className="button_light">Login</button>
             </Link>
           )}
-          {user && !isAdmin && (
+          {user && (
             <Link to={"/Profile"}>
               <button className="button_light">Profile</button>
             </Link>
           )}
           {user && isAdmin && (
             <Link to={"/Admin"}>
-              <button className="button_light">Profile</button>
+              <button className="button_light">Admin Page</button>
             </Link>
           )}
         </section>

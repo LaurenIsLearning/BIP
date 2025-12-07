@@ -3,10 +3,13 @@ import type { ReactNode } from "react";
 
 // Create interface for user
 export interface User {
-  _id: string;
+  id: string;
   email: string;
   role: string;
   name?: string;
+  player_id?: string;
+  team_id?: string;
+  team: string;
 }
 
 export interface AuthData {
@@ -17,6 +20,7 @@ export interface AuthData {
 interface AuthContextType extends AuthData {
   login: (data: AuthData) => void;
   logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -49,8 +53,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setToken(null);
   };
 
+  const updateUser = (updates: Partial<User>) => {
+    setUser(prev => {
+      if (!prev) return prev;
+
+      const updated = { ...prev, ...updates };
+
+      // Also update localStorage so it persists on refresh
+      localStorage.setItem("user", JSON.stringify({ user: updated, token }));
+
+      return updated;
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

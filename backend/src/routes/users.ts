@@ -140,8 +140,84 @@ router.post('/signup', async (req, res) => {
 
 })
 
+// Change user info
+router.patch('/change/:id', async (req, res) => {
+    // Get user id from url
+    // const userId = req.params.id;
+    const userId = Number(req.params.id);
+    if (isNaN(userId)) {
+        return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    // Get name and team from request body
+    const { nameVal, teamVal } = req.body;
+
+    console.log("Changing VALUES:", nameVal, teamVal);
+
+    try {
+        // Make sure all fields are filled
+        if(!nameVal || !teamVal) {
+            throw Error('All fields must be filled');
+        }
+
+        // Check if there is a player with the name
+        const playerQuery = 'SELECT * FROM players WHERE name = $1';
+        const playerResult = await pool.query(playerQuery, [nameVal]);
+
+        // Make sure a player exists
+        if(playerResult.rows.length != 0) {
+            console.log("The player exists!");
+
+            // Get the player
+            const currPlayer = playerResult.rows[0];
+
+            // Get the player's team
+            const teamQuery = 'SELECT name FROM teams WHERE id = $1';
+            const teamResult = await pool.query(teamQuery, [currPlayer.team_id]);
+
+            // Check if the user's team matches the player's team
+            if(teamResult.rows[0].name === teamVal) {
+                console.log("The teams match!!!")
+
+                // If they match, update the user's name and the player_id
+                const editQuery = `UPDATE users
+                    SET name = $1, player_id = $2, team_id = $3
+                    WHERE id = $4`
+                const editResult = await pool.query(editQuery, [nameVal, currPlayer.id, currPlayer.team_id, userId]);
+
+                // Return response
+                res.status(200).json({ message: "Valid Player"});
+            } else {
+                // If the teams do not match, just update the user's name
+                const editQuery = `UPDATE users
+                    SET name = $1, player_id = null, team_id = null
+                    WHERE id = $2`
+                const editResult = await pool.query(editQuery, [nameVal, userId]);
+
+                // Return response
+                res.status(200).json({ message: "Invalid Player"});
+            }
+
+        } else {
+            // If a player with the user's name does not exist,
+            // update the user's name, but not player_id
+            const editQuery = `UPDATE users
+                SET name = $1, player_id = null, team_id = null
+                WHERE id = $2`
+            const editResult = await pool.query(editQuery, [nameVal, userId]);
+
+            res.status(200).json({ message: "Invalid Player"});
+        }        
+
+    } catch(err) {
+        console.log("UPDATE USER ERROR:", err); 
+        res.status(400).json({error: err.message});
+    }
+})
+
+
 // Find a user
-router.post('/find/:id', async (req, res) => {
+router.get('/find/:id', async (req, res) => {
     try {
         const query = `
         SELECT 

@@ -27,6 +27,7 @@
 }
 
 .btn_section {
+    margin-top: 2em;
     display: flex;
     gap: 1em;
 }
