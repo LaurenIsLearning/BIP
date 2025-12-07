@@ -74,7 +74,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
     );
   }, [determineIfCanBePlayed]);
 
-  if (!teamId || !team)
+  if (!teamId || !team || teamId === "0")
     return <SelectTeamDropDown selectedTeamId={teamId} mode={mode} />;
 
   return (

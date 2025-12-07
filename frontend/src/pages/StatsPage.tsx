@@ -84,7 +84,7 @@ function StatsPage() {
     );
   }, [determineIfCanBePlayed]);
 
-  if (!teamId || teamId === "")
+  if (!teamId || teamId === "" || teamId === "0")
     return (
       <>
         <NavBar />
