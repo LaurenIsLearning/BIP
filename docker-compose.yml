@@ -19,7 +19,9 @@ services:
       retries: 10
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     container_name: bip_backend
     depends_on:
       db:
@@ -37,19 +39,21 @@ services:
   web:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     container_name: bip_web
-    command: npm run dev -- --host
+    # command: npm run dev -- --host
     working_dir: /app
     volumes:
       - ./frontend:/app
-      - node_modules_cache:/app/node_modules
+      - /app/node_modules
     ports:
       - "5173:5173"
     environment:
       VITE_API_URL: http://localhost:3000
       CHOKIDAR_USEPOLLING: "true"
-
+    depends_on:
+      - backend
+      
 volumes:
   pgdata:
   node_modules_cache:
