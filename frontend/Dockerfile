@@ -1,20 +1,16 @@
-# Base image
-FROM node:20
-
-# Set working directory
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
-
-# Install ALL dependencies including devDependencies
 RUN npm install
-
-# Copy the rest of the frontend code
 COPY . .
+RUN npm run build
 
-# Expose Vite dev server port
-EXPOSE 5173
+FROM node:20-alpine
+WORKDIR /app
 
-# Run Vite dev server
-CMD ["npm", "run", "dev", "--", "--host"]
+RUN npm install -g serve
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 8080
+CMD ["serve", "-s", "dist", "-l", "8080"]

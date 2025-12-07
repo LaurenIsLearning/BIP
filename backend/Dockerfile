@@ -1,28 +1,21 @@
-# Use official Node image
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 
-# Set working directory
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies including dev deps
-RUN npm install --include=dev
-
-# Copy backend folders individually (prevents Git Bash path rewrite bug)
-COPY src ./src
-COPY db ./db
-COPY tsconfig.json .
-
-# Build TypeScript to /app/dist
+RUN npm install
+COPY . .
 RUN npm run build
 
-# Expose backend port
-EXPOSE 3000
+FROM node:20-alpine
+WORKDIR /app
 
-# Start the compiled server
-#CMD ["node", "dist/backend.js"]
+COPY package*.json ./
+RUN npm install --omit=dev
 
-# DEBUG: Run seed THEN start backend
-CMD ["sh", "-c", "node dist/seed.js && node dist/backend.js"]
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/db ./db
+
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["node", "dist/backend.js"]
