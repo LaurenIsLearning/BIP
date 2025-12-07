@@ -53,7 +53,7 @@ function ProfileCard () {
             setUserName(user.name || "");
             setUserTeam(user.team || "");
         }
-    }, [user]);
+    }, [user, ]);
 
     // Change the user's data after they submit Edit Profile
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
