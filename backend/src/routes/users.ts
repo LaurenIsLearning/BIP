@@ -305,7 +305,7 @@ router.delete("/:id", async (req, res) => {
     try {
         // remove user (also player_id and team_id justincase)
         await pool.query(
-            `DELETE FROM users WHER id = $1`,
+            `DELETE FROM users WHERE id = $1`,
             [userId]
         );
         res.status(200).json({ message: "User deleted"});
