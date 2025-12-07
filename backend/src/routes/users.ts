@@ -1,40 +1,70 @@
 import express from "express"
 import jwt from "jsonwebtoken"
 import { pool } from "../db.js"
+import bcrypt from "bcrypt";
+import validator from "validator";
 
 const router = express.Router();
 
 // Create a json web token
-const createToken = (_id) => {
-    return jwt.sign({_id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
+const createToken = (id) => {
+    return jwt.sign({id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
 }
-
-
 
 // Login Route
 router.post('/login', async (req, res) => {
     // Get username and password from request body
-    const { userName, password } = req.body;
-
-    // Find the user in the database HELP WITH THE QUERY PLEASE!!!
-    const query = ``;
-    const values = [userName, password];
+    const { userEmail, password } = req.body;
+    console.log("Email: ", userEmail);
 
     try {
-        // Get data from database
-        const result = await pool.query(query, values);
+        // Make sure all fields are filled
+        if(!userEmail || !password) {
+            throw Error('All fields must be filled');
+        }
+
+        // Make sure userEmail is an email
+        if(!validator.isEmail(userEmail)) {
+            throw Error('Not a valid email address');
+        }
+
+        // hash password
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(password, salt);
+
+        // Get user from database
+        const selectQuery = 'SELECT * FROM users WHERE email = $1';
+        const result = await pool.query(selectQuery, [userEmail]);
+        const { rows } = result;
 
         // Check if user exists
-        // I DONT KNOW HOW TO DO THIS PART WITH DOCKER!!
+        if (rows.length === 0) {
+            // If the length is zero, that means a user does not exists
+            throw Error('No account found for that username');
+        } else {
+            // We found the user
+            console.log('User found:', rows[0]);
 
-        // Create token
-        // How do I create a token without a user being created?
-        //const token = createToken(user._id);
+            // Get the user
+            const currUser = rows[0];
 
-        console.log('User found:', result.rows[0]);
+            // Check if the password is correct
+            const validPassword = await bcrypt.compare(password, currUser.password_hash);
+            if(validPassword)
+            {
+                // Create token
+                const token = createToken(currUser.id)
 
-        // Make sure to also add token
-        res.status(200).json(result.rows[0])
+                // Send user and token
+                res.status(200).json({
+                    user: { userName: currUser.userName, id: currUser.id },
+                    token
+                });
+            } else {
+                // If the password is incorrect, notify user
+                throw Error('Incorrect password');
+            }
+        }
     } catch (err) {
         console.log("Login ERROR:", err); 
         res.status(400).json({error: err.message});
@@ -46,27 +76,55 @@ router.post('/login', async (req, res) => {
 // Signup Route
 router.post('/signup', async (req, res) => {
 
-    console.log("We are in the backend");
-    
     // Get username and password from request body
-    const { userName, password } = req.body;
-    
-    // I do not really know what query to I do not know how docker works
-    const query = `INSERT INTO users(username, password) VALUES($1, $2) RETURNING *`;
+    const { userEmail, password } = req.body;
 
-    const values = [userName, password];
+    console.log("SIGNUP VALUES:", userEmail, password);
 
     try {
+        // Make sure all fields are filled
+        if(!userEmail || !password) {
+            throw Error('All fields must be filled');
+        }
+
+        // Make sure userEmail is an email
+        if(!validator.isEmail(userEmail)) {
+            throw Error('Not a valid email address');
+        }
+
+        // Check if the email is already in use
+        const selectQuery = 'SELECT * FROM users WHERE email = $1';
+        const initialResult = await pool.query(selectQuery, [userEmail]);
+        if(initialResult.rows.length != 0)
+        {
+            throw Error('Account with that email is already in use')
+        }
+
+        // Hash password
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(password, salt);
+
+        // Insert new user into database
+        await pool.query(
+            `INSERT INTO users (email, password_hash, role)
+            VALUES ($1, $2, 'player')
+            ON CONFLICT (email) DO NOTHING`,
+            [userEmail, passwordHash]
+        ); 
+
+        // Get the user we just created
+        const result = await pool.query(selectQuery, [userEmail]);
+        const currUser = result.rows[0];
+        console.log('User added:', currUser);
+        
         // Create token
-        // How do I create a token without a user being created?
-        //const token = createToken(user._id);
-
-        const result = await pool.query(query, values);
-
-        console.log('User added:', result.rows[0]);
+        const token = createToken(currUser.id);
 
         // Make sure to also add token
-        res.status(200).json(result.rows[0])
+        res.status(200).json({
+            user: { userName: currUser.userName, id: currUser.id },
+            token
+        });
     } catch (err) {
         console.log("SIGNUP ERROR:", err); 
         res.status(400).json({error: err.message});

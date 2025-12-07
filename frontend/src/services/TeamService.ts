@@ -16,6 +16,7 @@ interface TeamResponse {
   name: string;
   points: number;
   players?: PlayerResponse[];
+  ranking: number;
 }
 
 function mapPlayers(players: PlayerResponse[] | undefined): Player[] {
@@ -29,8 +30,7 @@ function mapPlayers(players: PlayerResponse[] | undefined): Player[] {
         p.sessWR,
         p.sessPA,
         p.overallWR,
-        p.overallMP,
-        false
+        p.overallMP
       )
   );
 }
@@ -41,25 +41,12 @@ export async function fetchAllTeams(): Promise<Team[]> {
 
   console.log("Fetched teams:", data);
 
-  return data.map(
-    (t) =>
-      new Team(
-        t.teamId,
-        t.name,
-        t.points,
-        []
-      )
-  );
+  return data.map((t) => new Team(t.teamId, t.name, t.points, [], t.ranking));
 }
 
 export async function fetchTeam(id: string): Promise<Team> {
   const res = await fetch(`http://localhost:3000/api/teams/${id}`);
   const t: TeamResponse = await res.json();
 
-  return new Team(
-    t.teamId,
-    t.name, 
-    t.points,
-    mapPlayers(t.players)
-  );
+  return new Team(t.teamId, t.name, t.points, mapPlayers(t.players), t.ranking);
 }

@@ -79,8 +79,13 @@
 }
 
 .played {
-  border: 2px solid red;
+  border: 4px solid black;
   animation: 2s small-float infinite;
+}
+
+.cannot_play {
+  border: 2px solid grey;
+  opacity: 0.5;
 }
 
 @keyframes small-float {

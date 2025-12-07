@@ -4,6 +4,7 @@ import ComparisonPage from "./pages/ComparisonPage";
 import AdminPage from "./pages/AdminPage.tsx";
 import StatsPage from "./pages/StatsPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/Admin" element={<AdminPage />} />
       <Route path="/Stats/:teamId?" element={<StatsPage />} />
       <Route path="/Login" element={<LoginPage />} />
+      <Route path="/Profile" element={<ProfilePage />} />
     </Routes>
   );
 }

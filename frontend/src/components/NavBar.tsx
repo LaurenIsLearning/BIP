@@ -1,8 +1,11 @@
 import logo from "../ball15.png";
 import { Link } from "react-router-dom";
 import styles from "../style/NavBar.module.css";
+import { useContext } from 'react';
+import AuthContext from './AuthContext.jsx';
 
 function NavBar() {
+
   return (
     <>
       <nav>
@@ -13,15 +16,22 @@ function NavBar() {
           </Link>
         </section>
         <section className={styles.nav_right}>
-          <button className="button_light">
-            <Link to={"/Stats"}>View Team</Link>
-          </button>
-          <button className="button_light">
-            <Link to={"/Comparison"}>Team Comparison Page</Link>
-          </button>
-          <button className="button_light">
-            <Link to={"/Login"}>Login</Link>
-          </button>
+          <Link to={"/Stats"}>
+            <button className="button_light">View Team</button>
+          </Link>
+          <Link to={"/Comparison"}>
+              <button className="button_light">Team Comparison Page</button>
+          </Link>
+          {(
+            <Link to={"/Login"}>
+              <button className="button_light">Login</button>
+            </Link>
+          )}
+          { (
+            <Link to={"/Profile"}>
+              <button className="button_light">Profile</button>
+            </Link>
+          )}
         </section>
       </nav>
     </>

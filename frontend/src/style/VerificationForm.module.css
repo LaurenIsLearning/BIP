@@ -1,0 +1,11 @@
+.verify {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.group {
+    display: inline;
+    margin: 1em;
+    gap: 1em;
+}

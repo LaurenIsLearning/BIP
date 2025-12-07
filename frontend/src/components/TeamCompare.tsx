@@ -27,6 +27,8 @@ function TeamCompare({ teamId = "", mode }: Props) {
 
   const togglePlayed = (player: Player) => {
     if (!player.played) {
+      if (!player.canBePlayed) return; // Prevent toggling if player cannot be played
+
       if (comboTotal + player.skill > 23) return; // Prevent toggling if it would exceed the combo total
 
       let currentlyPlayed = 0;
@@ -61,7 +63,16 @@ function TeamCompare({ teamId = "", mode }: Props) {
     [players]
   );
 
-  const { count } = useComCalc(skills, playedSkills);
+  const { count, determineIfCanBePlayed } = useComCalc(skills, playedSkills);
+
+  useEffect(() => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((p) => ({
+        ...p,
+        canBePlayed: determineIfCanBePlayed(p),
+      }))
+    );
+  }, [determineIfCanBePlayed]);
 
   if (!teamId || !team)
     return <SelectTeamDropDown selectedTeamId={teamId} mode={mode} />;

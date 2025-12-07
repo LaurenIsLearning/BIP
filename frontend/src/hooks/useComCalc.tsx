@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
+import type { Player } from "../models/Player";
 
 function getCombinations(skills: number[]): number[][] {
   const results: number[][] = [];
@@ -43,7 +44,7 @@ function getCombinationsBasedOnPlayed(
   }
 
   const needed = 5 - playedSkills.length;
-  if (needed <= 0) return [playedSkills];
+  if (needed <= 0) return [[...playedSkills].sort((a, b) => a - b)];
 
   const results: number[][] = [];
   const n = remainingSkills.length;
@@ -80,8 +81,16 @@ const useComCalc = (skills: number[], playedSkills: number[]) => {
     return getCombinationsBasedOnPlayed(skills, playedSkills);
   }, [skills.join(","), playedSkills.join(",")]);
 
+  const determineIfCanBePlayed = useCallback(
+    (player: Player): boolean => {
+      if (player.played) return true;
+      return combinations.some((combo) => combo.includes(player.skill));
+    },
+    [combinations]
+  );
+
   const count = combinations.length;
-  return { combinations, count };
+  return { combinations, count, determineIfCanBePlayed };
 };
 
 export default useComCalc;

@@ -16,7 +16,6 @@
 .has_id {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 .has_id > select {
@@ -33,10 +32,11 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 .top_half > .team_info {
   display: flex;
-  width: 50vw;
   flex-direction: column;
 }
 .top_half > .team_info > .team_name {

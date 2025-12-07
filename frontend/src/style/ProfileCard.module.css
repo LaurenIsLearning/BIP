@@ -1,0 +1,39 @@
+.profile_card {
+    margin: 2em;
+    width: fit-content;
+    border-radius: 2em;
+    padding: 1em;
+    box-shadow: 4px 4px 10px #888;
+}
+
+.inline_box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.player_image {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+}
+
+.info_box {
+    display: box;
+}
+
+.name_user {
+
+}
+
+.btn_section {
+    display: flex;
+    gap: 1em;
+}
+
+.stat_section {
+
+}
+
+.verify_form {
+
+}
