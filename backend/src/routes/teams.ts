@@ -77,4 +77,66 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//update team with new form data
+router.put("/update", async (req, res) => {
+  const { teamId, name, points } = req.body;
+
+  if (!teamId || name === undefined || points === undefined) {
+    return res.status(400).json({ error: "Missing teamId, name, or points" })
+  }
+
+  try {
+    const result = await pool.query(
+      `
+      UPDATE teams
+      SET name = $1,
+        points = $2,
+      WHERE id = $3,
+      `,
+      [name, points, teamId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: "Team not found" });
+    }
+
+    res.json({ message: "Team updated successfully" });
+  } catch (err) {
+    console.error("Error updating team:", err);
+    res.status(500).json({ error: "Database update failed" });
+  }
+});
+
+//delete team and its players
+router.delete("/:teamId", async (req, res) => {
+  const { teamId } = req.params;
+
+  try {
+    //delete players first
+    await pool.query(
+      `DELETE FROM players WHERE team_id = $1`,
+      [teamId]
+    );
+
+    //delete team
+    const result = await pool.query(
+      `DELETE FROM teams WHERE id = $1 RETURNING id`,
+      [teamId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        error: "Team not round"
+      });
+    }
+    res.json({
+      message: "Team and all players deleted successfully."
+    });
+  } catch (err) {
+    console.error("Error deleting team:", err);
+    res.status(500).json({ error: "Database delete failed" });
+  }
+
+});
+
 export default router;

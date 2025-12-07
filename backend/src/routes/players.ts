@@ -28,6 +28,7 @@ router.put("/update", async (req, res) => {
                 player.skill,
                 player.sessWR,
                 player.sessPA,
+                player.overallWP,
                 player.overallMP,
                 player.playerId,
                 teamId
@@ -74,6 +75,24 @@ router.post("/add", async (req, res) => {
     } catch (err) {
         console.error("Error creating player:", err);
         res.status(500).json({ error: "Database insert failed" });
+    }
+});
+
+//delete a player
+router.delete("/:playerId", async (req, res) => {
+    const { playerId } = req.params;
+    try {
+        const result = await pool.query(
+            `DELETE FROM players WHERE id = $1 RETURNING id`,
+            [playerId]
+        );
+        if (result.rowCount === 0) {
+            return res.status(404).json({error: "Player not found"});
+        }
+        res.json({message:"Player found successfully"});
+    } catch (err) {
+        console.error("Error deleting player:", err);
+        res.status(500).json({error: "Database delete failed"});
     }
 });
 
