@@ -1,69 +1,74 @@
-import { createContext, useReducer, useEffect} from "react";
-import type { ReactNode, Dispatch } from "react";
+import { createContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
 
-// Define the shape of your user data
+// Create interface for user
 export interface User {
-    _id?: string;
-    email?: string;
-    token?: string;
-    // add any other fields your app uses
+  id: string;
+  email: string;
+  role: string;
+  name?: string;
+  player_id?: string;
+  team_id?: string;
+  team: string;
 }
 
-// Define the shape of your auth state
-interface AuthState {
-    user: User | null;
+export interface AuthData {
+  user: User | null;
+  token: string | null;
 }
 
-// Define reducer action types
-type AuthAction =
-    | { type: "LOGIN"; payload: User }
-    | { type: "LOGOUT" };
-
-// Context type (what you provide in value)
-interface AuthContextType extends AuthState {
-    dispatch: Dispatch<AuthAction>;
+interface AuthContextType extends AuthData {
+  login: (data: AuthData) => void;
+  logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
 }
 
-// Create context with a default value of null
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-// Reducer
-const authReducer = (state: AuthState, action: AuthAction): AuthState => {
-    switch (action.type) {
-        case "LOGIN":
-            return { user: action.payload };
-        case "LOGOUT":
-            return { user: null };
-        default:
-            return state;
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
+
+  // Load from localStorage on refresh
+  useEffect(() => {
+    const saved = localStorage.getItem("user");
+    if (saved) {
+      const parsed: AuthData = JSON.parse(saved);
+      setUser(parsed.user);
+      setToken(parsed.token);
     }
-};
+  }, []);
 
-// Provider props type
-interface ProviderProps {
-    children: ReactNode;
-}
+  // When logging in, give data to local storage
+  const login = (data: AuthData) => {
+    localStorage.setItem("user", JSON.stringify(data));
+    setUser(data.user);
+    setToken(data.token);
+  };
 
-export const AuthContextProvider = ({ children }: ProviderProps) => {
-    const [state, dispatch] = useReducer(authReducer, {
-        user: null,
+  // When logging out, remove data from local storage
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    setToken(null);
+  };
+
+  const updateUser = (updates: Partial<User>) => {
+    setUser(prev => {
+      if (!prev) return prev;
+
+      const updated = { ...prev, ...updates };
+
+      // Also update localStorage so it persists on refresh
+      localStorage.setItem("user", JSON.stringify({ user: updated, token }));
+
+      return updated;
     });
+  };
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            dispatch({
-                type: "LOGIN",
-                payload: JSON.parse(storedUser) as User,
-            });
-        }
-    }, []);
-
-    return (
-        <AuthContext.Provider value={{ ...state, dispatch }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ user, token, login, logout, updateUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
-
-export default AuthContext

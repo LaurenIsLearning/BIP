@@ -1,6 +1,7 @@
 .profile_card {
     margin: 2em;
     width: fit-content;
+    min-width: 40%;
     border-radius: 2em;
     padding: 1em;
     box-shadow: 4px 4px 10px #888;
@@ -26,6 +27,7 @@
 }
 
 .btn_section {
+    margin-top: 2em;
     display: flex;
     gap: 1em;
 }

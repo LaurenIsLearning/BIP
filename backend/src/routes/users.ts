@@ -11,6 +11,30 @@ const createToken = (id) => {
     return jwt.sign({id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
 }
 
+// Get teams
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT u.id, u.email, t.role, u.player_id, u.team_id 
+       FROM users u`
+    );
+
+    // Map DB → FE model
+    const formatted = result.rows.map((u) => ({
+      id: u.id.toString(),
+      email: u.email,
+      name: u.name,
+      player_id: u.player_id,
+      team_id: u.team_id
+    }));
+
+    res.json(formatted);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching users");
+  }
+});
+
 // Login Route
 router.post('/login', async (req, res) => {
     // Get username and password from request body
@@ -57,7 +81,11 @@ router.post('/login', async (req, res) => {
 
                 // Send user and token
                 res.status(200).json({
-                    user: { userName: currUser.userName, id: currUser.id },
+                    user: { 
+                        id: currUser.id,
+                        email: currUser.email,
+                        role: currUser.role
+                        },
                     token
                 });
             } else {
@@ -122,7 +150,11 @@ router.post('/signup', async (req, res) => {
 
         // Make sure to also add token
         res.status(200).json({
-            user: { userName: currUser.userName, id: currUser.id },
+            user: { 
+                id: currUser.id,
+                email: currUser.email,
+                role: currUser.role
+                },
             token
         });
     } catch (err) {
@@ -132,5 +164,135 @@ router.post('/signup', async (req, res) => {
 
 })
 
+// Change user info
+router.patch('/change/:id', async (req, res) => {
+    // Get user id from url
+    // const userId = req.params.id;
+    const userId = Number(req.params.id);
+    if (isNaN(userId)) {
+        return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    // Get name and team from request body
+    const { nameVal, teamVal } = req.body;
+
+    console.log("Changing VALUES:", nameVal, teamVal);
+
+    try {
+        // Make sure all fields are filled
+        if(!nameVal || !teamVal) {
+            throw Error('All fields must be filled');
+        }
+
+        // Check if there is a player with the name
+        const playerQuery = 'SELECT * FROM players WHERE name = $1';
+        const playerResult = await pool.query(playerQuery, [nameVal]);
+
+        let msg = "";
+
+        // Make sure a player exists
+        if(playerResult.rows.length != 0) {
+            console.log("The player exists!");
+
+            // Get the player
+            const currPlayer = playerResult.rows[0];
+
+            // Get the player's team
+            const teamQuery = 'SELECT name FROM teams WHERE id = $1';
+            const teamResult = await pool.query(teamQuery, [currPlayer.team_id]);
+
+            // Check if the user's team matches the player's team
+            if(teamResult.rows[0].name === teamVal) {
+                console.log("The teams match!!!")
+
+                // If they match, update the user's name and the player_id
+                const editQuery = `UPDATE users
+                    SET name = $1, player_id = $2, team_id = $3
+                    WHERE id = $4`
+                const editResult = await pool.query(editQuery, [nameVal, currPlayer.id, currPlayer.team_id, userId]);
+
+                // Return response
+                msg = "Valid Player";
+            } else {
+                // If the teams do not match, just update the user's name
+                const editQuery = `UPDATE users
+                    SET name = $1, player_id = null, team_id = null
+                    WHERE id = $2`
+                const editResult = await pool.query(editQuery, [nameVal, userId]);
+
+                // Return response
+                msg = "Invalid Player";
+            }
+
+        } else {
+            // If a player with the user's name does not exist,
+            // update the user's name, but not player_id
+            const editQuery = `UPDATE users
+                SET name = $1, player_id = null, team_id = null
+                WHERE id = $2`
+            const editResult = await pool.query(editQuery, [nameVal, userId]);
+
+            msg = "Invalid Player";
+        }   
+        
+        // Get the newly updated user
+        const findQuery = `SELECT users.id, 
+                            users.email, 
+                            users.role, 
+                            users.name, 
+                            users.player_id, 
+                            users.team_id, 
+                            teams.name AS team_name
+                            FROM users
+                            LEFT JOIN teams ON users.team_id = teams.id
+                            WHERE users.id = $1
+                            `
+        const findResult = await pool.query(findQuery, [userId]);
+
+        const currUser = findResult.rows[0];
+        res.status(200).json({data: currUser, message: msg});
+
+    } catch(err) {
+        console.log("UPDATE USER ERROR:", err); 
+        res.status(400).json({error: err.message});
+    }
+})
+
+
+// Find a user
+router.get('/find/:id', async (req, res) => {
+    try {
+        const query = `
+        SELECT 
+            u.id,
+            u.email,
+            u.role,
+        FROM users u
+        WHERE u.id = $1
+        `;
+
+        // Find the user
+        const result = await pool.query(query, [req.params.id]);
+
+        if (result.rows.length == 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const currUser = result.rows[0];
+        console.log('User found:', currUser);
+
+        res.status(200).json({
+            user: { 
+                id: currUser.id,
+                email: currUser.email,
+                role: currUser.role
+                }
+        });
+
+    } catch(err) {
+        console.log("SEARCH ERROR:", err); 
+        res.status(400).json({error: err.message});
+    }
+})
 
 export default router; 

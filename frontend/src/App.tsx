@@ -5,11 +5,13 @@ import AdminPage from "./pages/AdminPage.tsx";
 import StatsPage from "./pages/StatsPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
+import { AuthContext, AuthProvider } from "./components/AuthContext.tsx";
 import "./App.css";
 
 function App() {
   return (
-    <Routes>
+    <AuthProvider>
+      <Routes>
       <Route path="/" element={<HomePage />} />
       <Route
         path="/Comparison/:teamOneId?/:teamTwoId?"
@@ -20,6 +22,8 @@ function App() {
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/Profile" element={<ProfilePage />} />
     </Routes>
+    </AuthProvider>
+    
   );
 }
 
