@@ -159,11 +159,6 @@ function ProfileCard () {
                 <hr />
             </>  
             }
-            <section className={styles.stat_section}>
-                <p>
-                    Your account is not synced with a player. 
-                </p>
-            </section>
         </section>
         
         </>
