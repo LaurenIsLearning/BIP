@@ -83,7 +83,10 @@ router.post('/login', async (req, res) => {
                     user: { 
                         id: currUser.id,
                         email: currUser.email,
-                        role: currUser.role
+                        role: currUser.role,
+                        name: currUser.name,
+                        player_id: currUser.player_id || null,
+                        team_id: currUser.team_id || null,
                         },
                     token
                 });
