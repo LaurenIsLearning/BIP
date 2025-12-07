@@ -100,6 +100,7 @@ function TeamCompare({ teamId = "", mode }: Props) {
         ))}
       </div>
       <CombinationContainer players={players} />
+      <SelectTeamDropDown selectedTeamId={teamId} mode={mode} />
     </div>
   );
 }
