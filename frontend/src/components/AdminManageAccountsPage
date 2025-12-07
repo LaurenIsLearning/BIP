@@ -1,0 +1,78 @@
+// import { useEffect, useState } from "react";
+// import styles from "../style/AdminManageAccountsPage.module.css"
+
+
+// type User = {
+//     id: string;
+//     username: string;
+//     role: string;
+// };
+
+// function AdminManageAccountsPage() {
+//     const [users, setUsers] = useState<User[]>([]);
+//     const [loading, setLoading] = useState(true);
+
+//     async function loadUsers() {
+//         setLoading(true);
+//         const res = await fetch("http://localhost:3001/api/users");
+//         const data = await res.json();
+//         setUsers(data);
+//         setLoading(false);
+//     }
+
+//     async function deleteUser(id: string) {
+//         if (!confirm("Are you sure you want to delete this user?")) return;
+
+//         const res = await fetch(`http://localhost:3001/api/users/${id}`, {
+//             method: "DELETE"
+//         });
+
+//         if (!res.ok) {
+//             alert("Failed to delete user.");
+//             return;
+//         }
+
+//         loadUsers(); // refresh list
+//     }
+
+//     useEffect(() => {
+//         loadUsers();
+//     }, []);
+
+//     if (loading) return <p>Loading accounts...</p>;
+
+//     return (
+//         <div className={styles.container}>
+//             <h1 className={styles.header}>Manage Accounts</h1>
+
+//             <table className={styles.table}>
+//                 <thead>
+//                     <tr>
+//                         <th>Username</th>
+//                         <th>Role</th>
+//                         <th>Actions</th>
+//                     </tr>
+//                 </thead>
+
+//                 <tbody>
+//                     {users.map(user => (
+//                         <tr key={user.id}>
+//                             <td>{user.username}</td>
+//                             <td>{user.role}</td>
+//                             <td>
+//                                 <button
+//                                     className={styles.deleteBtn}
+//                                     onClick={() => deleteUser(user.id)}
+//                                 >
+//                                     Delete
+//                                 </button>
+//                             </td>
+//                         </tr>
+//                     ))}
+//                 </tbody>
+//             </table>
+//         </div>
+//     );
+// }
+
+// export default ManageAccountsPage;

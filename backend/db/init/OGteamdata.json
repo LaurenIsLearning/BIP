@@ -1,0 +1,966 @@
+[
+  {
+    "teamId": "64fa2b9e4cf01234abcd0001",
+    "name": "SEYBERTS",
+    "points": 152,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd1001",
+        "name": "Ryan Hogans",
+        "skill": 7,
+        "sessWR": 1.0,
+        "sessPA": 0.85,
+        "overallWR": 0.9059,
+        "overallMP": 85
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1002",
+        "name": "Max Krause",
+        "skill": 7,
+        "sessWR": 1.0,
+        "sessPA": 0.87,
+        "overallWR": 0.9077,
+        "overallMP": 65
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1003",
+        "name": "Chris Morales",
+        "skill": 5,
+        "sessWR": 0.5833,
+        "sessPA": 0.47,
+        "overallWR": 0.444,
+        "overallMP": 250
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1004",
+        "name": "Brayan Buendia",
+        "skill": 6,
+        "sessWR": 0.7143,
+        "sessPA": 0.57,
+        "overallWR": 0.6364,
+        "overallMP": 33
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1005",
+        "name": "Riley Gardner",
+        "skill": 4,
+        "sessWR": 0.5714,
+        "sessPA": 0.57,
+        "overallWR": 0.6429,
+        "overallMP": 14
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1006",
+        "name": "May Listenberger",
+        "skill": 3,
+        "sessWR": 0.3333,
+        "sessPA": 0.4,
+        "overallWR": 0.49,
+        "overallMP": 100
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1007",
+        "name": "Heather Willet",
+        "skill": 2,
+        "sessWR": 0.4,
+        "sessPA": 0.36,
+        "overallWR": 0.4,
+        "overallMP": 10
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd1008",
+        "name": "Andrew Nguyen",
+        "skill": 5,
+        "sessWR": 0.7143,
+        "sessPA": 0.76,
+        "overallWR": 0.5435,
+        "overallMP": 46
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0002",
+    "name": "Got Felt?",
+    "points": 121,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd2001",
+        "name": "Mary Davies",
+        "skill": 5,
+        "sessWR": 0.1111,
+        "sessPA": 0.07,
+        "overallWR": 0.4915,
+        "overallMP": 411
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2002",
+        "name": "Kim Bebout",
+        "skill": 3,
+        "sessWR": 0.5455,
+        "sessPA": 0.51,
+        "overallWR": 0.4648,
+        "overallMP": 71
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2003",
+        "name": "Mary Sattler",
+        "skill": 3,
+        "sessWR": 1.0,
+        "sessPA": 1.0,
+        "overallWR": 0.4545,
+        "overallMP": 22
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2004",
+        "name": "Adam Mitchell",
+        "skill": 6,
+        "sessWR": 0.3636,
+        "sessPA": 0.3,
+        "overallWR": 0.5321,
+        "overallMP": 109
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2005",
+        "name": "Nancy Williams",
+        "skill": 3,
+        "sessWR": 0.7,
+        "sessPA": 0.75,
+        "overallWR": 0.3636,
+        "overallMP": 44
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2006",
+        "name": "Curt Harter",
+        "skill": 3,
+        "sessWR": 0.5,
+        "sessPA": 0.52,
+        "overallWR": 0.5455,
+        "overallMP": 22
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd2007",
+        "name": "Bobby Grear",
+        "skill": 3,
+        "sessWR": 0.3077,
+        "sessPA": 0.43,
+        "overallWR": 0.375,
+        "overallMP": 24
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0003",
+    "name": "Rubber Duckies",
+    "points": 144,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd3001",
+        "name": "Alec Cordobes",
+        "skill": 5,
+        "sessWR": 0.5385,
+        "sessPA": 0.46,
+        "overallWR": 0.5686,
+        "overallMP": 51
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd3002",
+        "name": "Lauren Fries",
+        "skill": 3,
+        "sessWR": 0.625,
+        "sessPA": 0.52,
+        "overallWR": 0.5745,
+        "overallMP": 47
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd3003",
+        "name": "Jeff Mercer Jr",
+        "skill": 7,
+        "sessWR": 0.8182,
+        "sessPA": 0.6,
+        "overallWR": 0.7813,
+        "overallMP": 32
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd3004",
+        "name": "Luke Schwieterman",
+        "skill": 5,
+        "sessWR": 0.8889,
+        "sessPA": 0.59,
+        "overallWR": 0.6053,
+        "overallMP": 38
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd3005",
+        "name": "Ryan Bentz",
+        "skill": 3,
+        "sessWR": 0.7857,
+        "sessPA": 0.59,
+        "overallWR": 0.6757,
+        "overallMP": 37
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd3006",
+        "name": "Caleb Preston",
+        "skill": 3,
+        "sessWR": 1.0,
+        "sessPA": 0.66,
+        "overallWR": 1.0,
+        "overallMP": 2
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0004",
+    "name": "8 Ball Junkies",
+    "points": 128,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd4001",
+        "name": "Groundhog Eaglin",
+        "skill": 4,
+        "sessWR": 0.6667,
+        "sessPA": 0.59,
+        "overallWR": 0.4752,
+        "overallMP": 101
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4002",
+        "name": "Linda Murphy",
+        "skill": 2,
+        "sessWR": 0.3333,
+        "sessPA": 0.37,
+        "overallWR": 0.3057,
+        "overallMP": 435
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4003",
+        "name": "Mike Talamantez",
+        "skill": 6,
+        "sessWR": 0.3182,
+        "sessPA": 0.28,
+        "overallWR": 0.512,
+        "overallMP": 996
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4004",
+        "name": "Jeffery Ahrens",
+        "skill": 3,
+        "sessWR": 0.7,
+        "sessPA": 0.6,
+        "overallWR": 0.4677,
+        "overallMP": 248
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4005",
+        "name": "Erin Miller",
+        "skill": 2,
+        "sessWR": 0.2917,
+        "sessPA": 0.36,
+        "overallWR": 0.3509,
+        "overallMP": 57
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4006",
+        "name": "Chuck Oneal",
+        "skill": 2,
+        "sessWR": 0.3333,
+        "sessPA": 0.4,
+        "overallWR": 0.4063,
+        "overallMP": 32
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4007",
+        "name": "Thomas Martin",
+        "skill": 3,
+        "sessWR": 0.3333,
+        "sessPA": 0.44,
+        "overallWR": 0.4286,
+        "overallMP": 21
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd4008",
+        "name": "Todd Hall",
+        "skill": 2,
+        "sessWR": 0.3,
+        "sessPA": 0.4,
+        "overallWR": 0.3,
+        "overallMP": 10
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0005",
+    "name": "Knight's Of The Rectangle",
+    "points": 128,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd5001",
+        "name": "Alysha Waldren",
+        "skill": 4,
+        "sessWR": 0.7273,
+        "sessPA": 0.54,
+        "overallWR": 0.485,
+        "overallMP": 167
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5002",
+        "name": "Eggy Mettler",
+        "skill": 5,
+        "sessWR": 0.7083,
+        "sessPA": 0.55,
+        "overallWR": 0.5528,
+        "overallMP": 123
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5003",
+        "name": "Amanda Durnell",
+        "skill": 4,
+        "sessWR": 0.4615,
+        "sessPA": 0.35,
+        "overallWR": 0.4654,
+        "overallMP": 593
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5004",
+        "name": "Alex Mckim",
+        "skill": 6,
+        "sessWR": 0.8462,
+        "sessPA": 0.61,
+        "overallWR": 0.6301,
+        "overallMP": 219
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5005",
+        "name": "Vanessa Mettler",
+        "skill": 3,
+        "sessWR": 0.6667,
+        "sessPA": 0.57,
+        "overallWR": 0.5114,
+        "overallMP": 88
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5006",
+        "name": "DG Benson",
+        "skill": 3,
+        "sessWR": 0.4444,
+        "sessPA": 0.48,
+        "overallWR": 0.4167,
+        "overallMP": 48
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5007",
+        "name": "Angie Gonsalez",
+        "skill": 2,
+        "sessWR": 0.1429,
+        "sessPA": 0.23,
+        "overallWR": 0.1091,
+        "overallMP": 55
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd5008",
+        "name": "Daun Wilson",
+        "skill": 3,
+        "sessWR": 0,
+        "sessPA": 0,
+        "overallWR": 0.6,
+        "overallMP": 25
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0006",
+    "name": "Slop Counts",
+    "points": 123,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd6001",
+        "name": "Jordan Torres",
+        "skill": 7,
+        "sessWR": 0.4,
+        "sessPA": 0.4,
+        "overallWR": 0.5439,
+        "overallMP": 57
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6002",
+        "name": "Jordan Vachon",
+        "skill": 5,
+        "sessWR": 0.3333,
+        "sessPA": 0.29,
+        "overallWR": 0.4882,
+        "overallMP": 170
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6003",
+        "name": "Allie Zern",
+        "skill": 4,
+        "sessWR": 0.6667,
+        "sessPA": 0.52,
+        "overallWR": 0.5248,
+        "overallMP": 101
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6004",
+        "name": "Nicole Huntley",
+        "skill": 3,
+        "sessWR": 0.125,
+        "sessPA": 0.33,
+        "overallWR": 0.4324,
+        "overallMP": 74
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6005",
+        "name": "Chelsey Bishop",
+        "skill": 3,
+        "sessWR": 0.7,
+        "sessPA": 0.56,
+        "overallWR": 0.4138,
+        "overallMP": 58
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6006",
+        "name": "Lc Chung",
+        "skill": 6,
+        "sessWR": 1.0,
+        "sessPA": 0.72,
+        "overallWR": 0.616,
+        "overallMP": 125
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6007",
+        "name": "Tyler Pulse",
+        "skill": 6,
+        "sessWR": 0.5556,
+        "sessPA": 0.44,
+        "overallWR": 0.5484,
+        "overallMP": 31
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd6008",
+        "name": "Cameron Stieglitz",
+        "skill": 4,
+        "sessWR": 0.5833,
+        "sessPA": 0.47,
+        "overallWR": 0.5,
+        "overallMP": 66
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0007",
+    "name": "Lucky 777",
+    "points": 121,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd7001",
+        "name": "Zach Fritts",
+        "skill": 4,
+        "sessWR": 0.7143,
+        "sessPA": 0.54,
+        "overallWR": 0.6098,
+        "overallMP": 41
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd7002",
+        "name": "Jimmy Fisher",
+        "skill": 3,
+        "sessWR": 0.625,
+        "sessPA": 0.62,
+        "overallWR": 0.4483,
+        "overallMP": 87
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd7003",
+        "name": "Dale Troutner",
+        "skill": 4,
+        "sessWR": 0.5769,
+        "sessPA": 0.47,
+        "overallWR": 0.5026,
+        "overallMP": 193
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd7004",
+        "name": "Chris Boylan",
+        "skill": 4,
+        "sessWR": 0.275,
+        "sessPA": 0.25,
+        "overallWR": 0.3789,
+        "overallMP": 95
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd7005",
+        "name": "Keith Long",
+        "skill": 5,
+        "sessWR": 0.5833,
+        "sessPA": 0.41,
+        "overallWR": 0.6212,
+        "overallMP": 66
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd7006",
+        "name": "Rick Austin",
+        "skill": 6,
+        "sessWR": 0.1167,
+        "sessPA": 0.11,
+        "overallWR": 0.563,
+        "overallMP": 135
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0008",
+    "name": "kirkpatrick Gang",
+    "points": 124,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd8001",
+        "name": "Sue Kirkpatrick",
+        "skill": 4,
+        "sessWR": 0.5,
+        "sessPA": 0.41,
+        "overallWR": 0.4836,
+        "overallMP": 122
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8002",
+        "name": "Ren Kirkpatrick",
+        "skill": 2,
+        "sessWR": 0.3269,
+        "sessPA": 0.3,
+        "overallWR": 0.3261,
+        "overallMP": 52
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8003",
+        "name": "Junior Henning",
+        "skill": 3,
+        "sessWR": 0.5,
+        "sessPA": 0.5,
+        "overallWR": 0.3261,
+        "overallMP": 46
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8004",
+        "name": "Bubba Kirkpatrick",
+        "skill": 5,
+        "sessWR": 0.5714,
+        "sessPA": 0.47,
+        "overallWR": 0.5,
+        "overallMP": 38
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8005",
+        "name": "Abdul Mohammed",
+        "skill": 6,
+        "sessWR": 0.75,
+        "sessPA": 0.58,
+        "overallWR": 0.5659,
+        "overallMP": 205
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8006",
+        "name": "Tiffany Mohammed",
+        "skill": 4,
+        "sessWR": 0.3333,
+        "sessPA": 0.33,
+        "overallWR": 0.4514,
+        "overallMP": 144
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8007",
+        "name": "Jasmin Bajic",
+        "skill": 3,
+        "sessWR": 0.7143,
+        "sessPA": 0.57,
+        "overallWR": 0.464,
+        "overallMP": 125
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd8008",
+        "name": "James Jenkins",
+        "skill": 7,
+        "sessWR": 0.75,
+        "sessPA": 0.66,
+        "overallWR": 0.75,
+        "overallMP": 4
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0009",
+    "name": "Recreational Hazard",
+    "points": 126,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcd9001",
+        "name": "Matt Moore",
+        "skill": 5,
+        "sessWR": 0.6,
+        "sessPA": 0.56,
+        "overallWR": 0.5,
+        "overallMP": 104
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9002",
+        "name": "Bob Ruby",
+        "skill": 4,
+        "sessWR": 0.6,
+        "sessPA": 0.46,
+        "overallWR": 0.5566,
+        "overallMP": 106
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9003",
+        "name": "Bruce Mcnamara",
+        "skill": 5,
+        "sessWR": 0.6,
+        "sessPA": 0.63,
+        "overallWR": 0.5248,
+        "overallMP": 101
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9004",
+        "name": "Kari Mcnamara",
+        "skill": 4,
+        "sessWR": 0.4167,
+        "sessPA": 0.47,
+        "overallWR": 0.5714,
+        "overallMP": 112
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9005",
+        "name": "Jason Church",
+        "skill": 5,
+        "sessWR": 0.4,
+        "sessPA": 0.33,
+        "overallWR": 0.4554,
+        "overallMP": 101
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9006",
+        "name": "David Bester",
+        "skill": 6,
+        "sessWR": 0.3333,
+        "sessPA": 0.25,
+        "overallWR": 0.4725,
+        "overallMP": 91
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9007",
+        "name": "Alec Vanness",
+        "skill": 2,
+        "sessWR": 0,
+        "sessPA": 0.33,
+        "overallWR": 0,
+        "overallMP": 3
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcd9008",
+        "name": "Luvy Arora",
+        "skill": 2,
+        "sessWR": 0.2222,
+        "sessPA": 0.37,
+        "overallWR": 0.2609,
+        "overallMP": 23
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0010",
+    "name": "Cue Hefner",
+    "points": 123,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcda001",
+        "name": "Jeremy Oyer",
+        "skill": 5,
+        "sessWR": 0.6667,
+        "sessPA": 0.48,
+        "overallWR": 0.5065,
+        "overallMP": 154
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda002",
+        "name": "Ashley Sherwood",
+        "skill": 3,
+        "sessWR": 0.375,
+        "sessPA": 0.45,
+        "overallWR": 0.4784,
+        "overallMP": 324
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda003",
+        "name": "Steve Douglas",
+        "skill": 5,
+        "sessWR": 0.25,
+        "sessPA": 0.29,
+        "overallWR": 0.6029,
+        "overallMP": 68
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda004",
+        "name": "Thomas Hedstrom",
+        "skill": 5,
+        "sessWR": 0.3333,
+        "sessPA": 0.33,
+        "overallWR": 0.52,
+        "overallMP": 75
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda005",
+        "name": "Vinnie Tippman",
+        "skill": 3,
+        "sessWR": 0.3333,
+        "sessPA": 0.48,
+        "overallWR": 0.4884,
+        "overallMP": 43
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda006",
+        "name": "Maria Minga",
+        "skill": 4,
+        "sessWR": 0.5,
+        "sessPA": 0.4,
+        "overallWR": 0.5,
+        "overallMP": 38
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcda007",
+        "name": "Zach Parrish",
+        "skill": 4,
+        "sessWR": 0.8182,
+        "sessPA": 0.6,
+        "overallWR": 0.8,
+        "overallMP": 15
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0011",
+    "name": "38 Cent",
+    "points": 107,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcdb001",
+        "name": "Thomas Hiser",
+        "skill": 6,
+        "sessWR": 0.5,
+        "sessPA": 0.37,
+        "overallWR": 0.5763,
+        "overallMP": 472
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb002",
+        "name": "Forest Miser",
+        "skill": 5,
+        "sessWR": 0.25,
+        "sessPA": 0.29,
+        "overallWR": 0.4394,
+        "overallMP": 198
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb003",
+        "name": "Johnny Hernandez",
+        "skill": 5,
+        "sessWR": 0.3333,
+        "sessPA": 0.29,
+        "overallWR": 0.4563,
+        "overallMP": 103
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb004",
+        "name": "Amontray Thomas",
+        "skill": 3,
+        "sessWR": 0.4444,
+        "sessPA": 0.4444,
+        "overallWR": 0.4468,
+        "overallMP": 141
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb005",
+        "name": "Raul Nunez",
+        "skill": 3,
+        "sessWR": 0.5,
+        "sessPA": 0.44,
+        "overallWR": 0.56,
+        "overallMP": 25
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb006",
+        "name": "Kyle Tuffley",
+        "skill": 5,
+        "sessWR": 0.5714,
+        "sessPA": 0.42,
+        "overallWR": 0.5492,
+        "overallMP": 295
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb007",
+        "name": "Austin Grey",
+        "skill": 4,
+        "sessWR": 0.2,
+        "sessPA": 0.3,
+        "overallWR": 0.48,
+        "overallMP": 25
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdb008",
+        "name": "Jacob Devine",
+        "skill": 3,
+        "sessWR": 1.0,
+        "sessPA": 1.0,
+        "overallWR": 0.6667,
+        "overallMP": 6
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0012",
+    "name": "Y-NOT",
+    "points": 102,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcdc001",
+        "name": "Dee Lidy",
+        "skill": 5,
+        "sessWR": 0.2222,
+        "sessPA": 0.25,
+        "overallWR": 0.5075,
+        "overallMP": 268
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc002",
+        "name": "Bob Monnier Sr",
+        "skill": 5,
+        "sessWR": 0.667,
+        "sessPA": 0.58,
+        "overallWR": 0.55,
+        "overallMP": 675
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc003",
+        "name": "Ashley Ingram",
+        "skill": 6,
+        "sessWR": 0.3333,
+        "sessPA": 0.22,
+        "overallWR": 0.5143,
+        "overallMP": 105
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc004",
+        "name": "Tanna Lehmbeck",
+        "skill": 2,
+        "sessWR": 0.1429,
+        "sessPA": 0.14,
+        "overallWR": 0.1592,
+        "overallMP": 245
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc005",
+        "name": "Chris Fecteau",
+        "skill": 6,
+        "sessWR": 0.7692,
+        "sessPA": 0.53,
+        "overallWR": 0.6425,
+        "overallMP": 179
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc006",
+        "name": "Ashley Fecteau",
+        "skill": 3,
+        "sessWR": 0.4444,
+        "sessPA": 0.37,
+        "overallWR": 0.4078,
+        "overallMP": 84
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc007",
+        "name": "Terri Kemerley",
+        "skill": 2,
+        "sessWR": 0.1429,
+        "sessPA": 0.28,
+        "overallWR": 0.0789,
+        "overallMP": 76
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdc008",
+        "name": "Chuck Kemerley",
+        "skill": 2,
+        "sessWR": 0.2857,
+        "sessPA": 0.33,
+        "overallWR": 0.2727,
+        "overallMP": 22
+      }
+    ]
+  },
+  {
+    "teamId": "64fa2b9e4cf01234abcd0013",
+    "name": "Waz 8ers",
+    "points": 96,
+    "players": [
+      {
+        "playerId": "64fa2b9e4cf01234abcdd001",
+        "name": "Brandy Lampkins",
+        "skill": 6,
+        "sessWR": 0.2857,
+        "sessPA": 0.28,
+        "overallWR": 0.5404,
+        "overallMP": 198
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd002",
+        "name": "Kurt Shively",
+        "skill": 5,
+        "sessWR": 0.375,
+        "sessPA": 0.37,
+        "overallWR": 0.4757,
+        "overallMP": 185
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd003",
+        "name": "Super Dave Lampkins",
+        "skill": 3,
+        "sessWR": 0.5,
+        "sessPA": 0.45,
+        "overallWR": 0.3958,
+        "overallMP": 240
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd004",
+        "name": "Kevin Powell",
+        "skill": 4,
+        "sessWR": 0.3636,
+        "sessPA": 0.3,
+        "overallWR": 0.5086,
+        "overallMP": 116
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd005",
+        "name": "Stucks Stucky",
+        "skill": 4,
+        "sessWR": 0.1818,
+        "sessPA": 0.15,
+        "overallWR": 0.4302,
+        "overallMP": 86
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd006",
+        "name": "Erin Bixler",
+        "skill": 6,
+        "sessWR": 0.3333,
+        "sessPA": 0.27,
+        "overallWR": 0.5545,
+        "overallMP": 101
+      },
+      {
+        "playerId": "64fa2b9e4cf01234abcdd007",
+        "name": "Oscar De La Cruz",
+        "skill": 4,
+        "sessWR": 0.5,
+        "sessPA": 0.41,
+        "overallWR": 0.561,
+        "overallMP": 41
+      }
+    ]
+  }
+]
