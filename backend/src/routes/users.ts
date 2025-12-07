@@ -294,4 +294,25 @@ router.get('/find/:id', async (req, res) => {
     }
 })
 
+//delete a user
+router.delete("/:id", async (req, res) => {
+    const userId = Number(req.params.id);
+
+    if (isNaN(userId)) {
+        return res.status(404).json({ error: "Invalid user ID"});
+    }
+
+    try {
+        // remove user (also player_id and team_id justincase)
+        await pool.query(
+            `DELETE FROM users WHER id = $1`,
+            [userId]
+        );
+        res.status(200).json({ message: "User deleted"});
+    }catch (err) {
+        console.error("DELETE USER ERROR:", err);
+        res.status(500).json({error:"Failed to delete user"});
+    }
+});
+
 export default router; 

@@ -1,0 +1,79 @@
+/* Panel wrapper */
+.panelContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Header text */
+.heading {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.subText {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+/* User List */
+.userList {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.userItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #fafafa;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+
+    transition: background 0.2s ease;
+}
+
+.userItem:hover {
+    background: #f0f0f0;
+}
+
+/* User details (left side of row) */
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 1rem;
+}
+
+.userDetails span {
+    color: #555;
+}
+
+/* Delete Button */
+.deleteButton {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background: #000;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.deleteButton:hover:not(:disabled) {
+    background: #237423; /* same green hover as other buttons */
+}
+
+.deleteButton:disabled {
+    background: #777;
+    cursor: not-allowed;
+}

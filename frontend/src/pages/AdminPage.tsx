@@ -5,6 +5,7 @@ import AdminMenuBar from "../components/AdminMenuBar";
 import AdminHomePanel from "../components/AdminHomePanel";
 import AdminManageTeamsPanel from "../components/AdminManageTeamsPanel";
 import AdminEditTeamPanel from "../components/AdminEditTeamPanel";
+import AdminManageAccountsPanel from "../components/AdminManageAccountsPanel";
 import Footer from "../components/Footer";
 
 import { Team } from "../models/Team"
@@ -51,8 +52,10 @@ function AdminPage() {
             {/* panel setup */}
             <main style={{ padding: ".5rem" }}>
                 {/* home */}
+                
                 {activePanel === "home" && <AdminHomePanel />}
                 {/* manage teams */}
+
                 {activePanel === "manage-teams" && (
                     loading ? (
                         <p>Loading teams...</p>
@@ -63,6 +66,7 @@ function AdminPage() {
                         />
                     )
                 )}
+
                 {/* edit team part of manage team */}
                 {activePanel === "edit-team" &&
                     selectedTeam && (
@@ -71,6 +75,11 @@ function AdminPage() {
                             onBack={() => setActivePanel("manage-teams")}
                         />
                     )}
+
+                {/* manage accounts */}
+                {activePanel === "manage-accounts" && (
+                    <AdminManageAccountsPanel />
+                )}
             </main>
 
 
