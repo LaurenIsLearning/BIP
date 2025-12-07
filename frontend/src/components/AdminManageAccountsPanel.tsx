@@ -18,7 +18,7 @@ export default function AdminManageAccountsPanel() {
   //load all users
   async function loadUsers() {
     try {
-      const res = await fetch("http://localhost:3000/api/users");
+      const res = await fetch("https://bip-backend.fly.dev/api/users");
       const data = await res.json();
       setUsers(data);
     } catch (err) {
@@ -32,7 +32,7 @@ export default function AdminManageAccountsPanel() {
   async function deleteUser(id: number) {
     if (!confirm("Are you sure you want to DELETE this account?")) return;
 
-    const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+    const res = await fetch(`https://bip-backend.fly.dev/api/users/${id}`, {
       method: "DELETE",
     });
 
