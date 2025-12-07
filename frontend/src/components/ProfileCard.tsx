@@ -85,16 +85,21 @@ function ProfileCard () {
         }
 
         const msg = data.message?.toString().trim();
+        const currUser = data.data;
+
+        console.log(currUser.id);
+        console.log(currUser.email);
+        console.log(currUser.name);
+
         console.log("data.message:", data.message, typeof data.message);
         console.log("Full response data:", data);
 
         // Check if the user is valid
-        if(msg == "Valid Player") {
-            auth.updateUser({ ...user, name: nameVal, team: teamVal});
+        if (msg == "Valid Player") {
+            auth.updateUser({ ...user, name: currUser.name, player_id: currUser.player_id, team_id: currUser.team_id, team: currUser.team_name});
             console.log("Valid Acount");
-        }
-        else if(msg == "Invalid Player") {
-            auth.updateUser({ ...user, name: nameVal, team: ''});
+        } else if(msg == "Invalid Player") {
+            auth.updateUser({ ...user, name: currUser.name, player_id: '0', team_id: '0', team: ''});
             console.log("Invalid Account");
         } else {
             console.log("We are in the else")

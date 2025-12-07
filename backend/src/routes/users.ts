@@ -11,6 +11,30 @@ const createToken = (id) => {
     return jwt.sign({id}, 'hd659snyc8ejbfixinevcimsn901jd9djbf', {expiresIn: '1h'})
 }
 
+// Get teams
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT u.id, u.email, t.role, u.player_id, u.team_id 
+       FROM users u`
+    );
+
+    // Map DB → FE model
+    const formatted = result.rows.map((u) => ({
+      id: u.id.toString(),
+      email: u.email,
+      name: u.name,
+      player_id: u.player_id,
+      team_id: u.team_id
+    }));
+
+    res.json(formatted);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching users");
+  }
+});
+
 // Login Route
 router.post('/login', async (req, res) => {
     // Get username and password from request body
@@ -164,6 +188,8 @@ router.patch('/change/:id', async (req, res) => {
         const playerQuery = 'SELECT * FROM players WHERE name = $1';
         const playerResult = await pool.query(playerQuery, [nameVal]);
 
+        let msg = "";
+
         // Make sure a player exists
         if(playerResult.rows.length != 0) {
             console.log("The player exists!");
@@ -186,7 +212,7 @@ router.patch('/change/:id', async (req, res) => {
                 const editResult = await pool.query(editQuery, [nameVal, currPlayer.id, currPlayer.team_id, userId]);
 
                 // Return response
-                res.status(200).json({ message: "Valid Player"});
+                msg = "Valid Player";
             } else {
                 // If the teams do not match, just update the user's name
                 const editQuery = `UPDATE users
@@ -195,7 +221,7 @@ router.patch('/change/:id', async (req, res) => {
                 const editResult = await pool.query(editQuery, [nameVal, userId]);
 
                 // Return response
-                res.status(200).json({ message: "Invalid Player"});
+                msg = "Invalid Player";
             }
 
         } else {
@@ -206,8 +232,25 @@ router.patch('/change/:id', async (req, res) => {
                 WHERE id = $2`
             const editResult = await pool.query(editQuery, [nameVal, userId]);
 
-            res.status(200).json({ message: "Invalid Player"});
-        }        
+            msg = "Invalid Player";
+        }   
+        
+        // Get the newly updated user
+        const findQuery = `SELECT users.id, 
+                            users.email, 
+                            users.role, 
+                            users.name, 
+                            users.player_id, 
+                            users.team_id, 
+                            teams.name AS team_name
+                            FROM users
+                            LEFT JOIN teams ON users.team_id = teams.id
+                            WHERE users.id = $1
+                            `
+        const findResult = await pool.query(findQuery, [userId]);
+
+        const currUser = findResult.rows[0];
+        res.status(200).json({data: currUser, message: msg});
 
     } catch(err) {
         console.log("UPDATE USER ERROR:", err); 
