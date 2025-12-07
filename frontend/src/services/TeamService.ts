@@ -36,7 +36,7 @@ function mapPlayers(players: PlayerResponse[] | undefined): Player[] {
 }
 
 export async function fetchAllTeams(): Promise<Team[]> {
-  const res = await fetch("http://localhost:3000/api/teams");
+  const res = await fetch("https://bip-backend.fly.dev/api/teams");
   const data: TeamResponse[] = await res.json();
 
   console.log("Fetched teams:", data);
@@ -45,7 +45,7 @@ export async function fetchAllTeams(): Promise<Team[]> {
 }
 
 export async function fetchTeam(id: string): Promise<Team> {
-  const res = await fetch(`http://localhost:3000/api/teams/${id}`);
+  const res = await fetch(`https://bip-backend.fly.dev/api/teams/${id}`);
   const t: TeamResponse = await res.json();
 
   return new Team(t.teamId, t.name, t.points, mapPlayers(t.players), t.ranking);

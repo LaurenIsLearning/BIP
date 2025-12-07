@@ -14,8 +14,12 @@ app.use("/api/teams", teamsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/players", playersRouter);
 
-const PORT = process.env.PORT || 8080;
-//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT;
+if (!PORT) {
+  console.error("ERROR: process.env.PORT is not set. Fly.io must set this.");
+  process.exit(1);
+}
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

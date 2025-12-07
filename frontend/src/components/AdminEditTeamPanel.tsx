@@ -49,7 +49,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
 
     //--save team only
     async function handleSaveTeam() {
-        const response = await fetch("http://localhost:3001/api/teams/update", {
+        const response = await fetch("https://bip-backend.fly.dev/api/teams/update", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -73,7 +73,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
         e.preventDefault();
         if (!formData) return;
 
-        const response = await fetch("http://localhost:3001/api/players/update", {
+        const response = await fetch("https://bip-backend.fly.dev/api/players/update", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -146,7 +146,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
                                             if (!confirm("Are you sure you want to DELETE this team and all its players?"))
                                                 return;
 
-                                            const response = await fetch(`http://localhost:3001/api/teams/${team.teamId}`, {
+                                            const response = await fetch(`https://bip-backend.fly.dev/api/teams/${team.teamId}`, {
                                                 method: "DELETE"
                                             });
 
@@ -327,7 +327,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
                                         if (!confirm(`Delete player "${selectedPlayer.name}"?`)) return;
 
                                         const response = await fetch(
-                                            `http://localhost:3001/api/players/${selectedPlayer.playerId}`,
+                                            `https://bip-backend.fly.dev/api/players/${selectedPlayer.playerId}`,
                                             { method: "DELETE" }
                                         );
 

@@ -65,7 +65,7 @@ function ProfileCard () {
         }
 
         // Create PATCH request to edit user data
-        const response = await fetch(`http://localhost:3000/api/users/change/${user.id}`, {
+        const response = await fetch(`https://bip-backend.fly.dev/api/users/change/${user.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

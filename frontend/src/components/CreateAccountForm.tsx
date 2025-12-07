@@ -30,7 +30,7 @@ function CreateAccountForm () {
             console.log("Passwords match, so sending data to backend");
 
             // Create a POST request and have the data in the body
-            const response = await fetch("http://localhost:3000/api/users/signup", {
+            const response = await fetch("https://bip-backend.fly.dev/api/users/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
