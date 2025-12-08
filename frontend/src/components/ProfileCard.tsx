@@ -7,12 +7,10 @@ import { fetchTeam } from "../services/TeamService.ts";
 
 function ProfileCard() {
   // Variables that get updated as user types
-  const [imageVal, setImageVal] = useState("");
   const [nameVal, setNameVal] = useState("");
   const [teamVal, setTeamVal] = useState("");
 
   // Variables that change UI info
-  const [userImage, setUserImage] = useState("");
   const [userName, setUserName] = useState("");
   const [userTeam, setUserTeam] = useState("");
 
@@ -133,7 +131,7 @@ function ProfileCard() {
       <section className={styles.profile_card}>
         <section className={styles.inline_box}>
           <img
-            src={userImage || image} // Eventually given image of player
+            src={image} // Use default image
             alt="User Image"
             className={styles.player_image}
           ></img>
@@ -165,16 +163,6 @@ function ProfileCard() {
           <>
             <section className={styles.verify_form}>
               <form className={styles.verify} onSubmit={handleSubmit}>
-                <section className={styles.group}>
-                  <label>Attach image of yourself for admin to verify: </label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    accept="image/png, image/jpeg, image/gif"
-                    onChange={(e) => setImageVal(e.target.value)}
-                    value={imageVal}
-                  />
-                </section>
                 <section className={styles.group}>
                   <label>Enter your name (first and last): </label>
                   <input
