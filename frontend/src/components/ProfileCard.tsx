@@ -6,23 +6,26 @@ import { AuthContext } from "./AuthContext.tsx";
 import { fetchTeam } from "../services/TeamService.ts";
 
 function ProfileCard() {
-  // Variables that get updated as user types
-  const [nameVal, setNameVal] = useState("");
-  const [teamVal, setTeamVal] = useState("");
-
-  // Variables that change UI info
-  const [userName, setUserName] = useState("");
-  const [userTeam, setUserTeam] = useState("");
-
-  const [editingProf, setEditingProf] = useState(false);
-  const navigate = useNavigate();
-
   // Get the logout function
   const auth = useContext(AuthContext);
   if (!auth) {
     throw new Error("LoginForm must be used inside an AuthProvider");
   }
   const { logout, user } = auth;
+  
+  // Variables that get updated as user types
+  const [nameVal, setNameVal] = useState(user?.name || "");
+  const [teamVal, setTeamVal] = useState(user?.team || "");
+
+  // Variables that change UI info
+  const [userName, setUserName] = useState(user?.name || "");
+  const [userTeam, setUserTeam] = useState(user?.team || "");
+
+  // Error variable
+  const [error, setError] = useState("");
+
+  const [editingProf, setEditingProf] = useState(false);
+  const navigate = useNavigate();
 
   const userEmail = user?.email;
 
@@ -33,6 +36,8 @@ function ProfileCard() {
     } else {
       setEditingProf(true);
     }
+
+    setError("");
   };
 
   // Logoun
@@ -44,14 +49,24 @@ function ProfileCard() {
     navigate("/");
   };
 
+  // When user data gets changed, be sure to update the display values
   useEffect(() => {
+    // Make sure user exists
     if (user) {
+      // Make sure user has a team
       if (user.team_id) {
+        // Get the name of the team
         fetchTeam(user.team_id).then((fetchedTeam) => {
           setUserTeam(fetchedTeam.name || "");
+          setTeamVal(fetchedTeam.name || "");
         });
+      } else {
+        // If user has no team, display that
+        setUserTeam("");
+        setTeamVal("");
       }
       setUserName(user.name || "");
+      setNameVal(user.name || "")
     }
   }, [user]);
 
@@ -83,9 +98,12 @@ function ProfileCard() {
 
     // Make sure we have an okay response
     if (!response.ok) {
-      auth.updateUser({ ...user, name: "", team: "" });
+      auth.updateUser({ ...user, team: "", player_id: "", team_id: "" });
+      setError(data.error);
       return;
     }
+
+    setError("")
 
     const msg = data.message?.toString().trim();
     const currUser = data.data;
@@ -110,9 +128,9 @@ function ProfileCard() {
     } else if (msg == "Invalid Player") {
       auth.updateUser({
         ...user,
-        name: currUser.name,
-        player_id: "0",
-        team_id: "0",
+        name: nameVal,
+        player_id: "",
+        team_id: "",
         team: "",
       });
       console.log("Invalid Account");
@@ -123,8 +141,6 @@ function ProfileCard() {
     // Don't show the edit form section
     toggleForm();
   };
-
-  // Update user info in backend
 
   return (
     <>
@@ -179,6 +195,7 @@ function ProfileCard() {
                     value={teamVal}
                   />
                 </section>
+                {error && <p className={styles.error_msg}>{error}</p>}
                 <button type="submit" className="button_light">
                   Submit
                 </button>

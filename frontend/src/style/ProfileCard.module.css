@@ -39,3 +39,8 @@
 .verify_form {
 
 }
+
+.error_msg {
+    color: red;
+    margin: .5em;
+}
