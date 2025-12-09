@@ -6,25 +6,26 @@ import { AuthContext } from "./AuthContext.tsx";
 import { fetchTeam } from "../services/TeamService.ts";
 
 function ProfileCard() {
-  // Variables that get updated as user types
-  const [imageVal, setImageVal] = useState("");
-  const [nameVal, setNameVal] = useState("");
-  const [teamVal, setTeamVal] = useState("");
-
-  // Variables that change UI info
-  const [userImage, setUserImage] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userTeam, setUserTeam] = useState("");
-
-  const [editingProf, setEditingProf] = useState(false);
-  const navigate = useNavigate();
-
   // Get the logout function
   const auth = useContext(AuthContext);
   if (!auth) {
     throw new Error("LoginForm must be used inside an AuthProvider");
   }
   const { logout, user } = auth;
+  
+  // Variables that get updated as user types
+  const [nameVal, setNameVal] = useState(user?.name || "");
+  const [teamVal, setTeamVal] = useState(user?.team || "");
+
+  // Variables that change UI info
+  const [userName, setUserName] = useState(user?.name || "");
+  const [userTeam, setUserTeam] = useState(user?.team || "");
+
+  // Error variable
+  const [error, setError] = useState("");
+
+  const [editingProf, setEditingProf] = useState(false);
+  const navigate = useNavigate();
 
   const userEmail = user?.email;
 
@@ -35,6 +36,8 @@ function ProfileCard() {
     } else {
       setEditingProf(true);
     }
+
+    setError("");
   };
 
   // Logoun
@@ -46,14 +49,24 @@ function ProfileCard() {
     navigate("/");
   };
 
+  // When user data gets changed, be sure to update the display values
   useEffect(() => {
+    // Make sure user exists
     if (user) {
+      // Make sure user has a team
       if (user.team_id) {
+        // Get the name of the team
         fetchTeam(user.team_id).then((fetchedTeam) => {
           setUserTeam(fetchedTeam.name || "");
+          setTeamVal(fetchedTeam.name || "");
         });
+      } else {
+        // If user has no team, display that
+        setUserTeam("");
+        setTeamVal("");
       }
       setUserName(user.name || "");
+      setNameVal(user.name || "")
     }
   }, [user]);
 
@@ -85,9 +98,12 @@ function ProfileCard() {
 
     // Make sure we have an okay response
     if (!response.ok) {
-      auth.updateUser({ ...user, name: "", team: "" });
+      auth.updateUser({ ...user, team: "", player_id: "", team_id: "" });
+      setError(data.error);
       return;
     }
+
+    setError("")
 
     const msg = data.message?.toString().trim();
     const currUser = data.data;
@@ -112,9 +128,9 @@ function ProfileCard() {
     } else if (msg == "Invalid Player") {
       auth.updateUser({
         ...user,
-        name: currUser.name,
-        player_id: "0",
-        team_id: "0",
+        name: nameVal,
+        player_id: "",
+        team_id: "",
         team: "",
       });
       console.log("Invalid Account");
@@ -126,14 +142,12 @@ function ProfileCard() {
     toggleForm();
   };
 
-  // Update user info in backend
-
   return (
     <>
       <section className={styles.profile_card}>
         <section className={styles.inline_box}>
           <img
-            src={userImage || image} // Eventually given image of player
+            src={image} // Use default image
             alt="User Image"
             className={styles.player_image}
           ></img>
@@ -166,16 +180,6 @@ function ProfileCard() {
             <section className={styles.verify_form}>
               <form className={styles.verify} onSubmit={handleSubmit}>
                 <section className={styles.group}>
-                  <label>Attach image of yourself for admin to verify: </label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    accept="image/png, image/jpeg, image/gif"
-                    onChange={(e) => setImageVal(e.target.value)}
-                    value={imageVal}
-                  />
-                </section>
-                <section className={styles.group}>
                   <label>Enter your name (first and last): </label>
                   <input
                     type="text"
@@ -191,6 +195,7 @@ function ProfileCard() {
                     value={teamVal}
                   />
                 </section>
+                {error && <p className={styles.error_msg}>{error}</p>}
                 <button type="submit" className="button_light">
                   Submit
                 </button>

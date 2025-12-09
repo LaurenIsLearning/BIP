@@ -9,7 +9,7 @@ export interface User {
   name?: string;
   player_id?: string;
   team_id?: string;
-  team: string;
+  team?: string;
 }
 
 export interface AuthData {
