@@ -90,8 +90,8 @@ router.put("/update", async (req, res) => {
       `
       UPDATE teams
       SET name = $1,
-        points = $2,
-      WHERE id = $3,
+        points = $2
+      WHERE id = $3
       `,
       [name, points, teamId]
     );
