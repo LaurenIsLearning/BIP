@@ -4,7 +4,7 @@ import { pool } from "../db.js";
 const router = express.Router();
 
 // get all players
-router.get("/all", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const result = await pool.query(`
             SELECT 
