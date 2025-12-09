@@ -6,9 +6,10 @@ import { Player } from "../models/Player";
 type Props = {
     team: Team;
     onBack?: () => void;
+    onRefresh?: () => void;
 };
 
-function AdminEditTeamPanel({ team, onBack }: Props) {
+function AdminEditTeamPanel({ team, onBack, onRefresh }: Props) {
     //--player editable fields
     const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
     const [formData, setFormData] = useState<Player | null>(null);
@@ -65,7 +66,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
         }
 
         alert("Team updated!");
-        onBack?.();
+        onRefresh?.();
     }
 
     //---save player only
@@ -88,7 +89,7 @@ function AdminEditTeamPanel({ team, onBack }: Props) {
         }
 
         alert("Player updated!");
-        onBack?.();
+        onRefresh?.();
     }
 
     return (

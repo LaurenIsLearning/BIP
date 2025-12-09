@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { fetchAllTeams } from "../services/TeamService";
 import { Team } from "../models/Team";
 
@@ -12,12 +12,15 @@ function RankingsTable() {
     navigate(`/Stats/${teamId}`);
   };
 
+  // set update when url changes
+  const location = useLocation();
+
   // Get info from teams data
   useEffect(() => {
     fetchAllTeams().then((fetchedTeams) => {
       setTeams(fetchedTeams);
     });
-  }, []);
+  }, [location]);
 
   return (
     <>

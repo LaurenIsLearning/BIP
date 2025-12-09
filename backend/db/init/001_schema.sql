@@ -88,8 +88,3 @@ SELECT
     ORDER BY total_points DESC, wins DESC
   ) AS ranking
 FROM stats;
-
-
----- Example Query
--- SELECT * FROM v_team_rankings
--- ORDER BY total_points DESC, wins DESC, name ASC;

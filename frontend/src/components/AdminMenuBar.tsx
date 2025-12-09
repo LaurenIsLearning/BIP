@@ -33,13 +33,6 @@ function AdminMenuBar({ onSelect, active }: Props) {
                 >
                     Manage Accounts
                 </button>
-
-                <button
-                    className={active === "view-as" ? styles.active : ""}
-                    onClick={() => onSelect("view-as")}
-                >
-                    View As...
-                </button>
             </menu>
         </nav>
     );
