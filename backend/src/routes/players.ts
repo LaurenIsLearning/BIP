@@ -3,6 +3,33 @@ import { pool } from "../db.js";
 
 const router = express.Router();
 
+// get all players
+router.get("/all", async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT 
+                players.id,
+                players.name,
+                players.skill,
+                players.sesswr,
+                players.sesspa,
+                players.overallwr,
+                players.overallmp,
+                players.team_id,
+                teams.name AS team_name
+            FROM players
+            LEFT JOIN teams ON players.team_id = teams.id
+            ORDER BY players.id;
+        `);
+
+        res.json(result.rows);
+    } catch (err) {
+        console.error("Error fetching all players:", err);
+        res.status(500).json({ error: "Database fetch failed" });
+    }
+});
+
+
 //update existing player
 router.put("/update", async (req, res) => {
     const { teamId, player } = req.body;
@@ -21,14 +48,14 @@ router.put("/update", async (req, res) => {
                 sesspa = $4,
                 overallwr = $5,
                 overallmp = $6
-            WHERE id = $7 and team_id = $8
+            WHERE id = $7 AND team_id = $8
             `,
             [
                 player.name,
                 player.skill,
                 player.sessWR,
                 player.sessPA,
-                player.overallWP,
+                player.overallWR,
                 player.overallMP,
                 player.playerId,
                 teamId
@@ -87,12 +114,12 @@ router.delete("/:playerId", async (req, res) => {
             [playerId]
         );
         if (result.rowCount === 0) {
-            return res.status(404).json({error: "Player not found"});
+            return res.status(404).json({ error: "Player not found" });
         }
-        res.json({message:"Player found successfully"});
+        res.json({ message: "Player found successfully" });
     } catch (err) {
         console.error("Error deleting player:", err);
-        res.status(500).json({error: "Database delete failed"});
+        res.status(500).json({ error: "Database delete failed" });
     }
 });
 
