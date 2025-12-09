@@ -1,18 +1,16 @@
+# Build stage
 FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
+
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine
-WORKDIR /app
+# Run stage — static file server
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-RUN npm install -g serve
-
-COPY --from=builder /app/dist ./dist
-
-# Match Fly.io internal_port
-EXPOSE 3000
-CMD ["serve", "-s", "dist", "-l", "3000"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
