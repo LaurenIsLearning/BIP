@@ -3,6 +3,42 @@ import { pool } from "../db.js";
 
 const router = express.Router();
 
+// GET /api/players // get all players
+router.get("/", async (_req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+        id,
+        team_id,
+        name,
+        skill,
+        sesswr,
+        sesspa,
+        overallwr,
+        overallmp
+      FROM players
+      ORDER BY id ASC
+    `);
+
+    // Map DB to front-end expected format
+    const formatted = result.rows.map(p => ({
+      playerId: p.id.toString(),
+      teamId: p.team_id.toString(),
+      name: p.name,
+      skill: p.skill,
+      sessWR: p.sesswr,
+      sessPA: p.sesspa,
+      overallWR: p.overallwr,
+      overallMP: p.overallmp
+    }));
+
+    res.json(formatted);
+  } catch (err) {
+    console.error("Error fetching players:", err);
+    res.status(500).json({ error: "Error fetching players" });
+  }
+});
+
 //update existing player
 router.put("/update", async (req, res) => {
     const { teamId, player } = req.body;
